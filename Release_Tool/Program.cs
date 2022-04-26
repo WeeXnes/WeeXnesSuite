@@ -15,6 +15,7 @@ namespace Release_Tool
         public static bool success = true;
         public static void Main(string[] args)
         {
+            Console.Title = "WeeXnes Automated Release Tool";
             SetTimestamp();
             SetPaths();
             Console.WriteLine("Folder -> " + globalTimestamp);
