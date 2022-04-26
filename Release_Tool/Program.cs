@@ -100,11 +100,11 @@ namespace Release_Tool
 
         private static void GetFiles()
         {
-            files.Add(new file(@"WeeXnes\bin\Debug\WeeXnes.exe", "WeeXnes.exe"));
-            files.Add(new file(@"WeeXnes_UAC\bin\Debug\WeeXnes_UAC.exe", "WeeXnes_UAC.exe"));
-            files.Add(new file(@"WeeXnes\bin\Debug\DiscordRPC.dll", "DiscordRPC.dll"));
-            files.Add(new file(@"WeeXnes\bin\Debug\Newtonsoft.Json.dll", "Newtonsoft.Json.dll"));
-            files.Add(new file(@"Autostart\bin\Debug\Autostart.exe", "Autostart.exe"));
+            files.Add(new file(@"WeeXnes\bin\Release\WeeXnes.exe", "WeeXnes.exe"));
+            files.Add(new file(@"WeeXnes_UAC\bin\Release\WeeXnes_UAC.exe", "WeeXnes_UAC.exe"));
+            files.Add(new file(@"WeeXnes\bin\Release\DiscordRPC.dll", "DiscordRPC.dll"));
+            files.Add(new file(@"WeeXnes\bin\Release\Newtonsoft.Json.dll", "Newtonsoft.Json.dll"));
+            files.Add(new file(@"Autostart\bin\Release\Autostart.exe", "Autostart.exe"));
         }
     }
 }
