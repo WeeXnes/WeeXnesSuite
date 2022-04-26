@@ -20,7 +20,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WeeXnes.Core;
 using WeeXnes.RPC;
-using WeeXnes.Core;
 
 namespace WeeXnes.MVVM.View
 {
