@@ -4,9 +4,127 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeeXnes"
+        xmlns:viewModel="clr-namespace:WeeXnes.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Height="600" 
+        Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="WeeXnes"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Deactivated="Window_Deactivated"
+        StateChanged="Window_StateChanged"
+        Closing="Window_Closing">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border Background="#272537"
+            CornerRadius="10"
+            MouseDown="Border_MouseDown">
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="WeeXnes"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="22"
+                   Margin="20,0,0,0"
+                       FontFamily="/Fonts/#Poppins"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonRoundTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"
+                             Name="HomeMenuButton"/>
+                
+                <RadioButton Content="Key Manager"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonRoundTheme}"
+                             Command="{Binding KeyManagerViewCommand}"
+                             Name="KMMenuButton"/>
+                
+                <RadioButton Content="DiscordRPC"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonRoundTheme}"
+                             Command="{Binding DiscordRpcViewCommand}"
+                             Name="RpcMenuButton"/>
+                
+                <RadioButton Content="Settings"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonRoundTheme}"
+                             Command="{Binding SettingsViewCommand}"
+                             Name="SettingsMenuButton"/>
+
+
+
+
+            </StackPanel>
+            
+            
+            <TextBox Grid.Column="1"
+                     Width="250"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     Style="{StaticResource ModernTextbox}"
+                     TextChanged="Searchbox_TextChanged"
+                     Name="Searchbox"
+                     />
+            <Button Width="50"
+                    Height="23"
+                    Name="MinimizeBtn"
+                    Click="MinimizeBtn_Click"
+                    Content="―"
+                    FontSize="11"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0,0,50,0"
+                    Style="{StaticResource ModernMinimizeButton}"
+                    Grid.Column="1"/>
+            <Button Width="50"
+                    Height="23"
+                    Name="CloseBtn"
+                    Click="CloseBtn_Click"
+                    Content="╳"
+                    FontSize="11"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource ModernCloseButton}"
+                    Grid.Column="1"/>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+
+    </Border>
 </Window>

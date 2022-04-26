@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="WeeXnes.MVVM.View.DiscordRpcView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeeXnes.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Unloaded="UserControl_Unloaded">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="340"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Background="#22202f"
+                    CornerRadius="10"
+                        Height="300"
+                        VerticalAlignment="Top">
+                    <ListBox Height="300"
+                             VerticalAlignment="Top"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Name="RpcItemList"
+                             Foreground="White"
+                             SelectionChanged="RpcItemList_SelectionChanged"
+                             MouseDoubleClick="RpcItemList_MouseDoubleClick"/>
+                </Border>
+
+
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormName}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,20,0,0"
+                         Name="tb_FormName"/>
+
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormPName}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,60,0,0"
+                         Name="tb_FormPName"/>
+                <Label Content=".exe"
+                       Foreground="White"
+                       FontSize="20" Grid.Column="1"
+                         Margin="240,56,0,0"/>
+
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormClient}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,100,0,0"
+                         Name="tb_FormClient"/>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormState}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,180,0,0"
+                         Name="tb_FormState"/>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormDetails}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,140,0,0"
+                         Name="tb_FormDetails"/>
+                
+                
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormLargeImgKey}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,220,0,0"
+                         Name="tb_FormLargeImgKey"/>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormLargeImgTXT}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="250,220,0,0"
+                         Name="tb_FormLargeImgTxt"/>
+
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormSmallImgKey}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="20,260,0,0"
+                         Name="tb_FormSmallImgKey"/>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource RpcFormSmallImgTXT}"
+                         Height="33"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Margin="250,260,0,0"
+                         Name="tb_FormSmallImgTxt"/>
+                <Button Height="30"
+                        Width="65"
+                        Style="{StaticResource DiscordRpcSaveButton}"
+                        Name="DiscordRpcSave"
+                        Click="DiscordRpcSave_Click"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Margin="20,0,0,5"/>
+
+
+
+
+
+                <Button Height="30"
+                        Width="65"
+                        Style="{StaticResource DiscordRpcStopButton}"
+                        Name="DiscordRpcStop"
+                        Click="DiscordRpcStop_Click"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="70,0,0,5"/>
+                <Button Height="30"
+                        Width="65"
+                        Style="{StaticResource DiscordRpcStartButton}"
+                        Name="DiscordRpcStart"
+                        Click="DiscordRpcStart_Click"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,5"/>
+                <Button Height="30"
+                        Width="65"
+                        Style="{StaticResource DiscordRpcNewButton}"
+                        Name="DiscordRpcNew"
+                        Click="DiscordRpcNew_Click"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="140,0,0,5"/>
+
+
+
+
+            </Grid>
+
+
+            <Border Grid.Row="1"
+                    Background="#22202f"
+                    CornerRadius="10">
+                <RichTextBox Grid.Row="1"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="White"
+                         IsReadOnly="True"
+                             IsHitTestVisible="False"
+                             Name="RpcLog">
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                </RichTextBox>
+            </Border>
+
+        </Grid>
+    </Grid>
+</UserControl>
