@@ -13,10 +13,14 @@ namespace WeeXnes.Core
     {
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
-        public static string KeyListPath = AppDataPath + "\\" + "Keys";
-        public static string RpcListPath = AppDataPath + "\\" + "RPC";
+        public static string DefaultKeyListPath = AppDataPath + "\\" + "Keys";
+        public static string DefaultRpcListPath = AppDataPath + "\\" + "RPC";
+        public static string KeyListPath = DefaultKeyListPath;
+        public static string RpcListPath = DefaultRpcListPath;
+        public static bool KeyCustomPath = false;
+        public static bool RpcCustomPath = false;
         public static string SettingsFileName = "settings.ini";
-        public static string version = "2.3";
+        public static string version = "2.4";
         public static bool isRpcRunning = false;
         public static string defaultRpcClient;
         public static bool alwaysOnTop;

@@ -83,7 +83,7 @@
                              Name="tb_DefaultClientID"/>
                     <Button Name="SaveDefaultID"
                         Style="{StaticResource UniversalMaterialButton}"
-                        Content="Set Default"
+                        Content="Set Default ClientID"
                         Background="#353340"
                             Height="25"
                         Click="SaveDefaultID_Click"
@@ -102,6 +102,26 @@
                     Foreground="White"/>
 
                     </CheckBox>
+                    
+                    
+                    <Label Content="Placeholder" HorizontalAlignment="Center"
+                           FontSize="8"
+                           Foreground="White"
+                           Name="RpcPathLabel"/>
+                    <Button Name="SetRpcLocation"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Set Rpc Files Path"
+                            Background="#353340"
+                            Height="25"
+                            Click="SetRpcLocation_OnClick"
+                            Margin="4,10,4,0"/>
+                    <Button Name="SetRpcLocationDefault"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Set Default Path"
+                            Background="#353340"
+                            Height="25"
+                            Click="SetRpcLocationDefault_OnClick"
+                            Margin="4,10,4,0"/>
                 </StackPanel>
 
                 
@@ -112,22 +132,43 @@
                 Background="#22202f"
                 CornerRadius="10"
                 Margin="10,40,10,10">
+                
+                <StackPanel Orientation="Vertical">
+                    <CheckBox VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              Name="ItemToClipboardSwitch"
+                              Checked="ItemToClipboardSwitch_Checked"
+                              Unchecked="ItemToClipboardSwitch_Unchecked"
+                              Margin="10,10,0,0">
+                        <TextBlock 
+                            Text="Selected Item to Clipboard" 
+                            VerticalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="White"/>
+                    </CheckBox>
+                    <Label Content="Placeholder" HorizontalAlignment="Center"
+                           FontSize="8"
+                           Foreground="White"
+                           Name="KeyPathLabel"/>
+                    <Button Name="SetKeyLocation"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Set Key Files Path"
+                            Background="#353340"
+                            Height="25"
+                            Click="SetKeyLocation_OnClick"
+                            Margin="4,10,4,0"/>
+                    <Button Name="SetKeyLocationDefault"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Set Default Path"
+                            Background="#353340"
+                            Height="25"
+                            Click="SetKeyLocationDefault_OnClick"
+                            Margin="4,10,4,0"/>
+                </StackPanel>
 
-
-
-                <CheckBox VerticalAlignment="Top"
-                  VerticalContentAlignment="Center"
-                      HorizontalContentAlignment="Center"
-                  Name="ItemToClipboardSwitch"
-                      Checked="ItemToClipboardSwitch_Checked"
-                      Unchecked="ItemToClipboardSwitch_Unchecked"
-                      Margin="10,10,0,0">
-                    <TextBlock 
-                    Text="Selected Item to Clipboard" 
-                    VerticalAlignment="Center" 
-                    FontSize="15" 
-                    Foreground="White"/>
-                </CheckBox>
+                
+                
             </Border>
         </Grid>
         <Button Name="OpenAppdataFolder" Grid.Row="1"

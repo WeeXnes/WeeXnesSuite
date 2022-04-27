@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
+using MessageBox = System.Windows.MessageBox;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace WeeXnes.MVVM.View
 {
@@ -29,6 +31,7 @@ namespace WeeXnes.MVVM.View
             InitializeComponent();
             LoadUiFromSettingsFile();
             SetFunction();
+            UpdatePathsOnUi();
         }
 
         private void SetFunction()
@@ -94,6 +97,31 @@ namespace WeeXnes.MVVM.View
 
                 Globals.defaultRpcClient = SettingsFile.GetValue("RPC", "defaultID");
                 Console.WriteLine(Globals.defaultRpcClient);
+                
+                
+                Globals.alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
+                
+                
+                Globals.KeyCustomPath = Convert.ToBoolean(SettingsFile.GetValue("KeyFiles", "CustomKeyLocation"));
+                if (Globals.KeyCustomPath)
+                {
+                    Globals.KeyListPath = SettingsFile.GetValue("KeyFiles", "KeyPath");
+                }
+                else
+                {
+                    Globals.KeyListPath = Globals.DefaultKeyListPath;
+                }
+                
+                
+                Globals.RpcCustomPath = Convert.ToBoolean(SettingsFile.GetValue("rpc", "CustomRpcLocation"));
+                if (Globals.RpcCustomPath)
+                {
+                    Globals.RpcListPath = SettingsFile.GetValue("rpc", "RpcPath");
+                }
+                else
+                {
+                    Globals.RpcListPath = Globals.DefaultRpcListPath;
+                }
 
             }
 
@@ -223,6 +251,66 @@ namespace WeeXnes.MVVM.View
             }
 
             switchAutoRpc(proc_suc);
+        }
+
+        private void UpdatePathsOnUi()
+        {
+            RpcPathLabel.Content = Globals.RpcListPath;
+            KeyPathLabel.Content = Globals.KeyListPath;
+        }
+
+        private void SetKeyLocationDefault_OnClick(object sender, RoutedEventArgs e)
+        {
+            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
+            SettingsFile.SetValue("KeyFiles", "CustomKeyLocation", "false");
+            SettingsFile.SetValue("KeyFiles", "KeyPath", "");
+            CheckSetting();
+            UpdatePathsOnUi();
+        }
+
+        private void SetKeyLocation_OnClick(object sender, RoutedEventArgs e)
+        {
+            using(var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
+                    SettingsFile.SetValue("KeyFiles", "CustomKeyLocation", "true");
+                    SettingsFile.SetValue("KeyFiles", "KeyPath", fbd.SelectedPath);
+                    CheckSetting();
+                    UpdatePathsOnUi();
+                    //MessageBox.Show("valid path: " + fbd.SelectedPath);
+                }
+            }
+        }
+
+        private void SetRpcLocationDefault_OnClick(object sender, RoutedEventArgs e)
+        {
+            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
+            SettingsFile.SetValue("rpc", "CustomRpcLocation", "false");
+            SettingsFile.SetValue("rpc", "RpcPath", "");
+            CheckSetting();
+            UpdatePathsOnUi();
+        }
+
+        private void SetRpcLocation_OnClick(object sender, RoutedEventArgs e)
+        {
+            using(var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
+                    SettingsFile.SetValue("rpc", "CustomRpcLocation", "true");
+                    SettingsFile.SetValue("rpc", "RpcPath", fbd.SelectedPath);
+                    CheckSetting();
+                    UpdatePathsOnUi();
+                    //MessageBox.Show("valid path: " + fbd.SelectedPath);
+                }
+            }
         }
     }
 }

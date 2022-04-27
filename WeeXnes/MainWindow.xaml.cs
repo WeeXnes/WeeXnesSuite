@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using WeeXnes.Core;
 using WeeXnes.MVVM.View;
+using Nocksoft.IO.ConfigFiles;
 
 namespace WeeXnes
 {
