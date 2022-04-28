@@ -29,11 +29,77 @@ namespace WeeXnes.MVVM.View
         public SettingView()
         {
             InitializeComponent();
-            LoadUiFromSettingsFile();
+            //LoadUiFromSettingsFile();
             SetFunction();
-            UpdatePathsOnUi();
+            SetUiUpdateListeners();
+            InitializeUi();
+            //UpdatePathsOnUi();
         }
 
+        public void InitializeUi()
+        {
+            if (!String.IsNullOrEmpty(Globals.settings_RpcItemsPath.Value))
+            {
+                RpcPathLabel.Content = Globals.settings_RpcItemsPath.Value;
+            }
+            else
+            {
+                RpcPathLabel.Content = "Default";
+            }
+            if (!String.IsNullOrEmpty(Globals.settings_KeyManagerItemsPath.Value))
+            {
+                KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath.Value;
+            }
+            else
+            {
+                KeyPathLabel.Content = "Default";
+            }
+
+            if (Globals.settings_alwaysOnTop.Value)
+            {
+                AlwaysOnTopSwitch.IsChecked = true;
+            }
+
+            if (Globals.settings_RpcAutoStart.Value)
+            {
+                EnableAutoStart.IsChecked = true;
+            }
+
+            if (Globals.settings_RpcShowElapsedTime.Value)
+            {
+                ShowElapsedTimeOnRpc.IsChecked = true;
+            }
+
+            if (Globals.settings_copySelectedToClipboard.Value)
+            {
+                ItemToClipboardSwitch.IsChecked = true;
+            }
+        }
+        private void SetUiUpdateListeners()
+        {
+            Globals.settings_RpcItemsPath.ValueChanged += () =>
+            {
+                if (!String.IsNullOrEmpty(Globals.settings_RpcItemsPath.Value))
+                {
+                    RpcPathLabel.Content = Globals.settings_RpcItemsPath.Value;
+                }
+                else
+                {
+                    RpcPathLabel.Content = "Default";
+                }
+            };
+            Globals.settings_KeyManagerItemsPath.ValueChanged += () =>
+            {
+                if (!String.IsNullOrEmpty(Globals.settings_KeyManagerItemsPath.Value))
+                {
+                    KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath.Value;
+                }
+                else
+                {
+                    KeyPathLabel.Content = "Default";
+                }
+            };
+        }
         private void SetFunction()
         {
             EnableAutoStart.Checked += EnableAutoStart_Checked;
@@ -45,135 +111,36 @@ namespace WeeXnes.MVVM.View
             EnableAutoStart.Unchecked -= EnableAutoStart_Unchecked;
         }
 
-        private void LoadUiFromSettingsFile()
-        {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            if (Globals.settings_alwaysOnTop)
-            {
-                AlwaysOnTopSwitch.IsChecked = true;
-            }
-            if (Globals.settings_RpcShowElapsedTime)
-            {
-                ShowElapsedTimeOnRpc.IsChecked = true;
-            }
-
-            if (Globals.settings_copySelectedToClipboard)
-            {
-                ItemToClipboardSwitch.IsChecked = true;
-            }
-            bool autoStartRpc = Convert.ToBoolean(SettingsFile.GetValue("RPC", "autoStartRpc"));
-            if (autoStartRpc)
-            {
-                EnableAutoStart.IsChecked = true;
-            }
-
-
-            tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID;
-        }
-        public static void CheckSetting()
-        {
-            
-
-            if(!File.Exists(Globals.AppDataPath + "\\" + Globals.SettingsFileName))
-            {
-                INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-                SettingsFile.SetValue("General", "AlwaysOnTop", "false");
-                SettingsFile.SetValue("RPC", "showElapsedTime", "true");
-                SettingsFile.SetValue("KeyManager", "copyToClipboard", "false");
-                SettingsFile.SetValue("RPC", "defaultID", "605116707035676701");
-                CheckSetting();
-            }
-            else
-            {
-                INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName);
-
-                Globals.settings_alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
-                Console.WriteLine(Globals.settings_alwaysOnTop);
-                Globals.settings_RpcShowElapsedTime = Convert.ToBoolean(SettingsFile.GetValue("RPC", "showElapsedTime"));
-                Console.WriteLine(Globals.settings_RpcShowElapsedTime);
-                Globals.settings_copySelectedToClipboard = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "copyToClipboard"));
-                Console.WriteLine(Globals.settings_copySelectedToClipboard);
-
-
-                Globals.settings_RpcDefaultClientID = SettingsFile.GetValue("RPC", "defaultID");
-                Console.WriteLine(Globals.settings_RpcDefaultClientID);
-                
-                
-                Globals.settings_alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
-                
-                
-                Globals.settings_KeyManagerItemsPath_Bool = Convert.ToBoolean(SettingsFile.GetValue("KeyFiles", "CustomKeyLocation"));
-                if (Globals.settings_KeyManagerItemsPath_Bool)
-                {
-                    Globals.settings_KeyManagerItemsPath = SettingsFile.GetValue("KeyFiles", "KeyPath");
-                }
-                else
-                {
-                    Globals.settings_KeyManagerItemsPath = Globals.settings_KeyManagerItemsPath_Default;
-                }
-                
-                
-                Globals.settings_RpcItemsPath_Bool = Convert.ToBoolean(SettingsFile.GetValue("rpc", "CustomRpcLocation"));
-                if (Globals.settings_RpcItemsPath_Bool)
-                {
-                    Globals.settings_RpcItemsPath = SettingsFile.GetValue("rpc", "RpcPath");
-                }
-                else
-                {
-                    Globals.settings_RpcItemsPath = Globals.settings_RpcItemsPath_Default;
-                }
-
-            }
-
-
-            /*
-            SettingsFile.SetValue("settings", "alwaysOnTop", "false");
-            Globals.alwaysOnTop = false;
-            SettingsFile.SetValue("RPC", "elapsedTime", "true");
-            Globals.showElapsedTime = true;
-            */
-        }
+        
         private void AlwaysOnTopSwitch_Checked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("General", "AlwaysOnTop", "true");
-            CheckSetting();
+            Globals.settings_alwaysOnTop.Value = true;
         }
 
 
         private void AlwaysOnTopSwitch_Unchecked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("General", "AlwaysOnTop", "false");
-            CheckSetting();
+            Globals.settings_alwaysOnTop.Value = false;
         }
 
         private void ShowElapsedTimeOnRpc_Checked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("RPC", "showElapsedTime", "true");
-            CheckSetting();
+            Globals.settings_RpcShowElapsedTime.Value = true;
         }
 
         private void ShowElapsedTimeOnRpc_Unchecked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("RPC", "showElapsedTime", "false");
-            CheckSetting();
+            Globals.settings_RpcShowElapsedTime.Value = false;
         }
 
         private void ItemToClipboardSwitch_Checked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("KeyManager", "copyToClipboard", "true");
-            CheckSetting();
+            Globals.settings_copySelectedToClipboard.Value = true;
         }
 
         private void ItemToClipboardSwitch_Unchecked(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("KeyManager", "copyToClipboard", "false");
-            CheckSetting();
+            Globals.settings_copySelectedToClipboard.Value = false;
         }
 
         private void OpenAppdataFolder_Click(object sender, RoutedEventArgs e)
@@ -183,11 +150,9 @@ namespace WeeXnes.MVVM.View
 
         private void SaveDefaultID_Click(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
             if (!String.IsNullOrEmpty(tb_DefaultClientID.Text))
             {
-                SettingsFile.SetValue("RPC", "defaultID", tb_DefaultClientID.Text);
-                CheckSetting();
+                Globals.settings_RpcDefaultClientID.Value = tb_DefaultClientID.Text;
             }
             else
             {
@@ -200,15 +165,14 @@ namespace WeeXnes.MVVM.View
         {
             UnsetFunction();
 
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
             if (on)
             {
-                SettingsFile.SetValue("RPC", "autoStartRpc", "true");
+                Globals.settings_RpcAutoStart.Value = true;
                 EnableAutoStart.IsChecked = true;
             }
             else
             {
-                SettingsFile.SetValue("RPC", "autoStartRpc", "false");
+                Globals.settings_RpcAutoStart.Value = false;
                 EnableAutoStart.IsChecked = false;
             }
             SetFunction();
@@ -253,19 +217,11 @@ namespace WeeXnes.MVVM.View
             switchAutoRpc(proc_suc);
         }
 
-        private void UpdatePathsOnUi()
-        {
-            RpcPathLabel.Content = Globals.settings_RpcItemsPath;
-            KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath;
-        }
 
         private void SetKeyLocationDefault_OnClick(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("KeyFiles", "CustomKeyLocation", "false");
-            SettingsFile.SetValue("KeyFiles", "KeyPath", "");
-            CheckSetting();
-            UpdatePathsOnUi();
+            Globals.settings_KeyManagerItemsPath_Bool.Value = false;
+            Globals.settings_KeyManagerItemsPath.Value = "";
         }
 
         private void SetKeyLocation_OnClick(object sender, RoutedEventArgs e)
@@ -276,11 +232,9 @@ namespace WeeXnes.MVVM.View
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-                    SettingsFile.SetValue("KeyFiles", "CustomKeyLocation", "true");
-                    SettingsFile.SetValue("KeyFiles", "KeyPath", fbd.SelectedPath);
-                    CheckSetting();
-                    UpdatePathsOnUi();
+                    
+                    Globals.settings_KeyManagerItemsPath_Bool.Value = true;
+                    Globals.settings_KeyManagerItemsPath.Value = fbd.SelectedPath;
                     //MessageBox.Show("valid path: " + fbd.SelectedPath);
                 }
             }
@@ -288,11 +242,8 @@ namespace WeeXnes.MVVM.View
 
         private void SetRpcLocationDefault_OnClick(object sender, RoutedEventArgs e)
         {
-            INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            SettingsFile.SetValue("rpc", "CustomRpcLocation", "false");
-            SettingsFile.SetValue("rpc", "RpcPath", "");
-            CheckSetting();
-            UpdatePathsOnUi();
+            Globals.settings_RpcItemsPath_Bool.Value = false;
+            Globals.settings_RpcItemsPath.Value = "";
         }
 
         private void SetRpcLocation_OnClick(object sender, RoutedEventArgs e)
@@ -303,12 +254,8 @@ namespace WeeXnes.MVVM.View
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-                    SettingsFile.SetValue("rpc", "CustomRpcLocation", "true");
-                    SettingsFile.SetValue("rpc", "RpcPath", fbd.SelectedPath);
-                    CheckSetting();
-                    UpdatePathsOnUi();
-                    //MessageBox.Show("valid path: " + fbd.SelectedPath);
+                    Globals.settings_RpcItemsPath_Bool.Value = true;
+                    Globals.settings_RpcItemsPath.Value = fbd.SelectedPath;
                 }
             }
         }

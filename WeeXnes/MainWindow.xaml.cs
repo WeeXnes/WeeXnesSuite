@@ -98,7 +98,9 @@ namespace WeeXnes
 
         private void CheckForSettingsFile()
         {
-            SettingView.CheckSetting();
+            //SettingView.CheckSetting();
+            SettingsManager.start();
+            
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -139,17 +141,12 @@ namespace WeeXnes
                 Directory.CreateDirectory(Globals.AppDataPath);
                 Console.WriteLine("Created AppDataPath");
             }
-            if (!Directory.Exists(Globals.settings_RpcItemsPath))
-            {
-                Directory.CreateDirectory(Globals.settings_RpcItemsPath);
-                Console.WriteLine("Created settings_RpcItemsPath");
-            }
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = (Window)sender;
-            if (Globals.settings_alwaysOnTop)
+            if (Globals.settings_alwaysOnTop.Value)
             {
                 window.Topmost = true;
             }

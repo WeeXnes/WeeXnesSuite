@@ -75,7 +75,10 @@ namespace WeeXnes.RPC
                     SmallImageText = this.smallimgtext
                 }
             });
-            client.UpdateStartTime();
+            if (Globals.settings_RpcShowElapsedTime.Value)
+            {
+                client.UpdateStartTime();
+            }
         }
         public void stop()
         {

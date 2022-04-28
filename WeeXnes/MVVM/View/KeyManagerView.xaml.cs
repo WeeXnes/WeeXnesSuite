@@ -30,6 +30,7 @@ namespace WeeXnes.MVVM.View
         
         public KeyManagerView()
         {
+            CheckForFolders();
             InitializeComponent();
             Globals.searchbox_content.ValueChanged += () => { SearchboxChanged(); };
         }
@@ -118,10 +119,9 @@ namespace WeeXnes.MVVM.View
         private void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
             KeyManagerLib.KeyList.Clear();
-            CheckForFolders();
-            if (!SaveInterface.IsDirectoryEmpty(Globals.settings_KeyManagerItemsPath))
+            if (!SaveInterface.IsDirectoryEmpty(Globals.settings_KeyManagerItemsPath.Value))
             {
-                string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath);
+                string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath.Value);
                 foreach (string file in files)
                 {
                     Console.WriteLine(file);
@@ -154,9 +154,9 @@ namespace WeeXnes.MVVM.View
                 Directory.CreateDirectory(Globals.AppDataPath);
                 Console.WriteLine("Created AppDataPath");
             }
-            if (!Directory.Exists(Globals.settings_KeyManagerItemsPath))
+            if (!Directory.Exists(Globals.settings_KeyManagerItemsPath.Value))
             {
-                Directory.CreateDirectory(Globals.settings_KeyManagerItemsPath);
+                Directory.CreateDirectory(Globals.settings_KeyManagerItemsPath.Value);
                 Console.WriteLine("Created settings_KeyManagerItemsPath");
             }
         }
@@ -186,7 +186,7 @@ namespace WeeXnes.MVVM.View
             if(selectedItem != null)
             {
                 Console.WriteLine(selectedItem.name + ": " + selectedItem.value);
-                if (Globals.settings_copySelectedToClipboard)
+                if (Globals.settings_copySelectedToClipboard.Value)
                 {
                     Clipboard.SetText(selectedItem.value);
                 }
@@ -199,7 +199,7 @@ namespace WeeXnes.MVVM.View
             KeyItem selectedItem = (KeyItem)KeyListView.SelectedItem;
             Console.WriteLine("Doubleclicked " + selectedItem.name);
             KeyManagerLib.KeyList.Remove(selectedItem);
-            string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath);
+            string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath.Value);
             foreach (string file in files)
             {
                 Console.WriteLine(file);

@@ -36,6 +36,7 @@ namespace WeeXnes.MVVM.View
         public static UpdateVar<string> triggerLogupdate = new UpdateVar<string>();
         public DiscordRpcView()
         {
+            CheckFolders();
             InitializeComponent();
             triggerLogupdate.ValueChanged += () =>
             {
@@ -46,6 +47,15 @@ namespace WeeXnes.MVVM.View
             };
             InitializeSettings();
             CheckForAutostart();
+        }
+
+        public void CheckFolders()
+        {
+            if (!Directory.Exists(Globals.settings_RpcItemsPath.Value))
+            {
+                Directory.CreateDirectory(Globals.settings_RpcItemsPath.Value);
+                Console.WriteLine("Created settings_RpcItemsPath");
+            }
         }
 
         private void CheckForAutostart()
@@ -83,7 +93,7 @@ namespace WeeXnes.MVVM.View
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Globals.isRpcRunning = true;
+            Globals.info_isRpcRunning = true;
             writeLog("Thread Started");
             bool runWorker = true;
             int delay = 2000;
@@ -110,7 +120,7 @@ namespace WeeXnes.MVVM.View
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Globals.isRpcRunning = false;
+            Globals.info_isRpcRunning = false;
             foreach(Game game in Games)
             {
                 game.isRunning = false;
@@ -150,7 +160,7 @@ namespace WeeXnes.MVVM.View
         public void generateNewGame()
         {
             string filename = Guid.NewGuid().ToString() + ".rpc";
-            Game newGame = new Game(filename, generateIncrementalName(), null, Globals.settings_RpcDefaultClientID);
+            Game newGame = new Game(filename, generateIncrementalName(), null, Globals.settings_RpcDefaultClientID.Value);
             saveGameToFile(newGame);
         }
         public string generateIncrementalName()
@@ -161,7 +171,7 @@ namespace WeeXnes.MVVM.View
         }
         public void saveGameToFile(Game game)
         {
-            INIFile rpcFile = new INIFile(Globals.settings_RpcItemsPath + "\\" + game.fileName, true);
+            INIFile rpcFile = new INIFile(Globals.settings_RpcItemsPath.Value + "\\" + game.fileName, true);
             rpcFile.SetValue("config", "name", game.Name);
             rpcFile.SetValue("config", "pname", game.ProcessName);
             rpcFile.SetValue("config", "id", game.id);
@@ -177,7 +187,7 @@ namespace WeeXnes.MVVM.View
         {
             try
             {
-                File.Delete(Globals.settings_RpcItemsPath + "\\" + game.fileName);
+                File.Delete(Globals.settings_RpcItemsPath.Value + "\\" + game.fileName);
             }
             catch (Exception e)
             {
@@ -187,12 +197,12 @@ namespace WeeXnes.MVVM.View
         }
         public void readRpcFileDirectory()
         {
-            bool Empty = funcs.IsDirectoryEmpty(Globals.settings_RpcItemsPath);
+            bool Empty = funcs.IsDirectoryEmpty(Globals.settings_RpcItemsPath.Value);
             List<Game> readGames = new List<Game>();
             if (!Empty)
             {
                 Console.WriteLine("RpcDir is not Empty, Reading content");
-                string[] files = Directory.GetFiles(Globals.settings_RpcItemsPath, "*.rpc", SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(Globals.settings_RpcItemsPath.Value, "*.rpc", SearchOption.AllDirectories);
                 foreach (string file in files)
                 {
                     INIFile rpcFile = new INIFile(file);
