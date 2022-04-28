@@ -13,20 +13,27 @@ namespace WeeXnes.Core
     {
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
-        public static string DefaultKeyListPath = AppDataPath + "\\" + "Keys";
-        public static string DefaultRpcListPath = AppDataPath + "\\" + "RPC";
-        public static string KeyListPath = DefaultKeyListPath;
-        public static string RpcListPath = DefaultRpcListPath;
-        public static bool KeyCustomPath = false;
-        public static bool RpcCustomPath = false;
         public static string SettingsFileName = "settings.ini";
         public static string version = "2.4";
         public static bool isRpcRunning = false;
-        public static string defaultRpcClient;
-        public static bool alwaysOnTop;
-        public static bool showElapsedTime;
-        public static bool copySelectedToClipboard; 
-        public static bool autoStartRpc;
+        
+        public static bool   settings_alwaysOnTop;
+        
+        public static bool   settings_copySelectedToClipboard; 
+        
+        public static string settings_KeyManagerItemsPath_Default = AppDataPath + "\\" + "Keys";
+        public static bool   settings_KeyManagerItemsPath_Bool = false;
+        public static string settings_KeyManagerItemsPath = settings_KeyManagerItemsPath_Default;
+        
+        public static string settings_RpcItemsPath_Default = AppDataPath + "\\" + "RPC";
+        public static string settings_RpcItemsPath = settings_RpcItemsPath_Default;
+        public static bool   settings_RpcItemsPath_Bool = false;
+        
+        public static bool   settings_RpcShowElapsedTime;
+        public static string settings_RpcDefaultClientID;
+        
+        public static bool   info_RpcAutoStart;
+        
         
 
         public static UpdateVar<string> searchbox_content = new UpdateVar<string>();

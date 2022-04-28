@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using WeeXnes.Core;
 using WeeXnes.MVVM.View;
-using Nocksoft.IO.ConfigFiles;
 
 namespace WeeXnes
 {
@@ -73,7 +72,7 @@ namespace WeeXnes
             {
                 HomeMenuButton.Command.Execute(null);
                 HomeMenuButton.IsChecked = true;
-                Globals.autoStartRpc = true;
+                Globals.info_RpcAutoStart = true;
                 RpcMenuButton.Command.Execute(null);
                 RpcMenuButton.IsChecked = true;
             }
@@ -125,7 +124,7 @@ namespace WeeXnes
 
         private void CheckForAutoStartup()
         {
-            if (Globals.autoStartRpc)
+            if (Globals.info_RpcAutoStart)
             {
                 WindowState = WindowState.Minimized;
                 RpcMenuButton.Command.Execute(null);
@@ -140,17 +139,17 @@ namespace WeeXnes
                 Directory.CreateDirectory(Globals.AppDataPath);
                 Console.WriteLine("Created AppDataPath");
             }
-            if (!Directory.Exists(Globals.RpcListPath))
+            if (!Directory.Exists(Globals.settings_RpcItemsPath))
             {
-                Directory.CreateDirectory(Globals.RpcListPath);
-                Console.WriteLine("Created RpcListPath");
+                Directory.CreateDirectory(Globals.settings_RpcItemsPath);
+                Console.WriteLine("Created settings_RpcItemsPath");
             }
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = (Window)sender;
-            if (Globals.alwaysOnTop)
+            if (Globals.settings_alwaysOnTop)
             {
                 window.Topmost = true;
             }

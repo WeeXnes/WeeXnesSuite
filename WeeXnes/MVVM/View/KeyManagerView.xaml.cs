@@ -85,7 +85,7 @@ namespace WeeXnes.MVVM.View
                 {
                     KeyItem newkey = new KeyItem(Textbox_Name.Text, Textbox_Value.Text);
                     KeyManagerLib.KeyList.Add(newkey);
-                    string filename = Globals.KeyListPath + "\\" + Guid.NewGuid().ToString() + ".wx";
+                    string filename = Globals.settings_KeyManagerItemsPath + "\\" + Guid.NewGuid().ToString() + ".wx";
                     string[] filecontent = new string[] { "##WXfile##", newkey.name, EncryptionLib.EncryptorLibary.encrypt(Globals.encryptionKey, newkey.value) };
                     /*
                     INIFile newini = new INIFile(filename, true);
@@ -119,9 +119,9 @@ namespace WeeXnes.MVVM.View
         {
             KeyManagerLib.KeyList.Clear();
             CheckForFolders();
-            if (!SaveInterface.IsDirectoryEmpty(Globals.KeyListPath))
+            if (!SaveInterface.IsDirectoryEmpty(Globals.settings_KeyManagerItemsPath))
             {
-                string[] files = SaveInterface.GetFilesInDir(Globals.KeyListPath);
+                string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath);
                 foreach (string file in files)
                 {
                     Console.WriteLine(file);
@@ -154,10 +154,10 @@ namespace WeeXnes.MVVM.View
                 Directory.CreateDirectory(Globals.AppDataPath);
                 Console.WriteLine("Created AppDataPath");
             }
-            if (!Directory.Exists(Globals.KeyListPath))
+            if (!Directory.Exists(Globals.settings_KeyManagerItemsPath))
             {
-                Directory.CreateDirectory(Globals.KeyListPath);
-                Console.WriteLine("Created KeyListPath");
+                Directory.CreateDirectory(Globals.settings_KeyManagerItemsPath);
+                Console.WriteLine("Created settings_KeyManagerItemsPath");
             }
         }
 
@@ -186,7 +186,7 @@ namespace WeeXnes.MVVM.View
             if(selectedItem != null)
             {
                 Console.WriteLine(selectedItem.name + ": " + selectedItem.value);
-                if (Globals.copySelectedToClipboard)
+                if (Globals.settings_copySelectedToClipboard)
                 {
                     Clipboard.SetText(selectedItem.value);
                 }
@@ -199,7 +199,7 @@ namespace WeeXnes.MVVM.View
             KeyItem selectedItem = (KeyItem)KeyListView.SelectedItem;
             Console.WriteLine("Doubleclicked " + selectedItem.name);
             KeyManagerLib.KeyList.Remove(selectedItem);
-            string[] files = SaveInterface.GetFilesInDir(Globals.KeyListPath);
+            string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath);
             foreach (string file in files)
             {
                 Console.WriteLine(file);

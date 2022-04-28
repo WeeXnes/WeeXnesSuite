@@ -18,7 +18,7 @@ namespace WeeXnes
                     if (e.Args[i] == "-autostart")
                     {
                         //MessageBox.Show("Launched via autostart");
-                        Globals.autoStartRpc = true;
+                        Globals.info_RpcAutoStart = true;
                     }
                 }
 

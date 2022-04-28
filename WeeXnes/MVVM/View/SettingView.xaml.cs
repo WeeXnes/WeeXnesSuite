@@ -48,16 +48,16 @@ namespace WeeXnes.MVVM.View
         private void LoadUiFromSettingsFile()
         {
             INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName, true);
-            if (Globals.alwaysOnTop)
+            if (Globals.settings_alwaysOnTop)
             {
                 AlwaysOnTopSwitch.IsChecked = true;
             }
-            if (Globals.showElapsedTime)
+            if (Globals.settings_RpcShowElapsedTime)
             {
                 ShowElapsedTimeOnRpc.IsChecked = true;
             }
 
-            if (Globals.copySelectedToClipboard)
+            if (Globals.settings_copySelectedToClipboard)
             {
                 ItemToClipboardSwitch.IsChecked = true;
             }
@@ -68,7 +68,7 @@ namespace WeeXnes.MVVM.View
             }
 
 
-            tb_DefaultClientID.Text = Globals.defaultRpcClient;
+            tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID;
         }
         public static void CheckSetting()
         {
@@ -87,40 +87,40 @@ namespace WeeXnes.MVVM.View
             {
                 INIFile SettingsFile = new INIFile(Globals.AppDataPath + "\\" + Globals.SettingsFileName);
 
-                Globals.alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
-                Console.WriteLine(Globals.alwaysOnTop);
-                Globals.showElapsedTime = Convert.ToBoolean(SettingsFile.GetValue("RPC", "showElapsedTime"));
-                Console.WriteLine(Globals.showElapsedTime);
-                Globals.copySelectedToClipboard = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "copyToClipboard"));
-                Console.WriteLine(Globals.copySelectedToClipboard);
+                Globals.settings_alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
+                Console.WriteLine(Globals.settings_alwaysOnTop);
+                Globals.settings_RpcShowElapsedTime = Convert.ToBoolean(SettingsFile.GetValue("RPC", "showElapsedTime"));
+                Console.WriteLine(Globals.settings_RpcShowElapsedTime);
+                Globals.settings_copySelectedToClipboard = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "copyToClipboard"));
+                Console.WriteLine(Globals.settings_copySelectedToClipboard);
 
 
-                Globals.defaultRpcClient = SettingsFile.GetValue("RPC", "defaultID");
-                Console.WriteLine(Globals.defaultRpcClient);
+                Globals.settings_RpcDefaultClientID = SettingsFile.GetValue("RPC", "defaultID");
+                Console.WriteLine(Globals.settings_RpcDefaultClientID);
                 
                 
-                Globals.alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
+                Globals.settings_alwaysOnTop = Convert.ToBoolean(SettingsFile.GetValue("General", "AlwaysOnTop"));
                 
                 
-                Globals.KeyCustomPath = Convert.ToBoolean(SettingsFile.GetValue("KeyFiles", "CustomKeyLocation"));
-                if (Globals.KeyCustomPath)
+                Globals.settings_KeyManagerItemsPath_Bool = Convert.ToBoolean(SettingsFile.GetValue("KeyFiles", "CustomKeyLocation"));
+                if (Globals.settings_KeyManagerItemsPath_Bool)
                 {
-                    Globals.KeyListPath = SettingsFile.GetValue("KeyFiles", "KeyPath");
+                    Globals.settings_KeyManagerItemsPath = SettingsFile.GetValue("KeyFiles", "KeyPath");
                 }
                 else
                 {
-                    Globals.KeyListPath = Globals.DefaultKeyListPath;
+                    Globals.settings_KeyManagerItemsPath = Globals.settings_KeyManagerItemsPath_Default;
                 }
                 
                 
-                Globals.RpcCustomPath = Convert.ToBoolean(SettingsFile.GetValue("rpc", "CustomRpcLocation"));
-                if (Globals.RpcCustomPath)
+                Globals.settings_RpcItemsPath_Bool = Convert.ToBoolean(SettingsFile.GetValue("rpc", "CustomRpcLocation"));
+                if (Globals.settings_RpcItemsPath_Bool)
                 {
-                    Globals.RpcListPath = SettingsFile.GetValue("rpc", "RpcPath");
+                    Globals.settings_RpcItemsPath = SettingsFile.GetValue("rpc", "RpcPath");
                 }
                 else
                 {
-                    Globals.RpcListPath = Globals.DefaultRpcListPath;
+                    Globals.settings_RpcItemsPath = Globals.settings_RpcItemsPath_Default;
                 }
 
             }
@@ -255,8 +255,8 @@ namespace WeeXnes.MVVM.View
 
         private void UpdatePathsOnUi()
         {
-            RpcPathLabel.Content = Globals.RpcListPath;
-            KeyPathLabel.Content = Globals.KeyListPath;
+            RpcPathLabel.Content = Globals.settings_RpcItemsPath;
+            KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath;
         }
 
         private void SetKeyLocationDefault_OnClick(object sender, RoutedEventArgs e)

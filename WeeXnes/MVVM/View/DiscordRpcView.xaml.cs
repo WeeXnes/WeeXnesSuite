@@ -50,9 +50,9 @@ namespace WeeXnes.MVVM.View
 
         private void CheckForAutostart()
         {
-            if (Globals.autoStartRpc)
+            if (Globals.info_RpcAutoStart)
             {
-                Globals.autoStartRpc = false;
+                Globals.info_RpcAutoStart = false;
                 runBackgroundWorker();
 
             }
@@ -150,7 +150,7 @@ namespace WeeXnes.MVVM.View
         public void generateNewGame()
         {
             string filename = Guid.NewGuid().ToString() + ".rpc";
-            Game newGame = new Game(filename, generateIncrementalName(), null, Globals.defaultRpcClient);
+            Game newGame = new Game(filename, generateIncrementalName(), null, Globals.settings_RpcDefaultClientID);
             saveGameToFile(newGame);
         }
         public string generateIncrementalName()
@@ -161,7 +161,7 @@ namespace WeeXnes.MVVM.View
         }
         public void saveGameToFile(Game game)
         {
-            INIFile rpcFile = new INIFile(Globals.RpcListPath + "\\" + game.fileName, true);
+            INIFile rpcFile = new INIFile(Globals.settings_RpcItemsPath + "\\" + game.fileName, true);
             rpcFile.SetValue("config", "name", game.Name);
             rpcFile.SetValue("config", "pname", game.ProcessName);
             rpcFile.SetValue("config", "id", game.id);
@@ -177,7 +177,7 @@ namespace WeeXnes.MVVM.View
         {
             try
             {
-                File.Delete(Globals.RpcListPath + "\\" + game.fileName);
+                File.Delete(Globals.settings_RpcItemsPath + "\\" + game.fileName);
             }
             catch (Exception e)
             {
@@ -187,12 +187,12 @@ namespace WeeXnes.MVVM.View
         }
         public void readRpcFileDirectory()
         {
-            bool Empty = funcs.IsDirectoryEmpty(Globals.RpcListPath);
+            bool Empty = funcs.IsDirectoryEmpty(Globals.settings_RpcItemsPath);
             List<Game> readGames = new List<Game>();
             if (!Empty)
             {
                 Console.WriteLine("RpcDir is not Empty, Reading content");
-                string[] files = Directory.GetFiles(Globals.RpcListPath, "*.rpc", SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(Globals.settings_RpcItemsPath, "*.rpc", SearchOption.AllDirectories);
                 foreach (string file in files)
                 {
                     INIFile rpcFile = new INIFile(file);
