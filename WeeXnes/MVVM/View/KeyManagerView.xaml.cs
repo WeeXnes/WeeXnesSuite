@@ -149,6 +149,10 @@ namespace WeeXnes.MVVM.View
 
         private void CheckForFolders()
         {
+            if (!Globals.settings_KeyManagerItemsPath_Bool.Value)
+            {
+                Globals.settings_KeyManagerItemsPath.Value = Globals.settings_KeyManagerItemsPath_Default;
+            }
             if (!Directory.Exists(Globals.AppDataPath))
             {
                 Directory.CreateDirectory(Globals.AppDataPath);

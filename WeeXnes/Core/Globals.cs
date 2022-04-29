@@ -72,6 +72,7 @@ namespace WeeXnes.Core
             }
             
             
+            
             Globals.settings_RpcShowElapsedTime.Value = Convert.ToBoolean(SettingsFile.GetValue("rpc", "RpcShowElapsedTime"));
             Globals.settings_RpcItemsPath_Bool.Value = Convert.ToBoolean(SettingsFile.GetValue("rpc", "RpcItemsPath_Bool"));
             if (Globals.settings_RpcItemsPath_Bool.Value)

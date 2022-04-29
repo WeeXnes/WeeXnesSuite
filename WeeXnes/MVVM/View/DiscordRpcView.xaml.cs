@@ -51,6 +51,10 @@ namespace WeeXnes.MVVM.View
 
         public void CheckFolders()
         {
+            if (!Globals.settings_RpcItemsPath_Bool.Value)
+            {
+                Globals.settings_RpcItemsPath.Value = Globals.settings_RpcItemsPath_Default;
+            }
             if (!Directory.Exists(Globals.settings_RpcItemsPath.Value))
             {
                 Directory.CreateDirectory(Globals.settings_RpcItemsPath.Value);

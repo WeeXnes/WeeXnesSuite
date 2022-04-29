@@ -44,7 +44,7 @@ namespace WeeXnes.MVVM.View
             }
             else
             {
-                RpcPathLabel.Content = "Default";
+                RpcPathLabel.Content = Globals.settings_RpcItemsPath_Default;
             }
             if (!String.IsNullOrEmpty(Globals.settings_KeyManagerItemsPath.Value))
             {
@@ -52,7 +52,7 @@ namespace WeeXnes.MVVM.View
             }
             else
             {
-                KeyPathLabel.Content = "Default";
+                KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath_Default;
             }
 
             if (Globals.settings_alwaysOnTop.Value)
@@ -74,6 +74,8 @@ namespace WeeXnes.MVVM.View
             {
                 ItemToClipboardSwitch.IsChecked = true;
             }
+
+            tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID.Value;
         }
         private void SetUiUpdateListeners()
         {
@@ -85,7 +87,7 @@ namespace WeeXnes.MVVM.View
                 }
                 else
                 {
-                    RpcPathLabel.Content = "Default";
+                    RpcPathLabel.Content = Globals.settings_RpcItemsPath_Default;
                 }
             };
             Globals.settings_KeyManagerItemsPath.ValueChanged += () =>
@@ -96,7 +98,7 @@ namespace WeeXnes.MVVM.View
                 }
                 else
                 {
-                    KeyPathLabel.Content = "Default";
+                    KeyPathLabel.Content = Globals.settings_KeyManagerItemsPath_Default;
                 }
             };
         }
