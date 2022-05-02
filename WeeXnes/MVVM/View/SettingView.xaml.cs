@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,9 +15,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
+using WeeXnes.Misc;
+using Application = System.Windows.Forms.Application;
 using MessageBox = System.Windows.MessageBox;
+using Path = System.IO.Path;
 using UserControl = System.Windows.Controls.UserControl;
 
 namespace WeeXnes.MVVM.View
@@ -260,6 +265,35 @@ namespace WeeXnes.MVVM.View
                     Globals.settings_RpcItemsPath.Value = fbd.SelectedPath;
                 }
             }
+        }
+
+        private void CheckForUpdateBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            WebClient client = new WebClient();
+            try
+            {
+                string downloadString = client.DownloadString(Globals.apiUrl);
+                ApiResponse GitHub = JsonConvert.DeserializeObject<ApiResponse>(downloadString);
+                if (GitHub.tag_name != Globals.version)
+                {
+                    Misc.UpdateMessage updateMessage = new UpdateMessage(
+                        GitHub, 
+                        "Update Found");
+                    updateMessage.Show();
+                }
+                else
+                {
+                    Misc.Message msg = new Misc.Message("No Updates found");
+                    msg.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                Misc.Message error = new Misc.Message(ex.ToString());
+                error.Show();
+            }
+            
+            
         }
     }
 }

@@ -19,10 +19,11 @@ namespace WeeXnes.Misc
     /// </summary>
     public partial class Message : Window
     {
-        public Message(string _message)
+        public Message(string _message, string _title = "Message")
         {
             InitializeComponent();
             MessageLabel.Content = _message;
+            this.Title = _title;
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)

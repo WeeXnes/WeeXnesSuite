@@ -36,22 +36,36 @@
                 Background="#22202f"
                 CornerRadius="10"
                 Margin="10,40,10,10">
+                
+                <StackPanel Orientation="Vertical">
+                    
+                    <CheckBox VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              Name="AlwaysOnTopSwitch"
+                              Checked="AlwaysOnTopSwitch_Checked"
+                              Unchecked="AlwaysOnTopSwitch_Unchecked"
+                              Margin="10,10,0,0">
+                        <TextBlock 
+                            Text="Always On Top" 
+                            VerticalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="White"/>
+                    </CheckBox>
 
-                <CheckBox VerticalAlignment="Top"
-                  VerticalContentAlignment="Center"
-                      HorizontalContentAlignment="Center"
-                  Name="AlwaysOnTopSwitch"
-                  Checked="AlwaysOnTopSwitch_Checked"
-                  Unchecked="AlwaysOnTopSwitch_Unchecked"
-                      Margin="10,10,0,0">
-                    <TextBlock 
-                    Text="Always On Top" 
-                    VerticalAlignment="Center" 
-                    FontSize="15" 
-                    Foreground="White"/>
-                </CheckBox>
+                
+                    <Button Name="CheckForUpdateBtn"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Check for Updates"
+                            Background="#353340"
+                            Height="25"
+                            Click="CheckForUpdateBtn_OnClick"
+                            Margin="4,10,4,0"/>
 
+                    
+                </StackPanel>
 
+                
             </Border>
             <Border Grid.Column="2"
                 Background="#22202f"

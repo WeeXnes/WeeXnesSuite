@@ -59,6 +59,10 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="Core\ApiResponse.cs" />
+        <Compile Include="Misc\UpdateMessage.xaml.cs">
+          <DependentUpon>UpdateMessage.xaml</DependentUpon>
+        </Compile>
         <Compile Include="RPC\Game.cs" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -78,6 +82,7 @@
             <SubType>Code</SubType>
         </Compile>
         <Page Include="Misc\Message.xaml" />
+        <Page Include="Misc\UpdateMessage.xaml" />
         <Page Include="MVVM\View\DiscordRpcView.xaml" />
         <Page Include="MVVM\View\HomeView.xaml" />
         <Page Include="MVVM\View\KeyManagerView.xaml" />
