@@ -15,7 +15,7 @@ namespace WeeXnes.Core
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
         public static string SettingsFileName = "settings.ini";
-        public static string version = "2.7.3";
+        public static string version = "2.7.4";
         public static bool   info_isRpcRunning = false;
         public static bool   info_RpcAutoStart;
         public static string apiUrl = "http://www.weexnes.com:5169/";

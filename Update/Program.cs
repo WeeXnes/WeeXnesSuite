@@ -7,6 +7,7 @@ namespace Update
 {
     internal class Program
     {
+        public static bool keepWindowOpen = false;
         public static void Main(string[] args)
         {
             Console.WriteLine("Path: " + args[0]);
@@ -29,6 +30,12 @@ namespace Update
             if (File.Exists(args[3]))
             {
                 File.Delete(args[3]);
+            }
+
+            if (keepWindowOpen)
+            {
+                Console.WriteLine("Window kept open to see error message, press enter to continue");
+                Console.ReadLine();
             }
 
         }
@@ -59,9 +66,18 @@ namespace Update
                             if (file.Name != "")
                                 file.ExtractToFile(completeFileName, true);
                         }
-                        catch (Exception ex)
+                        catch (IOException ex)
                         {
-                            Console.WriteLine(ex.ToString());
+                            if (file.FullName == "Update.exe")
+                            {
+                                
+                            }
+                            else
+                            {
+                                Console.WriteLine(ex.ToString());
+                                Console.WriteLine(file.FullName + " couldnt be overwritten, an error has occured");
+                                Program.keepWindowOpen = true;
+                            }
                         }
                     }
 
