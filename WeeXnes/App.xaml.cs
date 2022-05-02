@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using WeeXnes.Core;
+using System.IO;
+using Application = System.Windows.Forms.Application;
 
 namespace WeeXnes
 {
@@ -10,6 +13,7 @@ namespace WeeXnes
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
+            Environment.CurrentDirectory = Application.StartupPath;
             if (e.Args.Length > 0)
             {
                 for (int i = 0; i != e.Args.Length; ++i)
