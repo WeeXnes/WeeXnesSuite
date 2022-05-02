@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
+using IWshRuntimeLibrary;
 using Microsoft.Win32;
+using Application = System.Windows.Forms.Application;
 
 namespace WeeXnes_UAC
 {
@@ -25,6 +28,11 @@ namespace WeeXnes_UAC
                     {
                         disableAutostart();
                     }
+
+                    if (e.Args[i] == "-CreateStartMenuShortcut")
+                    {
+                        AddShortcut();
+                    }
                 }
             }
             else
@@ -32,7 +40,28 @@ namespace WeeXnes_UAC
                 MessageBox.Show("No Arguments");
             }
         }
-        
+        private static void AddShortcut()
+        {
+            
+            string path = Application.StartupPath;
+            string fileName = "WeeXnes.exe";
+            string pathToExe = path + "\\" + fileName;
+            string commonStartMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
+            Console.WriteLine(commonStartMenuPath);
+            string appStartMenuPath = Path.Combine(commonStartMenuPath, "Programs", "WeeXnes");
+
+            if (!Directory.Exists(appStartMenuPath))
+                Directory.CreateDirectory(appStartMenuPath);
+
+            string shortcutLocation = Path.Combine(appStartMenuPath, "WeeXnes Suite" + ".lnk");
+            WshShell shell = new WshShell();
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+
+            shortcut.Description = "WeeXnes Tool Suite";
+            //shortcut.IconLocation = @"C:\Program Files (x86)\TestApp\TestApp.ico"; //uncomment to set the icon of the shortcut
+            shortcut.TargetPath = pathToExe;
+            shortcut.Save(); 
+        }
         private void disableAutostart()
         {
             RegistryKey key = Registry.CurrentUser.CreateSubKey(subkey);

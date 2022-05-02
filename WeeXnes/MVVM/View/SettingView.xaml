@@ -61,6 +61,14 @@
                             Height="25"
                             Click="CheckForUpdateBtn_OnClick"
                             Margin="4,10,4,0"/>
+                    
+                    <Button Name="createShortcut"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Create Startmenu Entry"
+                            Background="#353340"
+                            Height="25"
+                            Click="CreateShortcut_OnClick"
+                            Margin="4,10,4,0"/>
 
                     
                 </StackPanel>

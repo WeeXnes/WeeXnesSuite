@@ -297,5 +297,19 @@ namespace WeeXnes.MVVM.View
             
             
         }
+
+        private void CreateShortcut_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process p = Process.Start("WeeXnes_UAC.exe", "-CreateStartMenuShortcut");
+                p.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Misc.Message message = new Misc.Message(ex.ToString());
+                message.Show();
+            }
+        }
     }
 }
