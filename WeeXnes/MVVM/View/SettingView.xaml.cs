@@ -67,7 +67,9 @@ namespace WeeXnes.MVVM.View
 
             if (Globals.settings_RpcAutoStart.Value)
             {
+                UnsetFunction();
                 EnableAutoStart.IsChecked = true;
+                SetFunction();
             }
 
             if (Globals.settings_RpcShowElapsedTime.Value)
