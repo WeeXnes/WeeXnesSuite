@@ -48,14 +48,21 @@ namespace Update
 
                     foreach (var file in archive.Entries)
                     {
-                        var completeFileName = Path.Combine(destinationDirectoryName, file.FullName);
-                        var directory = Path.GetDirectoryName(completeFileName);
+                        try
+                        {
+                            var completeFileName = Path.Combine(destinationDirectoryName, file.FullName);
+                            var directory = Path.GetDirectoryName(completeFileName);
 
-                        if (!Directory.Exists(directory) && !string.IsNullOrEmpty(directory))
-                            Directory.CreateDirectory(directory);
+                            if (!Directory.Exists(directory) && !string.IsNullOrEmpty(directory))
+                                Directory.CreateDirectory(directory);
 
-                        if (file.Name != "")
-                            file.ExtractToFile(completeFileName, true);
+                            if (file.Name != "")
+                                file.ExtractToFile(completeFileName, true);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                        }
                     }
 
                 }
