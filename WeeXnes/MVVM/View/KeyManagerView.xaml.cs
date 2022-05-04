@@ -86,7 +86,7 @@ namespace WeeXnes.MVVM.View
                 {
                     KeyItem newkey = new KeyItem(Textbox_Name.Text, Textbox_Value.Text);
                     KeyManagerLib.KeyList.Add(newkey);
-                    string filename = Globals.settings_KeyManagerItemsPath + "\\" + Guid.NewGuid().ToString() + ".wx";
+                    string filename = Globals.settings_KeyManagerItemsPath.Value + "\\" + Guid.NewGuid().ToString() + ".wx";
                     string[] filecontent = new string[] { "##WXfile##", newkey.name, EncryptionLib.EncryptorLibary.encrypt(Globals.encryptionKey, newkey.value) };
                     /*
                     INIFile newini = new INIFile(filename, true);
