@@ -169,6 +169,19 @@
                             FontSize="15" 
                             Foreground="White"/>
                     </CheckBox>
+                    <CheckBox VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              Name="CensorKeysSwitch"
+                              Checked="CensorKeysSwitch_OnChecked"
+                              Unchecked="CensorKeysSwitch_OnUnchecked"
+                              Margin="10,10,0,0">
+                        <TextBlock 
+                            Text="Censor Keys Visually" 
+                            VerticalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="White"/>
+                    </CheckBox>
                     <Label Content="Placeholder" HorizontalAlignment="Center"
                            FontSize="8"
                            Foreground="White"

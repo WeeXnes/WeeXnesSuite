@@ -81,6 +81,11 @@ namespace WeeXnes.MVVM.View
             {
                 ItemToClipboardSwitch.IsChecked = true;
             }
+            
+            if (Globals.settings_KeyManagerCensorKeys.Value)
+            {
+                CensorKeysSwitch.IsChecked = true;
+            }
 
             tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID.Value;
         }
@@ -310,6 +315,16 @@ namespace WeeXnes.MVVM.View
                 Misc.Message message = new Misc.Message(ex.ToString());
                 message.Show();
             }
+        }
+
+        private void CensorKeysSwitch_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_KeyManagerCensorKeys.Value = true;
+        }
+
+        private void CensorKeysSwitch_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_KeyManagerCensorKeys.Value = false;
         }
     }
 }

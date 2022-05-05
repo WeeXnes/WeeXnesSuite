@@ -38,9 +38,11 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="{Binding name}"
-                           Grid.Column="0"/>
+                                        Grid.Column="0"/>
                                     <TextBlock Text="{Binding value}"
-                           Grid.Column="1"/>
+                                        Grid.Column="1"
+                                        Name="monkeman"
+                                        Loaded="Monkeman_OnLoaded"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

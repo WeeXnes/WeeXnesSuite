@@ -15,7 +15,7 @@ namespace WeeXnes.Core
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
         public static string SettingsFileName = "settings.ini";
-        public static string version = "2.7.8";
+        public static string version = "2.7.9";
         public static bool   info_isRpcRunning = false;
         public static bool   info_RpcAutoStart;
         public static string apiUrl = "http://www.weexnes.com:5169/";
@@ -27,7 +27,8 @@ namespace WeeXnes.Core
         public static string            settings_KeyManagerItemsPath_Default = AppDataPath + "\\" + "Keys";
         public static UpdateVar<string> settings_KeyManagerItemsPath         = new UpdateVar<string>();
         public static UpdateVar<bool>   settings_KeyManagerItemsPath_Bool    = new UpdateVar<bool>();
-        
+        public static UpdateVar<bool>   settings_KeyManagerCensorKeys        = new UpdateVar<bool>();
+
         public static string            settings_RpcItemsPath_Default        = AppDataPath + "\\" + "RPC";
         public static UpdateVar<string> settings_RpcItemsPath                = new UpdateVar<string>();
         public static UpdateVar<bool>   settings_RpcItemsPath_Bool           = new UpdateVar<bool>();
@@ -63,6 +64,7 @@ namespace WeeXnes.Core
             
             Globals.settings_copySelectedToClipboard.Value = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "copySelectedToClipboard"));
             Globals.settings_KeyManagerItemsPath_Bool.Value = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "KeyManagerItemsPath_Bool"));
+            Globals.settings_KeyManagerCensorKeys.Value = Convert.ToBoolean(SettingsFile.GetValue("KeyManager", "CensorKeys"));
             if (Globals.settings_KeyManagerItemsPath_Bool.Value)
             {
                 Globals.settings_KeyManagerItemsPath.Value = SettingsFile.GetValue("KeyManager", "KeyManagerItemsPath");
@@ -119,6 +121,21 @@ namespace WeeXnes.Core
                     SettingsFile.SetValue("KeyManager", "KeyManagerItemsPath", "");
                 }
             };
+            
+            
+            Globals.settings_KeyManagerCensorKeys.ValueChanged += () =>
+            {
+                if (Globals.settings_KeyManagerCensorKeys.Value)
+                {
+                    SettingsFile.SetValue("KeyManager", "CensorKeys", "true");
+                }
+                else
+                {
+                    SettingsFile.SetValue("KeyManager", "CensorKeys", "false");
+                }
+            };
+            
+            
             Globals.settings_RpcItemsPath_Bool.ValueChanged += () =>
             {
                 if (Globals.settings_RpcItemsPath_Bool.Value)

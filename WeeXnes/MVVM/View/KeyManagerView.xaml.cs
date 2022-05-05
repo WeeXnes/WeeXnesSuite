@@ -236,6 +236,19 @@ namespace WeeXnes.MVVM.View
             Console.WriteLine("fnmgikegnmek");
         }
 
+
+        private void Monkeman_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Globals.settings_KeyManagerCensorKeys.Value)
+            {
+                TextBlock tb = (TextBlock)sender;
+                int text_size = tb.Text.Length;
+                string censored_string = "";
+                for (int i = 0; i <= text_size; i++)
+                    censored_string = censored_string + "•";
+                tb.Text = censored_string;
+            }
+        }
     }
     public static class SaveInterface
     {
