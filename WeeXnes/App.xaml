@@ -13,7 +13,6 @@
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ControlButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ModernCheckbox.xaml"/>
-                <ResourceDictionary Source="Theme/DiscordRpcTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

@@ -237,7 +237,7 @@ namespace WeeXnes.MVVM.View
         }
 
 
-        private void Monkeman_OnLoaded(object sender, RoutedEventArgs e)
+        private void Key_OnLoaded(object sender, RoutedEventArgs e)
         {
             if (Globals.settings_KeyManagerCensorKeys.Value)
             {

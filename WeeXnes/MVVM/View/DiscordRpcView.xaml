@@ -36,95 +36,115 @@
 
 
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormName}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,20,0,0"
-                         Name="tb_FormName"/>
+                         Name="tb_FormName"
+                         Background="#353340"
+                         Tag="Name (for List)"/>
 
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormPName}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,60,0,0"
-                         Name="tb_FormPName"/>
+                         Name="tb_FormPName"
+                         Background="#353340"
+                         Tag="Process Name"/>
                 <Label Content=".exe"
                        Foreground="White"
                        FontSize="20" Grid.Column="1"
                          Margin="240,56,0,0"/>
 
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormClient}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,100,0,0"
-                         Name="tb_FormClient"/>
+                         Name="tb_FormClient"
+                         Background="#353340"
+                         Tag="ClientID"/>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormState}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,180,0,0"
-                         Name="tb_FormState"/>
+                         Name="tb_FormState"
+                         Background="#353340"
+                         Tag="State"/>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormDetails}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,140,0,0"
-                         Name="tb_FormDetails"/>
+                         Name="tb_FormDetails"
+                         Background="#353340"
+                         Tag="Details"/>
                 
                 
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormLargeImgKey}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,220,0,0"
-                         Name="tb_FormLargeImgKey"/>
+                         Name="tb_FormLargeImgKey"
+                         Background="#353340"
+                         Tag="Large Image Key"/>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormLargeImgTXT}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="250,220,0,0"
-                         Name="tb_FormLargeImgTxt"/>
+                         Name="tb_FormLargeImgTxt"
+                         Background="#353340"
+                         Tag="Large Image Text"/>
 
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormSmallImgKey}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="20,260,0,0"
-                         Name="tb_FormSmallImgKey"/>
+                         Name="tb_FormSmallImgKey"
+                         Background="#353340"
+                         Tag="Small Image Key"/>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource RpcFormSmallImgTXT}"
+                         Style="{StaticResource MaterialTextBox}"
                          Height="33"
                          Width="220"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          Margin="250,260,0,0"
-                         Name="tb_FormSmallImgTxt"/>
+                         Name="tb_FormSmallImgTxt"
+                         Background="#353340"
+                         Tag="Small Image Text"/>
                 <Button Height="30"
                         Width="65"
-                        Style="{StaticResource DiscordRpcSaveButton}"
+                        Style="{StaticResource UniversalMaterialButton}"
                         Name="DiscordRpcSave"
                         Click="DiscordRpcSave_Click"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Margin="20,0,0,5"/>
+                        Margin="20,0,0,5"
+                        Background="#353340"
+                        Content="Save"/>
 
 
 
@@ -132,28 +152,34 @@
 
                 <Button Height="30"
                         Width="65"
-                        Style="{StaticResource DiscordRpcStopButton}"
+                        Style="{StaticResource UniversalMaterialButton}"
                         Name="DiscordRpcStop"
                         Click="DiscordRpcStop_Click"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
-                        Margin="70,0,0,5"/>
+                        Margin="70,0,0,5"
+                        Background="#353340"
+                        Content="Stop"/>
                 <Button Height="30"
                         Width="65"
-                        Style="{StaticResource DiscordRpcStartButton}"
+                        Style="{StaticResource UniversalMaterialButton}"
                         Name="DiscordRpcStart"
                         Click="DiscordRpcStart_Click"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
-                        Margin="0,0,0,5"/>
+                        Margin="0,0,0,5"
+                        Background="#353340"
+                        Content="Start"/>
                 <Button Height="30"
                         Width="65"
-                        Style="{StaticResource DiscordRpcNewButton}"
+                        Style="{StaticResource UniversalMaterialButton}"
                         Name="DiscordRpcNew"
                         Click="DiscordRpcNew_Click"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
-                        Margin="140,0,0,5"/>
+                        Margin="140,0,0,5"
+                        Background="#353340"
+                        Content="New"/>
 
 
 

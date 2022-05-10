@@ -5,40 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeeXnes.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid >
+             d:DesignHeight="2000" d:DesignWidth="800">
+    <ScrollViewer>
+        <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="440"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Content="General"
-               Foreground="White"
-               HorizontalAlignment="Center"
-               FontSize="23"
-               Grid.Column="0"/>
-            <Label Content="RPC"
-               Foreground="White"
-               HorizontalAlignment="Center"
-               FontSize="23"
-               Grid.Column="2"/>
-            <Label Content="Key Manager"
-               Foreground="White"
-               HorizontalAlignment="Center"
-               FontSize="23"
-               Grid.Column="1"/>
-            <Border Grid.Column="0"
-                Background="#22202f"
-                CornerRadius="10"
-                Margin="10,40,10,10">
+            
+            <Border Grid.Row="0"
+                    Background="#22202f"
+                    CornerRadius="10"
+                    Margin="10,10,10,10"
+                    Padding="0,0,0,5">
                 
                 <StackPanel Orientation="Vertical">
-                    
+                    <Label Content="General"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="23"/>
                     <CheckBox VerticalAlignment="Top"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center"
@@ -69,17 +55,30 @@
                             Height="25"
                             Click="CreateShortcut_OnClick"
                             Margin="4,10,4,0"/>
+                    
+                    <Button Name="OpenAppdataFolder" Grid.Row="1"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="Open AppData Folder"
+                            Background="#353340"
+                            Height="25"
+                            Margin="4,10,4,0"
+                            Click="OpenAppdataFolder_Click"/>
 
                     
                 </StackPanel>
 
                 
             </Border>
-            <Border Grid.Column="2"
-                Background="#22202f"
-                CornerRadius="10"
-                Margin="10,40,10,10">
+            <Border Grid.Row="1"
+                    Background="#22202f"
+                    CornerRadius="10"
+                    Margin="10,10,10,10"
+                    Padding="0,0,0,5">
                 <StackPanel Orientation="Vertical">
+                    <Label Content="RPC"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="23"/>
                     <CheckBox VerticalAlignment="Top"
                   VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
@@ -100,9 +99,11 @@
                             FontSize="13" 
                            Foreground="White"
                            HorizontalAlignment="Center"/>
-                    <TextBox Style="{StaticResource RpcSettingDefault}"
+                    <TextBox Style="{StaticResource MaterialTextBox}"
                              Margin="4,0,4,0"
-                             Name="tb_DefaultClientID"/>
+                             Name="tb_DefaultClientID"
+                             Background="#353340"
+                             Tag="Default Client ID"/>
                     <Button Name="SaveDefaultID"
                         Style="{StaticResource UniversalMaterialButton}"
                         Content="Set Default ClientID"
@@ -127,7 +128,7 @@
                     
                     
                     <Label Content="Placeholder" HorizontalAlignment="Center"
-                           FontSize="8"
+                           FontSize="13"
                            Foreground="White"
                            Name="RpcPathLabel"/>
                     <Button Name="SetRpcLocation"
@@ -150,12 +151,17 @@
 
 
             </Border>
-            <Border Grid.Column="1"
-                Background="#22202f"
-                CornerRadius="10"
-                Margin="10,40,10,10">
+            <Border Grid.Row="2"
+                    Background="#22202f"
+                    CornerRadius="10"
+                    Margin="10,10,10,10"
+                    Padding="0,0,0,5">
                 
                 <StackPanel Orientation="Vertical">
+                    <Label Content="Key Manager"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="23"/>
                     <CheckBox VerticalAlignment="Top"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center"
@@ -183,7 +189,7 @@
                             Foreground="White"/>
                     </CheckBox>
                     <Label Content="Placeholder" HorizontalAlignment="Center"
-                           FontSize="8"
+                           FontSize="13"
                            Foreground="White"
                            Name="KeyPathLabel"/>
                     <Button Name="SetKeyLocation"
@@ -206,12 +212,6 @@
                 
             </Border>
         </Grid>
-        <Button Name="OpenAppdataFolder" Grid.Row="1"
-                Style="{StaticResource UniversalMaterialButton}"
-                Content="Open AppData Folder"
-                Background="#353340"
-                Height="30"
-                Width="130"
-                Click="OpenAppdataFolder_Click"/>
-    </Grid>
+    </ScrollViewer>
+    
 </UserControl>

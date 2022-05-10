@@ -25,7 +25,8 @@
     
     <Border Background="#272537"
             CornerRadius="10"
-            MouseDown="Border_MouseDown">
+            MouseDown="Border_MouseDown"
+            Name="window_border">
         <Grid>
             
             <Grid.ColumnDefinitions>
@@ -93,7 +94,8 @@
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="5"
-                     Style="{StaticResource ModernTextbox}"
+                     Style="{StaticResource MaterialTextBox}"
+                     Background="#353340" Tag="Search..."
                      TextChanged="Searchbox_TextChanged"
                      Name="Searchbox"
                      />

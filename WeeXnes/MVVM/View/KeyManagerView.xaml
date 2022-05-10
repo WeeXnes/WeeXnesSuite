@@ -42,7 +42,7 @@
                                     <TextBlock Text="{Binding value}"
                                         Grid.Column="1"
                                         Name="monkeman"
-                                        Loaded="Monkeman_OnLoaded"/>
+                                        Loaded="Key_OnLoaded"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -58,13 +58,15 @@
                     Height="30"
                      HorizontalAlignment="Left"
                      Width="250"
-                     Style="{StaticResource KeyNameTextbox}"/>
+                     Style="{StaticResource MaterialTextBox}"
+                    Background="#353340" Tag="Name"/>
             <TextBox Name="Textbox_Value"
                     Height="30"
                      HorizontalAlignment="Right"
                      Width="250"
                      Margin="15,0,0,0"
-                     Style="{StaticResource KeyValTextbox}"/>
+                     Style="{StaticResource MaterialTextBox}"
+                    Background="#353340" Tag="Value"/>
             <Button Width="90"
                     Height="30"
                     Name="AddButton"

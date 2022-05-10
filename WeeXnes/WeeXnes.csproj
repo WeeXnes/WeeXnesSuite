@@ -88,7 +88,6 @@
         <Page Include="MVVM\View\KeyManagerView.xaml" />
         <Page Include="MVVM\View\SettingView.xaml" />
         <Page Include="Theme\ControlButtonTheme.xaml" />
-        <Page Include="Theme\DiscordRpcTheme.xaml" />
         <Page Include="Theme\MenuButtonTheme.xaml" />
         <Page Include="Theme\ModernCheckbox.xaml" />
         <Page Include="Theme\TextBoxTheme.xaml" />
