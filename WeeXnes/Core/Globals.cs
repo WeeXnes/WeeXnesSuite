@@ -21,7 +21,8 @@ namespace WeeXnes.Core
         public static string apiUrl = "http://www.weexnes.com:5169/";
         
         public static UpdateVar<bool>   settings_alwaysOnTop                 = new UpdateVar<bool>();
-        
+        public static UpdateVar<bool>   settings_osxStyleControlls           = new UpdateVar<bool>();
+
         public static UpdateVar<bool>   settings_copySelectedToClipboard     = new UpdateVar<bool>(); 
         
         public static string            settings_KeyManagerItemsPath_Default = AppDataPath + "\\" + "Keys";
@@ -74,7 +75,7 @@ namespace WeeXnes.Core
                 Globals.settings_KeyManagerItemsPath.Value = Globals.settings_KeyManagerItemsPath_Default;
             }
             
-            
+            Globals.settings_osxStyleControlls.Value = Convert.ToBoolean(SettingsFile.GetValue("general", "OSXStyle"));
             
             Globals.settings_RpcShowElapsedTime.Value = Convert.ToBoolean(SettingsFile.GetValue("rpc", "RpcShowElapsedTime"));
             Globals.settings_RpcItemsPath_Bool.Value = Convert.ToBoolean(SettingsFile.GetValue("rpc", "RpcItemsPath_Bool"));
@@ -134,7 +135,10 @@ namespace WeeXnes.Core
                     SettingsFile.SetValue("KeyManager", "CensorKeys", "false");
                 }
             };
-            
+            Globals.settings_osxStyleControlls.ValueChanged += () =>
+            {
+                SettingsFile.SetValue("general", "OSXStyle", Globals.settings_osxStyleControlls.Value.ToString());
+            };
             
             Globals.settings_RpcItemsPath_Bool.ValueChanged += () =>
             {

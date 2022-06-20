@@ -43,6 +43,22 @@
                             VerticalAlignment="Center" 
                             FontSize="15" 
                             Foreground="White"/>
+                        
+                    </CheckBox>
+                    
+                    <CheckBox VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              Name="OSXSwitch"
+                              Checked="OSXSwitch_OnChecked"
+                              Unchecked="OSXSwitch_OnUnchecked"
+                              Margin="10,10,0,0">
+                        <TextBlock 
+                            Text="Enable OSX Style (Restart Required)" 
+                            VerticalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="White"/>
+                        
                     </CheckBox>
 
                 

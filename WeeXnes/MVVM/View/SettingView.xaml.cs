@@ -64,6 +64,10 @@ namespace WeeXnes.MVVM.View
             {
                 AlwaysOnTopSwitch.IsChecked = true;
             }
+            if (Globals.settings_osxStyleControlls.Value)
+            {
+                OSXSwitch.IsChecked = true;
+            }
 
             if (Globals.settings_RpcAutoStart.Value)
             {
@@ -325,6 +329,16 @@ namespace WeeXnes.MVVM.View
         private void CensorKeysSwitch_OnUnchecked(object sender, RoutedEventArgs e)
         {
             Globals.settings_KeyManagerCensorKeys.Value = false;
+        }
+
+        private void OSXSwitch_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_osxStyleControlls.Value = true;
+        }
+
+        private void OSXSwitch_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_osxStyleControlls.Value = false;
         }
     }
 }

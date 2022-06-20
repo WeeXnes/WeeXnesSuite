@@ -101,7 +101,15 @@ namespace WeeXnes
         {
             //SettingView.CheckSetting();
             SettingsManager.start();
-            
+            if (Globals.settings_osxStyleControlls.Value)
+            {
+                OSXControlls.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MinimizeBtn.Visibility = Visibility.Visible;
+                CloseBtn.Visibility = Visibility.Visible;
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

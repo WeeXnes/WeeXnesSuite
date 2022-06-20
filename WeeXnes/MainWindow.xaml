@@ -18,7 +18,11 @@
         Deactivated="Window_Deactivated"
         StateChanged="Window_StateChanged"
         Closing="Window_Closing">
-
+    <Window.Resources>
+        <Style TargetType="Image">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+        </Style>
+    </Window.Resources>
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -122,7 +126,9 @@
                     VerticalAlignment="Top"
                     Margin="0,0,50,0"
                     Style="{StaticResource ModernMinimizeButton}"
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    IsEnabled="False"
+                    Visibility="Hidden"/>
             <Button Width="50"
                     Height="23"
                     Name="CloseBtn"
@@ -132,7 +138,31 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Style="{StaticResource ModernCloseButton}"
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    Visibility="Hidden"/>
+            <DockPanel Grid.Column="1" Margin="0,5,5,5"
+                       Height="23"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Right" Visibility="Hidden" Name="OSXControlls">
+                <Button Name="MinimizeButton" Width="20" BorderThickness="0" Background="Transparent"
+                        Style="{StaticResource OSXButtonStyle}" Click="MinimizeBtn_Click">
+                    <StackPanel>
+                        <Image Source="Images\green.png" Margin="1"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="MaximizeButton" Width="20" BorderThickness="0" Background="Transparent"
+                        Style="{StaticResource OSXButtonStyle}">
+                    <StackPanel>
+                        <Image Source="Images\yellow.png" Margin="1"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="CloseButton" Width="20" BorderThickness="0" Background="Transparent"
+                        Style="{StaticResource OSXButtonStyle}" Click="CloseBtn_Click">
+                    <StackPanel>
+                        <Image Source="Images\red.png" Margin="1"/>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
