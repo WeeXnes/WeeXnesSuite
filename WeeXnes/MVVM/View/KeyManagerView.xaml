@@ -21,15 +21,23 @@
 
 
             <Grid>
-                <Border Background="#22202f"
-                        CornerRadius="10"
+                <Border 
+                        CornerRadius="4"
                         Height="375">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.2" Color="#212329" />
+                                <GradientStop Offset="1" Color="#1b1c21" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <ListView Name="KeyListView"
-                          Background="Transparent"
-                          Foreground="White"
-                          BorderThickness="0"
-                          SelectionChanged="KeyListView_SelectionChanged" MouseDoubleClick="KeyListView_MouseDoubleClick"
-                          >
+                              Background="Transparent"
+                              Foreground="White"
+                              BorderThickness="0"
+                              SelectionChanged="KeyListView_SelectionChanged" MouseDoubleClick="KeyListView_MouseDoubleClick"
+                    >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -59,21 +67,22 @@
                      HorizontalAlignment="Left"
                      Width="250"
                      Style="{StaticResource MaterialTextBox}"
-                    Background="#353340" Tag="Name"/>
+                    Background="#1c1e23" Tag="Name"/>
             <TextBox Name="Textbox_Value"
                     Height="30"
                      HorizontalAlignment="Right"
                      Width="250"
                      Margin="15,0,0,0"
                      Style="{StaticResource MaterialTextBox}"
-                    Background="#353340" Tag="Value"/>
+                    Background="#1c1e23" Tag="Value"/>
             <Button Width="90"
                     Height="30"
                     Name="AddButton"
                      Margin="15,0,0,0"
                     Click="AddButton_Click"
                     Content="Add"
-                    Style="{StaticResource ModernAddButton}"
+                    Background="#1c1e23"
+                    Style="{StaticResource UniversalMaterialButton}"
                     />
 
         </StackPanel>

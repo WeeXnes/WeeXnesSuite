@@ -15,11 +15,17 @@
         </Grid.RowDefinitions>
             
             <Border Grid.Row="0"
-                    Background="#22202f"
-                    CornerRadius="10"
+                    CornerRadius="4"
                     Margin="10,10,10,10"
                     Padding="0,0,0,5">
-                
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.2" Color="#212329" />
+                            <GradientStop Offset="1" Color="#1b1c21" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical">
                     <Label Content="General"
                            Foreground="White"
@@ -43,7 +49,7 @@
                     <Button Name="CheckForUpdateBtn"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Check for Updates"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="CheckForUpdateBtn_OnClick"
                             Margin="4,10,4,0"/>
@@ -51,7 +57,7 @@
                     <Button Name="createShortcut"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Create Startmenu Entry"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="CreateShortcut_OnClick"
                             Margin="4,10,4,0"/>
@@ -59,7 +65,7 @@
                     <Button Name="OpenAppdataFolder" Grid.Row="1"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Open AppData Folder"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Margin="4,10,4,0"
                             Click="OpenAppdataFolder_Click"/>
@@ -70,10 +76,17 @@
                 
             </Border>
             <Border Grid.Row="1"
-                    Background="#22202f"
-                    CornerRadius="10"
+                    CornerRadius="4"
                     Margin="10,10,10,10"
                     Padding="0,0,0,5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.2" Color="#212329" />
+                            <GradientStop Offset="1" Color="#1b1c21" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical">
                     <Label Content="RPC"
                            Foreground="White"
@@ -102,12 +115,12 @@
                     <TextBox Style="{StaticResource MaterialTextBox}"
                              Margin="4,0,4,0"
                              Name="tb_DefaultClientID"
-                             Background="#353340"
+                             Background="#2f313b"
                              Tag="Default Client ID"/>
                     <Button Name="SaveDefaultID"
                         Style="{StaticResource UniversalMaterialButton}"
                         Content="Set Default ClientID"
-                        Background="#353340"
+                        Background="#2f313b"
                             Height="25"
                         Click="SaveDefaultID_Click"
                             Margin="4,10,4,0"/>
@@ -134,14 +147,14 @@
                     <Button Name="SetRpcLocation"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Rpc Files Path"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="SetRpcLocation_OnClick"
                             Margin="4,10,4,0"/>
                     <Button Name="SetRpcLocationDefault"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="SetRpcLocationDefault_OnClick"
                             Margin="4,10,4,0"/>
@@ -152,11 +165,17 @@
 
             </Border>
             <Border Grid.Row="2"
-                    Background="#22202f"
-                    CornerRadius="10"
+                    CornerRadius="4"
                     Margin="10,10,10,10"
                     Padding="0,0,0,5">
-                
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.2" Color="#212329" />
+                            <GradientStop Offset="1" Color="#1b1c21" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Key Manager"
                            Foreground="White"
@@ -195,14 +214,14 @@
                     <Button Name="SetKeyLocation"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Key Files Path"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="SetKeyLocation_OnClick"
                             Margin="4,10,4,0"/>
                     <Button Name="SetKeyLocationDefault"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
-                            Background="#353340"
+                            Background="#2f313b"
                             Height="25"
                             Click="SetKeyLocationDefault_OnClick"
                             Margin="4,10,4,0"/>

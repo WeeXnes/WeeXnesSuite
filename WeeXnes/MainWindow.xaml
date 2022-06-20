@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WeeXnes"
         xmlns:viewModel="clr-namespace:WeeXnes.MVVM.ViewModel"
         mc:Ignorable="d"
-        Height="600" 
-        Width="920"
+        Height="632" 
+        Width="952"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -23,10 +23,23 @@
         <viewModel:MainViewModel/>
     </Window.DataContext>
     
-    <Border Background="#272537"
-            CornerRadius="10"
+    <Border 
+            CornerRadius="4"
             MouseDown="Border_MouseDown"
-            Name="window_border">
+            Name="window_border"
+            Margin="16">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0.2" Color="#2c2e36" />
+                    <GradientStop Offset="1" Color="#212329" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90"
+                              RenderingBias="Quality" ShadowDepth="0"/>
+        </Border.Effect>
         <Grid>
             
             <Grid.ColumnDefinitions>
@@ -95,7 +108,7 @@
                      HorizontalAlignment="Left"
                      Margin="5"
                      Style="{StaticResource MaterialTextBox}"
-                     Background="#353340" Tag="Search..."
+                     Background="#212329" Tag="Search..."
                      TextChanged="Searchbox_TextChanged"
                      Name="Searchbox"
                      />

@@ -20,10 +20,19 @@
                     <ColumnDefinition Width="220"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Border Background="#22202f"
-                    CornerRadius="10"
+                <Border 
+                    CornerRadius="4"
                         Height="300"
                         VerticalAlignment="Top">
+                    
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.2" Color="#212329" />
+                                <GradientStop Offset="1" Color="#202127" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <ListBox Height="300"
                              VerticalAlignment="Top"
                              Background="Transparent"
@@ -43,7 +52,7 @@
                          VerticalAlignment="Top"
                          Margin="20,20,0,0"
                          Name="tb_FormName"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="Name (for List)"/>
 
                 <TextBox Grid.Column="1"
@@ -54,7 +63,7 @@
                          VerticalAlignment="Top"
                          Margin="20,60,0,0"
                          Name="tb_FormPName"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="Process Name"/>
                 <Label Content=".exe"
                        Foreground="White"
@@ -69,7 +78,7 @@
                          VerticalAlignment="Top"
                          Margin="20,100,0,0"
                          Name="tb_FormClient"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="ClientID"/>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource MaterialTextBox}"
@@ -79,7 +88,7 @@
                          VerticalAlignment="Top"
                          Margin="20,180,0,0"
                          Name="tb_FormState"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="State"/>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource MaterialTextBox}"
@@ -89,7 +98,7 @@
                          VerticalAlignment="Top"
                          Margin="20,140,0,0"
                          Name="tb_FormDetails"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="Details"/>
                 
                 
@@ -101,7 +110,7 @@
                          VerticalAlignment="Top"
                          Margin="20,220,0,0"
                          Name="tb_FormLargeImgKey"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="Large Image Key"/>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource MaterialTextBox}"
@@ -111,7 +120,7 @@
                          VerticalAlignment="Top"
                          Margin="250,220,0,0"
                          Name="tb_FormLargeImgTxt"
-                         Background="#353340"
+                         Background="#202127"
                          Tag="Large Image Text"/>
 
                 <TextBox Grid.Column="1"
@@ -122,7 +131,7 @@
                          VerticalAlignment="Top"
                          Margin="20,260,0,0"
                          Name="tb_FormSmallImgKey"
-                         Background="#353340"
+                         Background="#212329"
                          Tag="Small Image Key"/>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource MaterialTextBox}"
@@ -132,7 +141,7 @@
                          VerticalAlignment="Top"
                          Margin="250,260,0,0"
                          Name="tb_FormSmallImgTxt"
-                         Background="#353340"
+                         Background="#202127"
                          Tag="Small Image Text"/>
                 <Button Height="30"
                         Width="65"
@@ -143,7 +152,7 @@
                         HorizontalAlignment="Left"
                         Grid.Column="1"
                         Margin="20,0,0,5"
-                        Background="#353340"
+                        Background="#212329"
                         Content="Save"/>
 
 
@@ -158,7 +167,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Margin="70,0,0,5"
-                        Background="#353340"
+                        Background="#212329"
                         Content="Stop"/>
                 <Button Height="30"
                         Width="65"
@@ -168,7 +177,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Margin="0,0,0,5"
-                        Background="#353340"
+                        Background="#212329"
                         Content="Start"/>
                 <Button Height="30"
                         Width="65"
@@ -178,7 +187,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Margin="140,0,0,5"
-                        Background="#353340"
+                        Background="#212329"
                         Content="New"/>
 
 
@@ -188,13 +197,21 @@
 
 
             <Border Grid.Row="1"
-                    Background="#22202f"
-                    CornerRadius="10">
+                    CornerRadius="4">
+                
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.2" Color="#212329" />
+                            <GradientStop Offset="1" Color="#1b1c21" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <RichTextBox Grid.Row="1"
-                         Background="Transparent"
-                         BorderThickness="0"
-                         Foreground="White"
-                         IsReadOnly="True"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Foreground="White"
+                             IsReadOnly="True"
                              IsHitTestVisible="False"
                              Name="RpcLog">
                     <RichTextBox.Resources>

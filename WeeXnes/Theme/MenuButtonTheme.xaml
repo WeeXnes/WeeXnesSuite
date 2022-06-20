@@ -40,7 +40,7 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch">
                             <Border Background="{TemplateBinding Background}"
-                                    CornerRadius="10">
+                                    CornerRadius="4">
                                 <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        Margin="50,0,0,0"/>
@@ -56,7 +56,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#22202f"/>
+                <Setter Property="Background" Value="#212329"/>
             </Trigger>
         </Style.Triggers>
     </Style>
