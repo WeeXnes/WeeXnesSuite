@@ -127,7 +127,6 @@
                     Margin="0,0,50,0"
                     Style="{StaticResource ModernMinimizeButton}"
                     Grid.Column="1"
-                    IsEnabled="False"
                     Visibility="Hidden"/>
             <Button Width="50"
                     Height="23"
