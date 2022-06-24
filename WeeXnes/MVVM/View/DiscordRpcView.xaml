@@ -207,19 +207,48 @@
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </Border.Background>
-                <RichTextBox Grid.Row="1"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Foreground="White"
-                             IsReadOnly="True"
-                             IsHitTestVisible="False"
-                             Name="RpcLog">
-                    <RichTextBox.Resources>
-                        <Style TargetType="{x:Type Paragraph}">
-                            <Setter Property="Margin" Value="0"/>
-                        </Style>
-                    </RichTextBox.Resources>
-                </RichTextBox>
+                    <ScrollViewer Grid.Column="0" Background="Transparent" VerticalScrollBarVisibility="Hidden" Foreground="White"
+                              Padding="5,5,0,5" Name="LogViewer">
+                    <StackPanel>
+                        <StackPanel>
+                            <ItemsControl x:Name="ListViewVersions" ItemsSource="{Binding version}" Loaded="ListViewVersions_OnLoaded">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                                <StackPanel>
+                                                    <Border Width="689" Height="30" CornerRadius="4" Margin="0,3,0,0">
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                                                                <LinearGradientBrush.GradientStops>
+                                                                    <GradientStop Offset="0" Color="{Binding GradientColor1}" />
+                                                                    <GradientStop Offset="1" Color="{Binding GradientColor2}" />
+                                                                </LinearGradientBrush.GradientStops>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <TextBlock Margin="5 0" Text="{Binding Content}" FontSize="12"
+                                                                   Foreground="White"
+                                                                   HorizontalAlignment="Left"
+                                                                   VerticalAlignment="Center"
+                                                                   Padding="10,0,0,0">
+                                                            
+                                                            <TextBlock.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            
+                                                            </TextBlock.Effect>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </StackPanel>
+                                        
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
             </Border>
 
         </Grid>

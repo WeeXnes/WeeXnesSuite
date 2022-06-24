@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 using WeeXnes.Core;
 using WeeXnes.MVVM.View;
 using DiscordRPC;
+using DiscordRPC.Message;
+using EventType = WeeXnes.Core.EventType;
 
 namespace WeeXnes.RPC
 {
+    class EventCache
+    {
+        public static string cache1 = "";
+    }
     public class Game
     {
         public DiscordRpcClient client { get; set; }
@@ -44,25 +50,8 @@ namespace WeeXnes.RPC
             {
                 client.Initialize();
             }
-            client.OnReady += (sender, e) =>
-            {
-                /*
-                Globals.logContent.Value = "[" + this.ProcessName + ".exe] -> Received Ready from user " + e.User.Username;
-                Globals.logUpdateTrigger.Value = "mgjnoeimgje";
-                */
-                DiscordRpcView.logContent = "[" + this.ProcessName + ".exe] -> Received Ready from user " + e.User.Username;
-                DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
-            };
-            client.OnPresenceUpdate += (sender, e) =>
-            {
-                /*
-                Globals.logContent.Value = "[" + this.ProcessName + ".exe] ->Received Update!";
-                Globals.logUpdateTrigger.Value = "mgjnoeimgje";
-                */
-                DiscordRpcView.logContent = "[" + this.ProcessName + ".exe] -> Received Update on RPC";
-                DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
-
-            };
+            client.OnReady += ClientOnOnReady;
+            client.OnPresenceUpdate += ClientOnOnPresenceUpdate;
             client.SetPresence(new RichPresence()
             {
                 Details = this.details,
@@ -80,11 +69,26 @@ namespace WeeXnes.RPC
                 client.UpdateStartTime();
             }
         }
+
+        private void ClientOnOnPresenceUpdate(object sender, PresenceMessage args)
+        {
+            DiscordRpcView.logContent = new customEvent("[" + this.ProcessName + ".exe] ➜ Received Update on " + args.Name, EventType.RPCUpdateEvent);
+            DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
+        }
+
+        private void ClientOnOnReady(object sender, ReadyMessage args)
+        {
+            DiscordRpcView.logContent = new customEvent("[" + this.ProcessName + ".exe] ➜ Received Ready from user " + args.User.Username, EventType.RPCReadyEvent);
+            DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
+        }
+
         public void stop()
         {
             if (this.client.IsInitialized)
             {
                 client.ClearPresence();
+                client.OnReady -= ClientOnOnReady;
+                client.OnPresenceUpdate -= ClientOnOnPresenceUpdate;
             }
         }
         public void checkState(Process[] processes)
@@ -110,12 +114,11 @@ namespace WeeXnes.RPC
                             //message.running(this.ProcessName);
                             start();
 
-                            string output = this.Name + " [" + this.ProcessName + ".exe] started";
                             /*
                             Globals.logContent.Value = output;
                             Globals.logUpdateTrigger.Value = "mjfgoklemkgoeg";
                             */
-                            DiscordRpcView.logContent = output;
+                            DiscordRpcView.logContent = new customEvent("↪ " + this.Name + " [" + this.ProcessName + ".exe] started", EventType.ProcessStartedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
                             this.isRunning = true;
                         }
@@ -127,12 +130,11 @@ namespace WeeXnes.RPC
                             //Do when Process is closed
                             //message.closed(this.ProcessName);
                             stop();
-                            string output = this.Name + " [" + this.ProcessName + ".exe] closed";
                             /*
                             Globals.logContent.Value = output;
                             Globals.logUpdateTrigger.Value = "mjfgoklemkgoeg";
                             */
-                            DiscordRpcView.logContent = output;
+                            DiscordRpcView.logContent = new customEvent( "↩ " + this.Name + " [" + this.ProcessName + ".exe] closed", EventType.ProcessStoppedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
 
                             this.isRunning = false;

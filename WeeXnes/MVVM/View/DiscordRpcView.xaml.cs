@@ -28,11 +28,12 @@ namespace WeeXnes.MVVM.View
     /// </summary>
     public partial class DiscordRpcView : UserControl
     {
+        public List<customEvent> events = new List<customEvent>();
         //static bool shouldBeRunning = false;
         BackgroundWorker backgroundWorker = new BackgroundWorker();
         List<Game> Games = new List<Game>();
         Game lastSelectedGame = null;
-        public static string logContent = null;
+        public static customEvent logContent = null;
         public static UpdateVar<string> triggerLogupdate = new UpdateVar<string>();
         public DiscordRpcView()
         {
@@ -47,8 +48,8 @@ namespace WeeXnes.MVVM.View
             };
             InitializeSettings();
             CheckForAutostart();
+            
         }
-
         public void CheckFolders()
         {
             if (!Globals.settings_RpcItemsPath_Bool.Value)
@@ -80,25 +81,28 @@ namespace WeeXnes.MVVM.View
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
             Refresh();
         }
-        public void writeLog(string _content, bool _timestamp = true)
+        public void writeLog(customEvent _content, bool _timestamp = true)
         {
             string timestamp = DateTime.Now.ToString("HH:mm:ss");
-            if (_timestamp)
+            /*if (_timestamp)
             {
                 _content = "[" + timestamp + "] " + _content;
             }
-            Console.WriteLine(_content);
+            */
             this.Dispatcher.Invoke(() =>
             {
-                RpcLog.AppendText(_content + "\n");
-                RpcLog.ScrollToEnd();
+                //RpcLog.AppendText(_content + "\n");
+                //RpcLog.ScrollToEnd();
+                
+                ListViewVersions.Items.Add(_content);
+                LogViewer.ScrollToEnd();
             });
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Globals.info_isRpcRunning = true;
-            writeLog("Thread Started");
+            writeLog(new customEvent("Thread Started", EventType.ProcessStartedEvent));
             bool runWorker = true;
             int delay = 2000;
             while (runWorker)
@@ -129,7 +133,7 @@ namespace WeeXnes.MVVM.View
             {
                 game.isRunning = false;
             }
-            writeLog("Thread Closed");
+            writeLog(new customEvent("Thread Closed",EventType.ProcessStoppedEvent));
         }
         public void runBackgroundWorker()
         {
@@ -312,6 +316,11 @@ namespace WeeXnes.MVVM.View
         {
             stopBackgroundWorker();
 
+        }
+
+        private void ListViewVersions_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

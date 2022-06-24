@@ -60,6 +60,7 @@
             <SubType>Designer</SubType>
         </ApplicationDefinition>
         <Compile Include="Core\ApiResponse.cs" />
+        <Compile Include="Core\customEvent.cs" />
         <Compile Include="Misc\UpdateMessage.xaml.cs">
           <DependentUpon>UpdateMessage.xaml</DependentUpon>
         </Compile>
