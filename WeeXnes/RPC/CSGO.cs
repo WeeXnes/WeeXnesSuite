@@ -37,25 +37,48 @@ namespace WeeXnes.RPC.CSGO
             
             if (gs.Player.Activity == PlayerActivity.Menu)
             {
-                this.client.UpdateLargeAsset("menu");
+                this.client.UpdateLargeAsset("csgo_icon");
                 this.client.UpdateDetails("In Menu");
                 this.client.UpdateState("");
+                this.client.UpdateSmallAsset("");
             }
             else if (gs.Player.Activity == PlayerActivity.Playing)
             {
+                if (gs.Map.Mode == MapMode.ScrimComp2v2)
+                {
+                    this.client.UpdateDetails("Playing Wingman");
+                }
+                else if (gs.Map.Mode == MapMode.GunGameProgressive)
+                {
+                    this.client.UpdateDetails("Playing Gun Game");
+                }
+                else if (gs.Map.Mode == MapMode.GunGameTRBomb)
+                {
+                    this.client.UpdateDetails("Playing Demolition");
+                }
+                else
+                {
+                    this.client.UpdateDetails("Playing " + gs.Map.Mode);
+                }
+                this.client.UpdateState("on " + gs.Map.Name);
+                
                 this.client.UpdateLargeAsset(gs.Map.Name);
-                this.client.UpdateDetails("Playing on " + gs.Map.Name);
                 if (gs.Player.Team == PlayerTeam.T)
                 {
-                    this.client.UpdateSmallAsset("t_logo");
+                    
+                    this.client.UpdateLargeAsset(gs.Map.Name, "T: " + gs.Map.TeamT.Score + " - CT: " + gs.Map.TeamCT.Score);
+                    this.client.UpdateSmallAsset("t_logo", Convert.ToString("Kills: " + gs.Player.MatchStats.Kills + " | Deaths: " + gs.Player.MatchStats.Deaths));
                 }else if(gs.Player.Team == PlayerTeam.CT)
                 {
-                    this.client.UpdateSmallAsset("ct_logo");
+                    this.client.UpdateLargeAsset(gs.Map.Name, "CT: " + gs.Map.TeamCT.Score + " - T: " + gs.Map.TeamT.Score);
+                    this.client.UpdateSmallAsset("ct_logo", Convert.ToString("Kills: " + gs.Player.MatchStats.Kills + " | Deaths: " + gs.Player.MatchStats.Deaths));
                 }
                 else
                 {
                     this.client.UpdateSmallAsset("");
                 }
+                
+
             }
             
         }
@@ -72,11 +95,11 @@ namespace WeeXnes.RPC.CSGO
             client.OnPresenceUpdate += ClientOnOnPresenceUpdate;
             client.SetPresence(new RichPresence()
             {
-                Details = "Playing CSGO",
-                State = "Launching Game...",
+                Details = "Launching Game...",
+                State = "",
                 Assets = new Assets()
                 {
-                    LargeImageKey = "menu",
+                    LargeImageKey = "csgo_icon",
                     LargeImageText = "",
                     SmallImageKey = "",
                     SmallImageText = ""
