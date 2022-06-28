@@ -20,6 +20,7 @@ using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
 using WeeXnes.Misc;
 using Application = System.Windows.Forms.Application;
+using Message = WeeXnes.Misc.Message;
 using MessageBox = System.Windows.MessageBox;
 using Path = System.IO.Path;
 using UserControl = System.Windows.Controls.UserControl;
@@ -354,6 +355,28 @@ namespace WeeXnes.MVVM.View
         private void EnableBuiltInCSGO_OnUnchecked(object sender, RoutedEventArgs e)
         {
             Globals.settings_builtInCSGORpc.Value = false;
+        }
+
+        private void InstallCSGORPC_OnClick(object sender, RoutedEventArgs e)
+        {
+            using(var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string subDir = @"csgo\cfg";
+                    string filepath = Path.Combine(fbd.SelectedPath, subDir) + "\\gamestate_integration_jrpc.cfg";
+                    string content = "\"CSGSI\" { \"uri\" \"http://localhost:4169\" \"timeout\" \"5.0\" \"data\" { \"provider\" \"1\" \"map\" \"1\" \"round\" \"1\" \"player_id\" \"1\" \"player_weapons\" \"1\" \"player_match_stats\" \"1\" \"player_state\" \"1\" } }";
+                    if (!File.Exists(filepath))
+                    {
+                        using (StreamWriter sw = File.CreateText(filepath))
+                        {
+                            sw.WriteLine(content);
+                        }	
+                    }
+                }
+            }
         }
     }
 }
