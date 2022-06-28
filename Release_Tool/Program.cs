@@ -10,11 +10,33 @@ namespace Release_Tool
         static List<file> files = new List<file>();
         public static string globalTimestamp = null;
         public static string releaseFolder = "debug_release";
-        public static string releaseFileName = "currentRelease.zip";
+        public static string releaseFileName = "currentRelease";
+        public static string fileending = ".zip";
         public static string destFolder = null;
         public static bool success = true;
+        public static bool Contains(string source, string toCheck, StringComparison comp)
+        {
+            return source?.IndexOf(toCheck, comp) >= 0;
+        }
         public static void Main(string[] args)
         {
+            var lines = File.ReadAllLines(".\\WeeXnes\\Core\\Globals.cs");
+            string versionLine = "";
+            foreach (var line in lines)
+            {
+                if (Contains(line, "public static string version", StringComparison.OrdinalIgnoreCase))
+                {
+                    versionLine = line;
+                }
+            }
+            Console.WriteLine(versionLine);
+            string versionnr =
+                versionLine.Substring(versionLine.IndexOf("\""), versionLine.Length - versionLine.IndexOf("\""));
+            versionnr = versionnr.Substring(1, versionnr.Length - 1);
+            versionnr = versionnr.Substring(0, versionnr.IndexOf("\""));
+            string VersionNumber = versionnr;
+            releaseFileName = releaseFileName + "_" + versionnr + fileending;
+            Console.WriteLine("Packing " + releaseFileName);
             Console.Title = "WeeXnes Automated Release Tool";
             SetTimestamp();
             SetPaths();

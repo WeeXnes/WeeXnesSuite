@@ -91,6 +91,7 @@
         <Page Include="Theme\ControlButtonTheme.xaml" />
         <Page Include="Theme\MenuButtonTheme.xaml" />
         <Page Include="Theme\ModernCheckbox.xaml" />
+        <Page Include="Theme\Scrollbar.xaml" />
         <Page Include="Theme\TextBoxTheme.xaml" />
     </ItemGroup>
     <ItemGroup>
@@ -132,6 +133,10 @@
       <Resource Include="Images\green.png" />
       <Resource Include="Images\red.png" />
       <Resource Include="Images\yellow.png" />
+      <Resource Include="Images\discord.png" />
+      <Resource Include="Images\home.png" />
+      <Resource Include="Images\key.png" />
+      <Resource Include="Images\settings.png" />
       <Content Include="wicns.ico" />
       <Resource Include="Images\wicon.png" />
     </ItemGroup>
