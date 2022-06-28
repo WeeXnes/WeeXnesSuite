@@ -91,6 +91,11 @@ namespace WeeXnes.MVVM.View
                 CensorKeysSwitch.IsChecked = true;
             }
 
+            if (Globals.settings_builtInCSGORpc.Value)
+            {
+                EnableBuiltInCSGO.IsChecked = true;
+            }
+
             tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID.Value;
         }
         private void SetUiUpdateListeners()
@@ -339,6 +344,16 @@ namespace WeeXnes.MVVM.View
         private void OSXSwitch_OnUnchecked(object sender, RoutedEventArgs e)
         {
             Globals.settings_osxStyleControlls.Value = false;
+        }
+
+        private void EnableBuiltInCSGO_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_builtInCSGORpc.Value = true;
+        }
+
+        private void EnableBuiltInCSGO_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            Globals.settings_builtInCSGORpc.Value = false;
         }
     }
 }

@@ -120,6 +120,23 @@
                     VerticalAlignment="Center" 
                     FontSize="15" 
                     Foreground="White"/>
+                        
+
+                    </CheckBox>
+                    
+                    <CheckBox VerticalAlignment="Top"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              Name="EnableBuiltInCSGO"
+                              Checked="EnableBuiltInCSGO_OnChecked"
+                              Unchecked="EnableBuiltInCSGO_OnUnchecked"
+                              Margin="10,10,0,0">
+                        <TextBlock 
+                            Text="Enable Built in CSGO DiscordRPC" 
+                            VerticalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="White"/>
+                        
 
                     </CheckBox>
 
