@@ -125,7 +125,14 @@ namespace WeeXnes
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (Globals.info_isRpcRunning)
+            {
+                WindowState = WindowState.Minimized;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
