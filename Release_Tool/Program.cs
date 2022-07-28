@@ -126,7 +126,6 @@ namespace Release_Tool
             files.Add(new file(@"WeeXnes_UAC\bin\Release\WeeXnes_UAC.exe", "WeeXnes_UAC.exe"));
             files.Add(new file(@"WeeXnes\bin\Release\DiscordRPC.dll", "DiscordRPC.dll"));
             files.Add(new file(@"WeeXnes\bin\Release\Newtonsoft.Json.dll", "Newtonsoft.Json.dll"));
-            files.Add(new file(@"WeeXnes\bin\Release\CSGSI.dll", "CSGSI.dll"));
             files.Add(new file(@"Autostart\bin\Release\Autostart.exe", "Autostart.exe"));
             files.Add(new file(@"Update\bin\Release\Update.exe", "Update.exe"));
             

@@ -177,10 +177,6 @@ namespace WeeXnes
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             trayIcon.Dispose();
-            if (Globals.gameStateListener.Running)
-            {
-                Globals.gameStateListener.Stop();
-            }
         }
     }
 }

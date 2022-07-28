@@ -124,28 +124,6 @@
 
                     </CheckBox>
                     
-                    <CheckBox VerticalAlignment="Top"
-                              VerticalContentAlignment="Center"
-                              HorizontalContentAlignment="Center"
-                              Name="EnableBuiltInCSGO"
-                              Checked="EnableBuiltInCSGO_OnChecked"
-                              Unchecked="EnableBuiltInCSGO_OnUnchecked"
-                              Margin="10,10,0,0">
-                        <TextBlock 
-                            Text="Enable Built in CSGO DiscordRPC" 
-                            VerticalAlignment="Center" 
-                            FontSize="15" 
-                            Foreground="White"/>
-                        
-
-                    </CheckBox>
-                    <Button Name="InstallCSGORPC"
-                            Style="{StaticResource UniversalMaterialButton}"
-                            Content="Install Required File for CSGO DiscordRPC"
-                            Background="#2f313b"
-                            Height="25"
-                            Click="InstallCSGORPC_OnClick"
-                            Margin="4,10,4,0"/>
 
                     <Label Content="Default RPC ClientID:"
                            Margin="0,0,0,0"

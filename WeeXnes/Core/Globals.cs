@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CSGSI;
 using Nocksoft.IO.ConfigFiles;
 using MessageBox = System.Windows.MessageBox;
 
@@ -17,7 +16,7 @@ namespace WeeXnes.Core
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
         public static string SettingsFileName = "settings.ini";
-        public static string version = "3.6";
+        public static string version = "3.6.1";
         public static bool   info_isRpcRunning = false;
         public static bool   info_RpcAutoStart;
         public static string apiUrl = "http://www.weexnes.com:5169/";
@@ -39,8 +38,6 @@ namespace WeeXnes.Core
         public static UpdateVar<bool>   settings_RpcShowElapsedTime          = new UpdateVar<bool>();
         public static UpdateVar<string> settings_RpcDefaultClientID          = new UpdateVar<string>();
         public static UpdateVar<bool>   settings_RpcAutoStart                = new UpdateVar<bool>();
-        public static UpdateVar<bool>   settings_builtInCSGORpc              = new UpdateVar<bool>();
-        public static GameStateListener gameStateListener = new GameStateListener(4169);
 
 
 
@@ -98,7 +95,6 @@ namespace WeeXnes.Core
                 Globals.settings_RpcDefaultClientID.Value = "605116707035676701";
             }
 
-            Globals.settings_builtInCSGORpc.Value = Convert.ToBoolean(SettingsFile.GetValue("rpc", "csgoPresence"));
 
         }
 
@@ -185,10 +181,6 @@ namespace WeeXnes.Core
             Globals.settings_RpcAutoStart.ValueChanged += () =>
             {
                 SettingsFile.SetValue("rpc","RpcAutoStart", Convert.ToString(Globals.settings_RpcAutoStart.Value));
-            };
-            Globals.settings_builtInCSGORpc.ValueChanged += () =>
-            {
-                SettingsFile.SetValue("rpc","csgoPresence", Convert.ToString(Globals.settings_builtInCSGORpc.Value));
             };
 
         }

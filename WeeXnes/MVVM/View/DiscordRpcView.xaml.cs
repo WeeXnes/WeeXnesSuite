@@ -20,7 +20,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WeeXnes.Core;
 using WeeXnes.RPC;
-using WeeXnes.RPC.CSGO;
 
 namespace WeeXnes.MVVM.View
 {
@@ -102,7 +101,7 @@ namespace WeeXnes.MVVM.View
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            CSGORPC csrpc = new CSGORPC("777202324145438812");
+            
             Globals.info_isRpcRunning = true;
             writeLog(new customEvent("Thread Started", EventType.ProcessStartedEvent));
             bool runWorker = true;
@@ -118,17 +117,11 @@ namespace WeeXnes.MVVM.View
                     {
                         game.stop();
                     }
-                    csrpc.stop();
                 }
                 Process[] processes = Process.GetProcesses();
                 foreach (Game game in Games)
                 {
                     game.checkState(processes);
-                }
-
-                if (Globals.settings_builtInCSGORpc.Value)
-                {
-                    csrpc.checkState(processes);
                 }
                 Thread.Sleep(delay);
             }

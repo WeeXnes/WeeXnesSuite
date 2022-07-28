@@ -92,10 +92,6 @@ namespace WeeXnes.MVVM.View
                 CensorKeysSwitch.IsChecked = true;
             }
 
-            if (Globals.settings_builtInCSGORpc.Value)
-            {
-                EnableBuiltInCSGO.IsChecked = true;
-            }
 
             tb_DefaultClientID.Text = Globals.settings_RpcDefaultClientID.Value;
         }
@@ -347,36 +343,7 @@ namespace WeeXnes.MVVM.View
             Globals.settings_osxStyleControlls.Value = false;
         }
 
-        private void EnableBuiltInCSGO_OnChecked(object sender, RoutedEventArgs e)
-        {
-            Globals.settings_builtInCSGORpc.Value = true;
-        }
 
-        private void EnableBuiltInCSGO_OnUnchecked(object sender, RoutedEventArgs e)
-        {
-            Globals.settings_builtInCSGORpc.Value = false;
-        }
-
-        private void InstallCSGORPC_OnClick(object sender, RoutedEventArgs e)
-        {
-            using(var fbd = new FolderBrowserDialog())
-            {
-                DialogResult result = fbd.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    string subDir = @"csgo\cfg";
-                    string filepath = Path.Combine(fbd.SelectedPath, subDir) + "\\gamestate_integration_jrpc.cfg";
-                    string content = "\"CSGSI\" { \"uri\" \"http://localhost:4169\" \"timeout\" \"5.0\" \"data\" { \"provider\" \"1\" \"map\" \"1\" \"round\" \"1\" \"player_id\" \"1\" \"player_weapons\" \"1\" \"player_match_stats\" \"1\" \"player_state\" \"1\" } }";
-                    if (!File.Exists(filepath))
-                    {
-                        using (StreamWriter sw = File.CreateText(filepath))
-                        {
-                            sw.WriteLine(content);
-                        }	
-                    }
-                }
-            }
-        }
+        
     }
 }
