@@ -208,3 +208,5 @@ namespace WeeXnes.Core
         protected virtual void OnValueChanged() => ValueChanged?.Invoke();
     }
 }
+
+

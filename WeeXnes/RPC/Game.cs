@@ -110,6 +110,7 @@ namespace WeeXnes.RPC
                     {
                         if (foundProcess)
                         {
+                            
                             start();
                             DiscordRpcView.logContent = new customEvent("↪ " + this.Name + " [" + this.ProcessName + ".exe] started", EventType.ProcessStartedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
@@ -120,10 +121,10 @@ namespace WeeXnes.RPC
                     {
                         if (!foundProcess)
                         {
+                            
                             stop();
                             DiscordRpcView.logContent = new customEvent( "↩ " + this.Name + " [" + this.ProcessName + ".exe] closed", EventType.ProcessStoppedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
-
                             this.isRunning = false;
                         }
                     }
