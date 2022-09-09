@@ -110,14 +110,7 @@ namespace WeeXnes.RPC
                     {
                         if (foundProcess)
                         {
-                            //Do when Process is launched
-                            //message.running(this.ProcessName);
                             start();
-
-                            /*
-                            Globals.logContent.Value = output;
-                            Globals.logUpdateTrigger.Value = "mjfgoklemkgoeg";
-                            */
                             DiscordRpcView.logContent = new customEvent("↪ " + this.Name + " [" + this.ProcessName + ".exe] started", EventType.ProcessStartedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
                             this.isRunning = true;
@@ -127,13 +120,7 @@ namespace WeeXnes.RPC
                     {
                         if (!foundProcess)
                         {
-                            //Do when Process is closed
-                            //message.closed(this.ProcessName);
                             stop();
-                            /*
-                            Globals.logContent.Value = output;
-                            Globals.logUpdateTrigger.Value = "mjfgoklemkgoeg";
-                            */
                             DiscordRpcView.logContent = new customEvent( "↩ " + this.Name + " [" + this.ProcessName + ".exe] closed", EventType.ProcessStoppedEvent);
                             DiscordRpcView.triggerLogupdate.Value = "nlejgmolegjog";
 

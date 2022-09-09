@@ -84,15 +84,8 @@ namespace WeeXnes.MVVM.View
         public void writeLog(customEvent _content, bool _timestamp = true)
         {
             string timestamp = DateTime.Now.ToString("HH:mm:ss");
-            /*if (_timestamp)
-            {
-                _content = "[" + timestamp + "] " + _content;
-            }
-            */
             this.Dispatcher.Invoke(() =>
             {
-                //RpcLog.AppendText(_content + "\n");
-                //RpcLog.ScrollToEnd();
                 
                 ListViewVersions.Items.Add(_content);
                 LogViewer.ScrollToEnd();
