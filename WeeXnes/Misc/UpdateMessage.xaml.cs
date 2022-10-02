@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
+using System.Windows.Input;
 using WeeXnes.Core;
 using Application = System.Windows.Forms.Application;
 
@@ -56,6 +57,12 @@ namespace WeeXnes.Misc
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

@@ -5,41 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeeXnes.Misc"
         mc:Ignorable="d"
-        Title="Message" Height="150" Width="300"
+        Title="Message" Height="158" Width="308"
         ResizeMode="NoResize"
-        Background="#272537"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         SizeToContent="WidthAndHeight">
-    <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Label Content="Placeholder"
-                   Name="MessageLabel"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
+    <Window.Resources>
+        <Style TargetType="Image">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="4"
+            Margin="16"
+            MouseDown="UIElement_OnMouseDown">
+        
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0.2" Color="#212329" />
+                    <GradientStop Offset="1" Color="#1f2026" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90"
+                              RenderingBias="Quality" ShadowDepth="0"/>
+        </Border.Effect>
             
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Grid.Row="1"
-                        Style="{StaticResource UniversalMaterialButton}"
-                        Content="OK"
-                        Width="140"
-                        Height="40"
-                        Background="#353340"
-                        Name="okButton"
-                        Click="OkButton_OnClick"/>
-                <Button Grid.Row="1"
-                        Style="{StaticResource UniversalMaterialButton}"
-                        Content="CANCEL"
-                        Width="140"
-                        Height="40"
-                        Background="#353340"
-                        Name="cancelButton"
-                        Click="CancelButton_OnClick"/>
-            </StackPanel>
-        </Grid>
-    </Grid>
+            
+            
+            
+            
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Placeholder"
+                       Name="MessageLabel"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Padding="100,20,100,20"/>
+            
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Grid.Row="1"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="OK"
+                            Width="140"
+                            Height="40"
+                            Background="#2f313b"
+                            Name="okButton"
+                            Click="OkButton_OnClick"
+                            Margin="0,0,10,20"/>
+                    <Button Grid.Row="1"
+                            Style="{StaticResource UniversalMaterialButton}"
+                            Content="CANCEL"
+                            Width="140"
+                            Height="40"
+                            Background="#2f313b"
+                            Name="cancelButton"
+                            Click="CancelButton_OnClick"
+                            Margin="10,0,0,20"/>
+                </StackPanel>
+            </Grid>
+    </Border>
 </Window>

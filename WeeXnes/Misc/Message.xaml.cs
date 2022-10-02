@@ -30,5 +30,11 @@ namespace WeeXnes.Misc
         {
             this.Close();
         }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

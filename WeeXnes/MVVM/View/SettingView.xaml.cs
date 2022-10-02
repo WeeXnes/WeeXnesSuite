@@ -318,7 +318,7 @@ namespace WeeXnes.MVVM.View
             }
             catch (Exception ex)
             {
-                Misc.Message message = new Misc.Message(ex.ToString());
+                Misc.CriticalMessage message = new Misc.CriticalMessage(ex.ToString());
                 message.Show();
             }
         }
