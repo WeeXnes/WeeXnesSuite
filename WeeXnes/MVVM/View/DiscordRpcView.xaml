@@ -208,14 +208,35 @@
                     </LinearGradientBrush>
                 </Border.Background>
                     <ScrollViewer Grid.Column="0" Background="Transparent" VerticalScrollBarVisibility="Hidden" Foreground="White"
-                              Padding="5,5,0,5" Name="LogViewer">
+                              Padding="5,5,5,5" Name="LogViewer">
                     <StackPanel>
                         <StackPanel>
-                            <ItemsControl x:Name="ListViewVersions" ItemsSource="{Binding version}" Loaded="ListViewVersions_OnLoaded">
+                            <ItemsControl x:Name="ListViewVersions" ItemsSource="{Binding version}" Loaded="ListViewVersions_OnLoaded"
+                                          >
+                                 
                                 <ItemsControl.ItemTemplate>
+                                    
                                     <DataTemplate>
-                                                <StackPanel>
-                                                    <Border Width="689" Height="30" CornerRadius="4" Margin="0,3,0,0">
+                                                <StackPanel Orientation="Vertical">
+                                                    
+                                                    <Border Height="30" CornerRadius="4" Margin="0,3,0,0" Name="ParentBorder"
+                                                            Opacity="0">
+                                                        <Border.Triggers>
+      
+                                                            <!-- Animate the button's Width property. -->
+                                                            <EventTrigger RoutedEvent="Border.Loaded">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="ParentBorder"
+                                                                            Storyboard.TargetProperty="(Border.Opacity)"
+                                                                            To="1" Duration="0:0:00.5" AutoReverse="False" 
+                                                                        />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard> 
+                                                            </EventTrigger>
+                                                        
+                                                        </Border.Triggers>
                                                         <Border.Background>
                                                             <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
                                                                 <LinearGradientBrush.GradientStops>
@@ -242,7 +263,7 @@
                                 </ItemsControl.ItemTemplate>
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <WrapPanel/>
+                                        <UniformGrid Columns="1"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                             </ItemsControl>
