@@ -45,6 +45,7 @@
                                         <ColumnDefinition Width="300"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
+                                    
                                     <TextBlock Text="{Binding name}"
                                         Grid.Column="0"/>
                                     <TextBlock Text="{Binding value}"
@@ -61,29 +62,29 @@
                 
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBox Name="Textbox_Name"
-                    Height="30"
+                     Height="30"
                      HorizontalAlignment="Left"
                      Width="250"
                      Style="{StaticResource MaterialTextBox}"
-                    Background="#1c1e23" Tag="Name"/>
+                     Background="#1c1e23" Tag="Name"/>
             <TextBox Name="Textbox_Value"
-                    Height="30"
+                     Height="30"
                      HorizontalAlignment="Right"
                      Width="250"
                      Margin="15,0,0,0"
                      Style="{StaticResource MaterialTextBox}"
-                    Background="#1c1e23" Tag="Value"/>
+                     Background="#1c1e23" Tag="Value"/>
             <Button Width="90"
                     Height="30"
                     Name="AddButton"
-                     Margin="15,0,0,0"
+                    Margin="15,0,0,0"
                     Click="AddButton_Click"
                     Content="Add"
                     Background="#1c1e23"
                     Style="{StaticResource UniversalMaterialButton}"
-                    />
+            />
 
         </StackPanel>
     </Grid>

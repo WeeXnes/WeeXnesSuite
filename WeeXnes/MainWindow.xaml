@@ -52,7 +52,13 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/Images/wicon.png" Grid.Row="0"
+                   HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" 
+                   Margin="5,0,0,0"
+                   Width="50"
+                   Name="HeaderIcon"
+                   />
             
             <Border Grid.Row="1" Width="50" Name="NavigationBorder"
                     Margin="5,0,0,0">
