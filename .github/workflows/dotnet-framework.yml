@@ -30,6 +30,17 @@ jobs:
       run: |
         msbuild.exe WeeXnes.sln /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release"
         
+    - name: List Folder 1
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\    
+    - name: List Folder 2
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\    
+    - name: List Folder 3
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\    
+    - name: List Folder 4
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Update\bin\Release\ 
+    - name: List Folder 5
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Release_Tool\bin\Release\
+        
       
     - name: Format Xaml to XML
       run: (gc Weexnes\WeeXnes.csproj) -replace ' ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"', '' | Out-File -encoding ASCII formatted.csproj 
