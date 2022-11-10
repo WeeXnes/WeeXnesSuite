@@ -1,0 +1,37 @@
+name: .NET Framework
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.1.1
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+      
+    - name: Format Xaml to XML
+      run: (gc Weexnes\WeeXnes.csproj) -replace ' ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"', '' | Out-File -encoding ASCII formatted.csproj 
+      shell: pwsh
+  
+    - uses: bbonkr/get-version-action@v1.0.4
+      id: get_version
+      with:
+        project: "formatted.csproj"
+    - name: logging
+      run: |
+        echo "Version=${{ steps.get_version.outputs.version }}"
+        
