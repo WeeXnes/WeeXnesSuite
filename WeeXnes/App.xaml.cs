@@ -2,6 +2,8 @@
 using System.Windows;
 using WeeXnes.Core;
 using System.IO;
+using System.Reflection;
+using WeeXnes.Misc;
 using Application = System.Windows.Forms.Application;
 
 namespace WeeXnes

@@ -11,8 +11,8 @@ namespace WeeXnes.Misc
 {
     public partial class UpdateMessage : Window
     {
-        public static ApiResponse GitHub;
-        public UpdateMessage(ApiResponse _GitHub, string _title = "Message")
+        public static GithubApiResponse GitHub;
+        public UpdateMessage(GithubApiResponse _GitHub, string _title = "Message")
         {
             InitializeComponent();
             string content = "Your Version: " + Globals.version + "\n" +
@@ -26,13 +26,14 @@ namespace WeeXnes.Misc
         {
             checkForFile();
             WebClient client = new WebClient();
-            client.DownloadFile(GitHub.download_url, GitHub.file_name);
+            client.DownloadFile(GitHub.assets[0].browser_download_url, GitHub.assets[0].name);
+            client.Dispose();
         }
         private static void checkForFile()
         {
-            if (File.Exists(GitHub.file_name))
+            if (File.Exists(GitHub.assets[0].name))
             {
-                File.Delete(GitHub.file_name);
+                File.Delete(GitHub.assets[0].name);
             }
         }
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
@@ -43,7 +44,7 @@ namespace WeeXnes.Misc
                 string path = Application.StartupPath;
                 string fileName = Path.GetFileName(Application.ExecutablePath);
                 string pid = Process.GetCurrentProcess().Id.ToString();
-                Process updateProc = Process.Start("Update.exe", "\"" + path + "\"" + " " + "\"" + fileName + "\"" + " " + "\"" + pid + "\"" + " " + "\"" + GitHub.file_name + "\"");
+                Process updateProc = Process.Start("Update.exe", "\"" + path + "\"" + " " + "\"" + fileName + "\"" + " " + "\"" + pid + "\"" + " " + "\"" + GitHub.assets[0].name + "\"");
             }
             catch (Exception ex)
             {

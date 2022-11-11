@@ -282,29 +282,37 @@ namespace WeeXnes.MVVM.View
 
         private void CheckForUpdateBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            WebClient client = new WebClient();
             try
             {
-                string downloadString = client.DownloadString(Globals.apiUrl);
-                ApiResponse GitHub = JsonConvert.DeserializeObject<ApiResponse>(downloadString);
-                if (GitHub.tag_name != Globals.version)
-                {
-                    Misc.UpdateMessage updateMessage = new UpdateMessage(
-                        GitHub, 
-                        "Update Found");
-                    updateMessage.Show();
-                }
-                else
-                {
-                    Misc.Message msg = new Misc.Message("No Updates found");
-                    msg.Show();
-                }
+                using(WebClient webClient = new WebClient())
+                {;
+                    webClient.Headers.Add("Authorization", "Basic :x-oauth-basic");
+                    webClient.Headers.Add("User-Agent","lk-github-clien");
+                    var downloadString = webClient.DownloadString(Globals.apiUrl);
+                    GithubApiResponse ApiResponseData = JsonConvert.DeserializeObject<GithubApiResponse>(downloadString);
+                    if (ApiResponseData.tag_name != Globals.version)
+                    {
+                        Misc.UpdateMessage updateMessage = new UpdateMessage(
+                            ApiResponseData, 
+                            "Update Found");
+                        updateMessage.Show();
+                    }
+                    else
+                    {
+                        Misc.Message msg = new Misc.Message("No Updates found");
+                        msg.Show();
+                    }
+                }  
             }
             catch (Exception ex)
             {
                 Misc.Message error = new Misc.Message(ex.ToString());
                 error.Show();
             }
+            
+            WebClient client = new WebClient();
+            
+            
             
             
         }

@@ -16,10 +16,10 @@ namespace WeeXnes.Core
         public static string encryptionKey = "8zf5#RdyQ]$4x4_";
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
         public static string SettingsFileName = "settings.ini";
-        public static string version = "3.6.6";
+        public static string version = "3.6.7";
         public static bool   info_isRpcRunning = false;
         public static bool   info_RpcAutoStart;
-        public static string apiUrl = "http://weexnes.com:5169/";
+        public static string apiUrl = "https://api.github.com/repos/weexnes/weexnessuite/releases/latest";
 
         public static UpdateVar<bool>   settings_alwaysOnTop                 = new UpdateVar<bool>();
         public static UpdateVar<bool>   settings_osxStyleControlls           = new UpdateVar<bool>();

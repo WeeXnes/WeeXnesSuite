@@ -72,7 +72,12 @@
                                     Storyboard.TargetName="NavigationBorder"
                                     Storyboard.TargetProperty="(Border.Width)"
                                     To="200" Duration="0:0:00.4" AutoReverse="False" 
-                                />
+                                    
+                                >
+                                    <DoubleAnimation.EasingFunction>
+                                        <CircleEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard> 
                     </EventTrigger>
@@ -83,7 +88,12 @@
                                     Storyboard.TargetName="NavigationBorder"
                                     Storyboard.TargetProperty="(Border.Width)"
                                     To="50" Duration="0:0:00.4" AutoReverse="False" 
-                                />
+                                >
+                                    
+                                    <DoubleAnimation.EasingFunction>
+                                        <CircleEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
