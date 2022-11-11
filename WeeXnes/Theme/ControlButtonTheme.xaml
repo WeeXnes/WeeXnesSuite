@@ -64,7 +64,7 @@
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       Foreground="DarkGray"/>
+                                       Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

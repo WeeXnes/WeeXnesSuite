@@ -66,6 +66,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Check for Updates"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="CheckForUpdateBtn_OnClick"
                             Margin="4,10,4,0"/>
@@ -74,6 +75,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Create Startmenu Entry"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="CreateShortcut_OnClick"
                             Margin="4,10,4,0"/>
@@ -82,6 +84,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Open AppData Folder"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Margin="4,10,4,0"
                             Click="OpenAppdataFolder_Click"/>
@@ -139,6 +142,7 @@
                         Style="{StaticResource UniversalMaterialButton}"
                         Content="Set Default ClientID"
                         Background="#2f313b"
+                        Foreground="DarkGray"
                             Height="25"
                         Click="SaveDefaultID_Click"
                             Margin="4,10,4,0"/>
@@ -166,6 +170,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Rpc Files Path"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="SetRpcLocation_OnClick"
                             Margin="4,10,4,0"/>
@@ -173,6 +178,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="SetRpcLocationDefault_OnClick"
                             Margin="4,10,4,0"/>
@@ -233,6 +239,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Key Files Path"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="SetKeyLocation_OnClick"
                             Margin="4,10,4,0"/>
@@ -240,6 +247,7 @@
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
                             Background="#2f313b"
+                            Foreground="DarkGray"
                             Height="25"
                             Click="SetKeyLocationDefault_OnClick"
                             Margin="4,10,4,0"/>

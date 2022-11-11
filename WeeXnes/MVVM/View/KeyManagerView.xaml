@@ -82,6 +82,7 @@
                     Margin="15,0,0,0"
                     Click="AddButton_Click"
                     Content="Add"
+                    Foreground="DarkGray"
                     Background="#1c1e23"
                     Style="{StaticResource UniversalMaterialButton}"
             />

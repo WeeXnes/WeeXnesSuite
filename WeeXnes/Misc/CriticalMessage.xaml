@@ -44,6 +44,7 @@
                     Content="OK"
                     Width="140"
                     Height="40"
+                    Foreground="DarkGray"
                     Background="#520b16"
                     Name="okButton"
                     Click="okButton_Click"
