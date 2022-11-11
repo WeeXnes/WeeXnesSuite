@@ -85,7 +85,41 @@
                     Foreground="DarkGray"
                     Background="#1c1e23"
                     Style="{StaticResource UniversalMaterialButton}"
-            />
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
 
         </StackPanel>
     </Grid>

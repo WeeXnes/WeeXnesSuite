@@ -69,7 +69,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="CheckForUpdateBtn_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                     
                     <Button Name="createShortcut"
                             Style="{StaticResource UniversalMaterialButton}"
@@ -78,7 +113,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="CreateShortcut_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                     
                     <Button Name="OpenAppdataFolder" Grid.Row="1"
                             Style="{StaticResource UniversalMaterialButton}"
@@ -87,7 +157,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Margin="4,10,4,0"
-                            Click="OpenAppdataFolder_Click"/>
+                            Click="OpenAppdataFolder_Click"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
 
                     
                 </StackPanel>
@@ -145,7 +250,42 @@
                         Foreground="DarkGray"
                             Height="25"
                         Click="SaveDefaultID_Click"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                     <CheckBox VerticalAlignment="Top"
                   VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
@@ -173,7 +313,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="SetRpcLocation_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                     <Button Name="SetRpcLocationDefault"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
@@ -181,7 +356,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="SetRpcLocationDefault_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                 </StackPanel>
 
                 
@@ -242,7 +452,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="SetKeyLocation_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                     <Button Name="SetKeyLocationDefault"
                             Style="{StaticResource UniversalMaterialButton}"
                             Content="Set Default Path"
@@ -250,7 +495,42 @@
                             Foreground="DarkGray"
                             Height="25"
                             Click="SetKeyLocationDefault_OnClick"
-                            Margin="4,10,4,0"/>
+                            Margin="4,10,4,0"
+                        Cursor="Hand">
+                    <Button.Triggers>
+      
+                        <!-- Animate the button's Width property. -->
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="#212329" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                        To="#2f313b" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                    <ColorAnimation
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                        To="DarkGray" Duration="0:0:00.1" AutoReverse="False" 
+                                    />
+                                </Storyboard>
+                            </BeginStoryboard> 
+                        </EventTrigger>
+                                                        
+                    </Button.Triggers>
+                </Button>
                 </StackPanel>
 
                 

@@ -151,7 +151,8 @@
                         Margin="20,0,0,5"
                         Foreground="DarkGray"
                         Background="#212329"
-                        Content="Save">
+                        Content="Save"
+                        Cursor="Hand">
                     <Button.Triggers>
       
                         <!-- Animate the button's Width property. -->
@@ -192,7 +193,7 @@
 
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Height="30" Cursor="Hand"
+                    <Button Height="30" 
                             Width="65"
                             Style="{StaticResource UniversalMaterialButton}"
                             Name="DiscordRpcStart"
@@ -202,7 +203,8 @@
                             Margin="0,0,5,5"
                             Foreground="DarkGray"
                             Background="#212329"
-                            Content="Start">
+                            Content="Start"
+                            Cursor="Hand">
                         <Button.Triggers>
       
                             <!-- Animate the button's Width property. -->
@@ -247,7 +249,8 @@
                             Margin="5,0,5,5"
                             Foreground="DarkGray"
                             Background="#212329"
-                            Content="Stop">
+                            Content="Stop"
+                            Cursor="Hand">
                         <Button.Triggers>
       
                             <!-- Animate the button's Width property. -->
@@ -292,7 +295,8 @@
                             Margin="5,0,0,5"
                             Foreground="DarkGray"
                             Background="#212329"
-                            Content="New">
+                            Content="New"
+                            Cursor="Hand">
                         <Button.Triggers>
       
                             <!-- Animate the button's Width property. -->
