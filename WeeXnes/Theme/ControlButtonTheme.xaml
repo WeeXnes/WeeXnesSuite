@@ -7,7 +7,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border CornerRadius="0"
-                            Background="#b82727">
+                            Background="{TemplateBinding Property=Background}">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBlock Text="{TemplateBinding Property=Content}"
@@ -33,7 +33,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border CornerRadius="0"
-                            Background="#25272e">
+                            Background="{TemplateBinding Property=Background}">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBlock Text="{TemplateBinding Property=Content}"
