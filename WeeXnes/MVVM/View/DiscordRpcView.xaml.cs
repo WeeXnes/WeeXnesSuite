@@ -228,6 +228,11 @@ namespace WeeXnes.MVVM.View
                     Games.Add(game);
                 }
             }
+            else
+            {
+                Games.Clear();
+            }
+            
         }
         public void LoadGamesIntoListBox()
         {
@@ -258,12 +263,26 @@ namespace WeeXnes.MVVM.View
             }
         }
 
+        private void clearInputs()
+        {
+            tb_FormClient.Text = "";
+            tb_FormDetails.Text = "";
+            tb_FormName.Text = "";
+            tb_FormState.Text = "";
+            tb_FormPName.Text = "";
+            tb_FormLargeImgKey.Text = "";
+            tb_FormLargeImgTxt.Text = "";
+            tb_FormSmallImgKey.Text = "";
+            tb_FormSmallImgTxt.Text = "";
+        }
+
         private void RpcItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (RpcItemList.SelectedItem != null)
             {
                 deleteGameFile((Game)RpcItemList.SelectedItem);
             }
+            clearInputs();
             Refresh();
         }
 
@@ -314,6 +333,16 @@ namespace WeeXnes.MVVM.View
         private void ListViewVersions_OnLoaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (RpcItemList.SelectedItem != null)
+            {
+                deleteGameFile((Game)RpcItemList.SelectedItem);
+            }
+            clearInputs();
+            Refresh();
         }
     }
 }

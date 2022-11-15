@@ -38,6 +38,33 @@
                               BorderThickness="0"
                               SelectionChanged="KeyListView_SelectionChanged" MouseDoubleClick="KeyListView_MouseDoubleClick"
                     >
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Border CornerRadius="4" Padding="2">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0.5 0" EndPoint="0.5 1">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.2" Color="#7924b3" />
+                                                            <GradientStop Offset="1" Color="#247cb3" />
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                                <Border CornerRadius="4" Background="#2f313b">
+                                                    <StackPanel Orientation="Vertical">
+                                                        <MenuItem Foreground="DarkGray" Header="Delete"
+                                                                  Click="MenuItem_OnClick" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                                
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

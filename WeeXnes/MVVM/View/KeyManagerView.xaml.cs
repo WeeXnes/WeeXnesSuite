@@ -249,6 +249,35 @@ namespace WeeXnes.MVVM.View
                 tb.Text = censored_string;
             }
         }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            KeyItem selectedItem = (KeyItem)KeyListView.SelectedItem;
+            Console.WriteLine("Doubleclicked " + selectedItem.name);
+            KeyManagerLib.KeyList.Remove(selectedItem);
+            string[] files = SaveInterface.GetFilesInDir(Globals.settings_KeyManagerItemsPath.Value);
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+                try
+                {
+                    wxfile inifile = new wxfile(file);
+                    string name = inifile.GetName();
+                    string value = inifile.GetValue();
+                    if(name == selectedItem.name)
+                    {
+                        File.Delete(file);
+                        Console.WriteLine("Removed File: " + file);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            FillList();
+        }
     }
     public static class SaveInterface
     {
