@@ -1,0 +1,96 @@
+name: .NET Framework
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.1.1
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+      
+    - name: Restore Packages
+      run: nuget restore WeeXnes.sln
+      
+    - name: Build Solution
+      run: |
+        msbuild.exe WeeXnes.sln /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release"
+        
+    - name: List Folder 1
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\    
+    - name: List Folder 2
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\    
+    - name: List Folder 3
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\    
+    - name: List Folder 4
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Update\bin\Release\ 
+    - name: List Folder 5
+      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Release_Tool\bin\Release\
+        
+      
+    - name: Format Xaml to XML
+      run: (gc Weexnes\WeeXnes.csproj) -replace ' ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"', '' | Out-File -encoding ASCII formatted.csproj 
+      shell: pwsh
+  
+    - uses: bbonkr/get-version-action@v1.0.4
+      id: get_version
+      with:
+        project: "formatted.csproj"
+    - name: logging
+      run: |
+        echo "Version=${{ steps.get_version.outputs.version }}"
+        
+    - name: Packing Zip
+      run: Compress-Archive 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\WeeXnes.exe, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\System.Drawing.Common.dll, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\Wpf.Ui.dll, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\WeeXnes_UAC.exe, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\DiscordRPC.dll, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\Newtonsoft.Json.dll, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\Autostart.exe, 
+        Update\bin\Release\Update.exe
+        -CompressionLevel Optimal -DestinationPath packed.zip
+      shell: pwsh
+      
+      
+    - name: Check for Zip
+      run: dir
+    
+    
+     
+    - name: release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        release_name: v${{ steps.get_version.outputs.version }}
+        tag_name: ${{ steps.get_version.outputs.version }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: upload windows artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: D:\a\WeeXnesSuite\WeeXnesSuite\packed.zip
+        asset_name: currentRelease_${{ steps.get_version.outputs.version }}.zip
+        asset_content_type: application/zip
+      
+    
