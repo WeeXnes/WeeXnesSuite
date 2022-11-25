@@ -88,7 +88,6 @@ namespace WeeXnes.Views.Settings
                     GithubApiResponse apiResponseData = JsonConvert.DeserializeObject<GithubApiResponse>(downloadString);
                     if (apiResponseData.tag_name !=  Information.Version)
                     {
-                        Console.WriteLine("Update blabla " + apiResponseData.tag_name);
                         Data.updateResponse = apiResponseData;
                         DialogUpdate.Content = apiResponseData.tag_name + " is avaiable";
                         DialogUpdate.Show();
