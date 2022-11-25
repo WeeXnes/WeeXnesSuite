@@ -57,6 +57,8 @@ jobs:
     - name: Packing Zip
       run: Compress-Archive 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\WeeXnes.exe, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\System.Drawing.Common.dll, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\Wpf.Ui.dll, 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\WeeXnes_UAC.exe, 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\DiscordRPC.dll, 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\Newtonsoft.Json.dll, 
