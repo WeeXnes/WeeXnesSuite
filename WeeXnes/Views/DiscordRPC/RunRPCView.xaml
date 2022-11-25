@@ -1,0 +1,35 @@
+﻿<Page x:Class="WeeXnes.Views.DiscordRPC.RunRPCView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.DiscordRPC"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="RunRPCView" Height="Auto" Width="Auto"
+      Unloaded="RunRPCView_OnUnloaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ui:CardAction Grid.Column="1" Icon="CaretLeft24"
+                       Name="ButtonRPCStop"
+                       Click="ButtonRPCStop_OnClick">
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,4"
+                    FontWeight="Medium"
+                    Text="Stop RPC"
+                />
+            </StackPanel>
+        </ui:CardAction>
+        <RichTextBox Grid.Row="1" Name="RichTextBoxRPCLog">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+    </Grid>
+</Page>

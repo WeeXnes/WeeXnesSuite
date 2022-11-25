@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>3.6.5</Version>
+        <Version>4.0.0</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -46,6 +46,9 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
+        <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
+        </Reference>
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
@@ -54,21 +57,43 @@
         <Reference Include="WindowsBase" />
         <Reference Include="PresentationCore" />
         <Reference Include="PresentationFramework" />
+        <Reference Include="Wpf.Ui, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\WPF-UI.2.0.3\lib\net48\Wpf.Ui.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <ApplicationDefinition Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
-        <Compile Include="Core\ApiResponse.cs" />
-        <Compile Include="Core\customEvent.cs" />
-        <Compile Include="Misc\CriticalMessage.xaml.cs">
-          <DependentUpon>CriticalMessage.xaml</DependentUpon>
+        <Compile Include="Core\EncryptorLibrary.cs" />
+        <Compile Include="Core\HandleLaunchArguments.cs" />
+        <Compile Include="Core\SaveSettingsHandler.cs" />
+        <Compile Include="Core\WXFile.cs" />
+        <Compile Include="Views\DiscordRPC\AddRPCView.xaml.cs">
+          <DependentUpon>AddRPCView.xaml</DependentUpon>
         </Compile>
-        <Compile Include="Misc\UpdateMessage.xaml.cs">
-          <DependentUpon>UpdateMessage.xaml</DependentUpon>
+        <Compile Include="Views\DiscordRPC\DiscordRPCView.xaml.cs">
+          <DependentUpon>DiscordRPCView.xaml</DependentUpon>
         </Compile>
-        <Compile Include="RPC\Game.cs" />
+        <Compile Include="Views\DiscordRPC\EditRPCView.xaml.cs">
+          <DependentUpon>EditRPCView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\DiscordRPC\Game.cs" />
+        <Compile Include="Views\DiscordRPC\RunRPCView.xaml.cs">
+          <DependentUpon>RunRPCView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\Home\HomeView.xaml.cs">
+          <DependentUpon>HomeView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\KeyManager\KeyItem.cs" />
+        <Compile Include="Views\KeyManager\KeyManagerView.xaml.cs">
+          <DependentUpon>KeyManagerView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\Settings\ApiResponse.cs" />
+        <Compile Include="Views\Settings\SettingsView.xaml.cs">
+          <DependentUpon>SettingsView.xaml</DependentUpon>
+        </Compile>
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -77,42 +102,23 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Compile Include="Core\Globals.cs" />
-        <Compile Include="Core\ObservableObject.cs" />
-        <Compile Include="Core\RelayCommand.cs" />
-        <Compile Include="Keys\KeyItem.cs" />
-        <Compile Include="Keys\KeyManagerLib.cs" />
+        <Compile Include="Core\DataTypes.cs" />
+        <Compile Include="Core\Functions.cs" />
+        <Compile Include="Core\Global.cs" />
+        <Compile Include="Core\INIFile.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Page Include="Misc\CriticalMessage.xaml" />
-        <Page Include="Misc\Message.xaml" />
-        <Page Include="Misc\UpdateMessage.xaml" />
-        <Page Include="MVVM\View\DiscordRpcView.xaml" />
-        <Page Include="MVVM\View\HomeView.xaml" />
-        <Page Include="MVVM\View\KeyManagerView.xaml" />
-        <Page Include="MVVM\View\SettingView.xaml" />
-        <Page Include="Theme\ControlButtonTheme.xaml" />
-        <Page Include="Theme\MenuButtonTheme.xaml" />
-        <Page Include="Theme\ModernCheckbox.xaml" />
-        <Page Include="Theme\Scrollbar.xaml" />
-        <Page Include="Theme\TextBoxTheme.xaml" />
+        <Page Include="Views\DiscordRPC\AddRPCView.xaml" />
+        <Page Include="Views\DiscordRPC\DiscordRPCView.xaml" />
+        <Page Include="Views\DiscordRPC\EditRPCView.xaml" />
+        <Page Include="Views\DiscordRPC\RunRPCView.xaml" />
+        <Page Include="Views\Home\HomeView.xaml" />
+        <Page Include="Views\KeyManager\KeyManagerView.xaml" />
+        <Page Include="Views\Settings\SettingsView.xaml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Misc\EncryptorLibary.cs" />
-        <Compile Include="Misc\INIFile.cs" />
-        <Compile Include="Misc\Message.xaml.cs" />
-        <Compile Include="Misc\wxfile.cs" />
-        <Compile Include="MVVM\ViewModel\DiscordRpcViewModel.cs" />
-        <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
-        <Compile Include="MVVM\ViewModel\KeyManagerViewModel.cs" />
-        <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
-        <Compile Include="MVVM\ViewModel\SettingsViewModel.cs" />
-        <Compile Include="MVVM\View\DiscordRpcView.xaml.cs" />
-        <Compile Include="MVVM\View\HomeView.xaml.cs" />
-        <Compile Include="MVVM\View\KeyManagerView.xaml.cs" />
-        <Compile Include="MVVM\View\SettingView.xaml.cs" />
         <Compile Include="Properties\AssemblyInfo.cs">
             <SubType>Code</SubType>
         </Compile>
@@ -131,17 +137,6 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="MVVM\Model" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="Fonts\Poppins-Regular.ttf" />
-      <Resource Include="Images\green.png" />
-      <Resource Include="Images\red.png" />
-      <Resource Include="Images\yellow.png" />
-      <Resource Include="Images\discord.png" />
-      <Resource Include="Images\home.png" />
-      <Resource Include="Images\key.png" />
-      <Resource Include="Images\settings.png" />
       <Content Include="wicns.ico" />
       <Resource Include="Images\wicon.png" />
     </ItemGroup>

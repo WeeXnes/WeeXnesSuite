@@ -1,0 +1,50 @@
+﻿<Page x:Class="WeeXnes.Views.DiscordRPC.AddRPCView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.DiscordRPC"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="AddRPCView" Height="Auto" Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        
+        <ScrollViewer Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <ui:TextBox Name="TextboxProcessname" PlaceholderText="Process name" Margin="0,4"/>
+                <ui:TextBox Name="TextboxClientid" PlaceholderText="Client ID" Margin="0,4"/>
+                <ui:TextBox Name="TextboxState" PlaceholderText="State" Margin="0,4"/>
+                <ui:TextBox Name="TextboxDetails" PlaceholderText="Details" Margin="0,4"/>
+                <ui:TextBox Name="TextboxBigimgkey" PlaceholderText="Big image key" Margin="0,4"/>
+                <ui:TextBox Name="TextboxBigimgtxt" PlaceholderText="Big image text" Margin="0,4"/>
+                <ui:TextBox Name="TextboxSmallimgkey" PlaceholderText="Small image key" Margin="0,4"/>
+                <ui:TextBox Name="TextboxSmallimgtxt" PlaceholderText="Small image text" Margin="0,4"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ui:Button
+                Padding="24,6"
+                HorizontalAlignment="Center"
+                Content="Cancel"
+                Icon="CaretLeft24"
+                Name="ButtonCancelDialog"
+                Click="ButtonCancelDialog_OnClick"/>
+            <ui:Button Grid.Column="1"
+                       Padding="24,6"
+                       HorizontalAlignment="Center"
+                       Content="Add"
+                       Icon="AddCircle32"
+                       Name="ButtonSaveDialog"
+                       Click="ButtonSaveDialog_OnClick"/>
+        </Grid>
+    </Grid>
+</Page>

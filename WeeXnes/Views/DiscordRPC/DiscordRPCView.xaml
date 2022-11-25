@@ -1,0 +1,65 @@
+﻿<Page x:Class="WeeXnes.Views.DiscordRPC.DiscordRPCView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.DiscordRPC"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="DiscordRPCView" Height="Auto" Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="74"/> 
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" Name="ItemboxRpc" Margin="0,0,0,5"
+                     SelectionChanged="ItemboxRpc_OnSelectionChanged">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit"
+                                  Name="ButtonContextEdit"
+                                  Click="ContextEdit_OnClick"/>
+                        <Separator />
+                        <MenuItem Header="Remove"
+                                  Name="ButtonContextRemove"
+                                  Click="ContextRemove_OnClick"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+            <StackPanel Grid.Column="1">
+                <ui:CardAction Icon="Play28" Grid.Row="1"
+                               Name="ButtonStartRPC"
+                               Margin="5,0,0,0"
+                               Click="ButtonStartRPC_OnClick">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,4"
+                            FontWeight="Medium"
+                            Text="Run RPC"
+                            />
+                    </StackPanel>
+                </ui:CardAction>
+            </StackPanel>
+        </Grid>
+        
+        <ui:CardAction Icon="AddCircle32" Grid.Row="1"
+                       Name="ButtonAddProcess"
+                       Click="ButtonAddProcess_OnClick">
+            <StackPanel>
+                <TextBlock
+                    Margin="0,0,0,4"
+                    FontWeight="Medium"
+                    Text="Add Process" />
+                <TextBlock
+                    FontSize="11"
+                    Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                    Text="add process to configure corresponding RPC" />
+            </StackPanel>
+        </ui:CardAction>
+    </Grid>
+</Page>
