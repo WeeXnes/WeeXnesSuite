@@ -29,6 +29,18 @@
                            Name="DialogUpdate"
                            ButtonLeftClick="DialogUpdate_OnButtonLeftClick"
                            ButtonRightClick="DialogUpdate_OnButtonRightClick"/>
+                <ui:CardAction Icon="LinkSquare20"
+                               Name="ButtonCreateStartMenuShortcut"
+                               Click="ButtonCreateStartMenuShortcut_OnClick"
+                               Margin="0,10">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,4"
+                            FontWeight="Medium"
+                            Text="Create Start-Menu Shortcut"
+                        />
+                    </StackPanel>
+                </ui:CardAction>
                 <TextBlock Text="Key Manager Settings" 
                            HorizontalAlignment="Center"
                            Foreground="White"/>
@@ -39,8 +51,15 @@
                 <TextBlock Text="Discord Rich Presence" 
                            HorizontalAlignment="Center"
                            Foreground="White"/>
-                <CheckBox Content="Autostart RPC"
-                          Name="CheckboxAutostartRpc"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Enable RPC Autostart"
+                            Name="ButtonEnableRPC"
+                            Click="ButtonEnableRPC_OnClick"/>
+                    <Button Content="Disable RPC Autostart"
+                            Margin="10,0,0,0"
+                            Name="ButtonDisableRPC"
+                            Click="ButtonDisableRPC_OnClick"/>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

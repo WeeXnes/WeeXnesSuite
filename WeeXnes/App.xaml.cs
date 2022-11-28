@@ -36,10 +36,6 @@ namespace WeeXnes
                 Convert.ToBoolean(SettingsView.Data.settingsFile.GetValue(
                     SaveSettingsHandler.Data.KeyManager.Section,
                     SaveSettingsHandler.Data.KeyManager.CensorKeys));
-            SettingsView.Data.Autostart.Value =
-                Convert.ToBoolean(SettingsView.Data.settingsFile.GetValue(
-                    SaveSettingsHandler.Data.General.Section,
-                    SaveSettingsHandler.Data.General.Autostart));
             
         }
 

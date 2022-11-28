@@ -18,7 +18,6 @@ namespace WeeXnes.Views.Settings
         {
             public static INIFile settingsFile = new INIFile(Global.AppDataPath + "\\" + Global.SettingsFile, true);
             public static GithubApiResponse updateResponse = null;
-            public static UpdateVar<bool> Autostart = new UpdateVar<bool>();
         }
         public SettingsView()
         {
@@ -29,9 +28,6 @@ namespace WeeXnes.Views.Settings
         private void LoadSettingsToGui()
         {
             CheckboxCensorKeys.IsChecked = KeyManagerView.Data.censorKeys.Value;
-            CheckboxAutostartRpc.IsChecked = Data.Autostart.Value;
-            
-            SetCheckboxAutostartRpc();
         }
         private void CheckboxCensorKeys_OnChecked(object sender, RoutedEventArgs e)
         {
@@ -104,70 +100,44 @@ namespace WeeXnes.Views.Settings
             }
         }
 
-        void SetCheckboxAutostartRpc()
-        {
-            CheckboxAutostartRpc.Checked += CheckboxAutostartRpc_OnChecked;
-            CheckboxAutostartRpc.Unchecked += CheckboxAutostartRpc_OnUnchecked;
-        }
-        void UnsetCheckboxAutostartRpc()
-        {
-            CheckboxAutostartRpc.Checked -= CheckboxAutostartRpc_OnChecked;
-            CheckboxAutostartRpc.Unchecked -= CheckboxAutostartRpc_OnUnchecked;
-        }
 
-        void SwitchAutostartRpc(bool enable)
+        private void ButtonEnableRPC_OnClick(object sender, RoutedEventArgs e)
         {
-            UnsetCheckboxAutostartRpc();
-
-
-            if (enable)
+            try
             {
-                bool proc_suc;
-                try
-                {
-                    Process uacpromp = Process.Start("WeeXnes_UAC.exe", "-EnableAutostart");
-                    uacpromp.WaitForExit();
-                    proc_suc = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    proc_suc = false;
-                }
-
-                Data.Autostart.Value = proc_suc;
-                CheckboxAutostartRpc.IsChecked = proc_suc;
+                Process uac_prompt = Process.Start("WeeXnes_UAC.exe", "-EnableAutostart");
+                uac_prompt.WaitForExit();
             }
-            else
+            catch (Exception ex)
             {
-                bool proc_suc;
-                try
-                {
-                    Process uacpromp = Process.Start("WeeXnes_UAC.exe", "-DisableAutostart");
-                    uacpromp.WaitForExit();
-                    proc_suc = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    proc_suc = false;
-                }
-
-                Data.Autostart.Value = !proc_suc;
-                CheckboxAutostartRpc.IsChecked = !proc_suc;
+                MessageBox.Show(ex.Message);
             }
-            
-            
-            SetCheckboxAutostartRpc();
-        }
-        private void CheckboxAutostartRpc_OnChecked(object sender, RoutedEventArgs e)
-        {
-            SwitchAutostartRpc(true);
         }
 
-        private void CheckboxAutostartRpc_OnUnchecked(object sender, RoutedEventArgs e)
+        private void ButtonDisableRPC_OnClick(object sender, RoutedEventArgs e)
         {
-            SwitchAutostartRpc(false);
+            try
+            {
+                Process uac_prompt = Process.Start("WeeXnes_UAC.exe", "-DisableAutostart");
+                uac_prompt.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ButtonCreateStartMenuShortcut_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process p = Process.Start("WeeXnes_UAC.exe", "-CreateStartMenuShortcut");
+                p.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

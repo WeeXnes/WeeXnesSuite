@@ -12,7 +12,6 @@ namespace WeeXnes.Core
             public static class General
             {
                 public const string Section = "GENERAL";
-                public const string Autostart = "Autostart";
             }
             public static class KeyManager
             {
@@ -42,14 +41,6 @@ namespace WeeXnes.Core
                     Data.KeyManager.CensorKeys, 
                     KeyManagerView.Data.censorKeys.Value.ToString()
                     );
-            };
-            SettingsView.Data.Autostart.ValueChanged += () =>
-            {
-                SettingsView.Data.settingsFile.SetValue(
-                    Data.General.Section,
-                    Data.General.Autostart, 
-                    SettingsView.Data.Autostart.Value.ToString()
-                );
             };
         }
     }
