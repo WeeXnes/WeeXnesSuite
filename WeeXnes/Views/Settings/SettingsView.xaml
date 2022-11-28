@@ -36,6 +36,11 @@
                           Name="CheckboxCensorKeys"
                           Checked="CheckboxCensorKeys_OnChecked"
                           Unchecked="CheckboxCensorKeys_OnUnchecked"/>
+                <TextBlock Text="Discord Rich Presence" 
+                           HorizontalAlignment="Center"
+                           Foreground="White"/>
+                <CheckBox Content="Autostart RPC"
+                          Name="CheckboxAutostartRpc"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
