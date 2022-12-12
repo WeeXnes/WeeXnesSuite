@@ -17,7 +17,7 @@ namespace WeeXnes.Views.Settings
         public static class Data
         {
             public static INIFile settingsFile = new INIFile(Global.AppDataPath + "\\" + Global.SettingsFile, true);
-            public static GithubApiResponse updateResponse = null;
+            
         }
         public SettingsView()
         {
@@ -39,45 +39,11 @@ namespace WeeXnes.Views.Settings
             KeyManagerView.Data.censorKeys.Value = false;
         }
 
-        private void DialogUpdate_OnButtonLeftClick(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Do Update");
-            if(Data.updateResponse == null)
-                return;
-            
-            if (File.Exists(Data.updateResponse.assets[0].name))
-            {
-                File.Delete(Data.updateResponse.assets[0].name);
-            }
-            using(WebClient webClient = new WebClient())
-            {;
-                
-                webClient.DownloadFile(
-                    Data.updateResponse.assets[0].browser_download_url, 
-                    Data.updateResponse.assets[0].name
-                    );
-            }  
-            try
-            {
-                string path = Application.StartupPath;
-                string fileName = Path.GetFileName(Application.ExecutablePath);
-                string pid = Process.GetCurrentProcess().Id.ToString();
-                Process updateProc = Process.Start("Update.exe", "\"" + path + "\"" + " " + "\"" + fileName + "\"" + " " + "\"" + pid + "\"" + " " + "\"" + Data.updateResponse.assets[0].name + "\"");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
 
-            }
-        }
-
-        private void DialogUpdate_OnButtonRightClick(object sender, RoutedEventArgs e)
-        {
-            DialogUpdate.Hide();
-        }
 
         private void ButtonCheckForUpdates_OnClick(object sender, RoutedEventArgs e)
         {
+            
             try
             {
                 using(WebClient webClient = new WebClient())
@@ -88,9 +54,8 @@ namespace WeeXnes.Views.Settings
                     GithubApiResponse apiResponseData = JsonConvert.DeserializeObject<GithubApiResponse>(downloadString);
                     if (apiResponseData.tag_name !=  Information.Version)
                     {
-                        Data.updateResponse = apiResponseData;
-                        DialogUpdate.Content = apiResponseData.tag_name + " is avaiable";
-                        DialogUpdate.Show();
+                        UpdateFoundView.Data.updateResponse = apiResponseData;
+                        NavigationService.Navigate(new Uri("/Views/Settings/UpdateFoundView.xaml",UriKind.Relative));
                     }
                 }  
             }
@@ -139,5 +104,6 @@ namespace WeeXnes.Views.Settings
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }
