@@ -14,6 +14,7 @@ using Wpf.Ui.Mvvm.Services;
 using Button = System.Windows.Controls.Button;
 using ButtonBase = System.Windows.Controls.Primitives.ButtonBase;
 using MessageBox = System.Windows.MessageBox;
+using NotifyIcon = Wpf.Ui.Controls.NotifyIcon;
 
 namespace WeeXnes
 {
@@ -48,6 +49,11 @@ namespace WeeXnes
         private void ContextStopRpc_OnClick(object sender, RoutedEventArgs e)
         {
             ButtonHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void NotifyIcon_OnLeftClick(NotifyIcon sender, RoutedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

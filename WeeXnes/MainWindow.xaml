@@ -31,10 +31,12 @@
             ShowClose="True"
             ShowMaximize="True"
             ShowMinimize="True"
-            UseSnapLayout="True">
+            UseSnapLayout="True"
+            Name="TitleBar2">
             <ui:TitleBar.Tray>
                 
-                <ui:NotifyIcon Icon="/Images/wicon.png">
+                <ui:NotifyIcon Icon="/Images/wicon.png"
+                               LeftClick="NotifyIcon_OnLeftClick">
                     <ui:NotifyIcon.Menu>
                         <ContextMenu>
                             <MenuItem 
