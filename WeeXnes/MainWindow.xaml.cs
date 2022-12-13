@@ -1,19 +1,7 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.ComponentModel;
-using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 using WeeXnes.Core;
-using WeeXnes.Views.DiscordRPC;
-using Wpf.Ui.Mvvm.Services;
-using Button = System.Windows.Controls.Button;
 using ButtonBase = System.Windows.Controls.Primitives.ButtonBase;
-using MessageBox = System.Windows.MessageBox;
 using NotifyIcon = Wpf.Ui.Controls.NotifyIcon;
 
 namespace WeeXnes

@@ -21,11 +21,32 @@ namespace WeeXnes
         {
             Environment.CurrentDirectory = Application.StartupPath;
             CheckForDebugMode();
+            CheckUpdatedFiles();
             CheckForFolder();
             LoadSettings();
             SaveSettingsHandler.SetupSaveEvents();
             LoadFiles();
             CheckStartupArgs(e.Args);
+        }
+
+        private void CheckUpdatedFiles()
+        {
+            string[] files = System.IO.Directory.GetFiles(Environment.CurrentDirectory, "*.new");
+            foreach (string file in files)
+            {
+                try
+                {
+                    string originalFile = file.Substring(0, file
+                        .Length - 4);
+                    if (File.Exists(originalFile))
+                        File.Delete(originalFile);
+                    System.IO.File.Move(file, originalFile);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
         }
 
         private void LoadSettings()
