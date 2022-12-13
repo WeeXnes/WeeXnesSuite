@@ -6,7 +6,7 @@ namespace WeeXnes.Core
 {
     public class Information
     {
-        public const string Version = "4.0.6";
+        public const string Version = "4.0.7";
         public const string EncryptionHash = "8zf5#RdyQ]$4x4_";
         public const string ApiUrl = "https://api.github.com/repos/weexnes/weexnessuite/releases/latest";
     }
