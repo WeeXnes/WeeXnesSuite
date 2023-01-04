@@ -71,10 +71,12 @@ namespace WeeXnes
                     Game newGame = Game.Methods.GameFromIni(new INIFile(file.FullName));
                     DiscordRPCView.Data.Games.Add(newGame);
                     Console.WriteLine(file.Name + " loaded");
+                    MessageBox.Show(file.Name + " loaded");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(file.Name + ": " + ex.Message);
+                    MessageBox.Show(file.Name + ": " + ex.Message);
                 }
             }
             Functions.CheckFolderAndCreate(Global.AppDataPathKEY);
