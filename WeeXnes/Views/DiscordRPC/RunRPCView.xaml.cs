@@ -4,16 +4,41 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using WeeXnes.Core;
 
 namespace WeeXnes.Views.DiscordRPC
 {
     public partial class RunRPCView : Page
     {
+        public static class Data
+        {
+            public static UpdateVar<string> LogCache = new UpdateVar<string>();
+        }
         BackgroundWorker backgroundWorker = new BackgroundWorker();
         public RunRPCView()
         {
             InitializeComponent();
+            SetupLogListener();
             SetupBackgroundWorker();
+        }
+
+        public void SetupLogListener()
+        {
+            Data.LogCache.ValueChanged += LogChanged;
+        }
+
+        public void RemoveListener()
+        {
+            Data.LogCache.ValueChanged -= LogChanged;
+        }
+
+        private void LogChanged()
+        {
+            Console.WriteLine("Log Write Data: " + Data.LogCache.Value);
+            this.Dispatcher.Invoke(() =>
+            {
+                RichTextBoxRPCLog.AppendText(Data.LogCache.Value + "\n");
+            });
         }
 
         private void SetupBackgroundWorker()
@@ -78,6 +103,7 @@ namespace WeeXnes.Views.DiscordRPC
         private void RunRPCView_OnUnloaded(object sender, RoutedEventArgs e)
         {
             StopBackgroundWorker();
+            RemoveListener();
         }
 
         private void ButtonRPCStop_OnClick(object sender, RoutedEventArgs e)

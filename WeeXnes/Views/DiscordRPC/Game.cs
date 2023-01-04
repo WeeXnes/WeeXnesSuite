@@ -87,7 +87,8 @@ namespace WeeXnes.Views.DiscordRPC
         public void Start()
         {
             this.IsRunning = true;
-            Console.WriteLine("Process started");
+            //Console.WriteLine("Process started");
+            RunRPCView.Data.LogCache.Value = this.ProcessName + " is running";
             
             if (!this.PresenceClient.IsInitialized)
             {
@@ -112,7 +113,8 @@ namespace WeeXnes.Views.DiscordRPC
         public void Stop()
         {
             this.IsRunning = false;
-            Console.WriteLine("Process stopped");
+            //Console.WriteLine("Process stopped");
+            RunRPCView.Data.LogCache.Value = this.ProcessName + " stopped running";
             if (this.PresenceClient.IsInitialized)
             {
                 this.PresenceClient.ClearPresence();
@@ -123,12 +125,14 @@ namespace WeeXnes.Views.DiscordRPC
         }
         private void PresenceClientOnOnPresenceUpdate(object sender, PresenceMessage args)
         {
-            Console.WriteLine("[" + this.ProcessName + ".exe] ➜ Received Update on " + args.Name);
+            //Console.WriteLine("[" + this.ProcessName + ".exe] ➜ Received Update on " + args.Name);
+            RunRPCView.Data.LogCache.Value = "[" + this.ProcessName + ".exe] ➜ Received Update on " + args.Name;
         }
 
         private void PresenceClientOnOnReady(object sender, ReadyMessage args)
         {
-            Console.WriteLine("[" + this.ProcessName + ".exe] ➜ Received Ready from user " + args.User.Username);
+            //Console.WriteLine("[" + this.ProcessName + ".exe] ➜ Received Ready from user " + args.User.Username);
+            RunRPCView.Data.LogCache.Value = "[" + this.ProcessName + ".exe] ➜ Received Ready from user " + args.User.Username;
         }
         public void CheckState(Process[] processes)
         {
