@@ -14,6 +14,7 @@ namespace WeeXnes
         public MainWindow()
         {
             InitializeComponent();
+            Wpf.Ui.Appearance.Accent.ApplySystemAccent();
         }
 
 

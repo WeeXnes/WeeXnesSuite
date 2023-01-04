@@ -21,7 +21,6 @@ namespace WeeXnes.Views.DiscordRPC
             SetupLogListener();
             SetupBackgroundWorker();
         }
-
         public void SetupLogListener()
         {
             Data.LogCache.ValueChanged += LogChanged;
@@ -38,9 +37,10 @@ namespace WeeXnes.Views.DiscordRPC
             this.Dispatcher.Invoke(() =>
             {
                 RichTextBoxRPCLog.AppendText(Data.LogCache.Value + "\n");
+                RichTextBoxRPCLog.ScrollToEnd();
             });
         }
-
+        
         private void SetupBackgroundWorker()
         {
             backgroundWorker.WorkerReportsProgress = true;
@@ -78,6 +78,7 @@ namespace WeeXnes.Views.DiscordRPC
 
         private void BackgroundWorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
+            Data.LogCache.Value = "RPC Thread is running";
             bool runWorker = true;
             while (runWorker)
             {
@@ -98,6 +99,7 @@ namespace WeeXnes.Views.DiscordRPC
             foreach (Game game in DiscordRPCView.Data.Games)
                 game.Stop();
             Console.WriteLine("Thread Stopped");
+            Data.LogCache.Value = "RPC Thread has stopped";
         }
 
         private void RunRPCView_OnUnloaded(object sender, RoutedEventArgs e)

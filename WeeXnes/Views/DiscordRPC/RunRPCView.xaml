@@ -24,7 +24,7 @@
                 />
             </StackPanel>
         </ui:CardAction>
-        <RichTextBox Grid.Row="1" Name="RichTextBoxRPCLog">
+        <RichTextBox Grid.Row="1" Name="RichTextBoxRPCLog" IsReadOnly="True">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>
