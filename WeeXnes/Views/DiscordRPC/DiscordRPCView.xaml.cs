@@ -55,7 +55,7 @@ namespace WeeXnes.Views.DiscordRPC
             if(selectedCache == null)
                 return;
             Data.Games.Remove(selectedCache);
-            File.Delete(Global.AppDataPathRPC + "\\" + selectedCache.UUID + ".rpc");
+            File.Delete(Global.AppDataPathRPC.Value + "\\" + selectedCache.UUID + ".rpc");
             
         }
 

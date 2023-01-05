@@ -58,12 +58,38 @@ namespace WeeXnes
                     SaveSettingsHandler.Data.KeyManager.Section,
                     SaveSettingsHandler.Data.KeyManager.CensorKeys));
             
+            //Load paths
+
+            string customRpcPath = SettingsView.Data.settingsFile.GetValue(
+                SaveSettingsHandler.Data.General.Section,
+                SaveSettingsHandler.Data.General.RpcFilesPath
+            );
+            if (!String.IsNullOrEmpty(customRpcPath))
+            {
+                Global.AppDataPathRPC.Value = customRpcPath;
+            }
+            else
+            {
+                Global.AppDataPathRPC.Value = Global.Defaults.DefaultPathRPC;
+            }
+            string customKeyPath = SettingsView.Data.settingsFile.GetValue(
+                SaveSettingsHandler.Data.General.Section,
+                SaveSettingsHandler.Data.General.KeyFilesPath
+            );
+            if (!String.IsNullOrEmpty(customKeyPath))
+            {
+                Global.AppDataPathKEY.Value = customKeyPath;
+            }
+            else
+            {
+                Global.AppDataPathKEY.Value = Global.Defaults.DefaultPathKEY;
+            }
         }
 
         private void LoadFiles()
         {
-            Functions.CheckFolderAndCreate(Global.AppDataPathRPC);
-            DirectoryInfo rpcDirectoryInfo = new DirectoryInfo(Global.AppDataPathRPC);
+            Functions.CheckFolderAndCreate(Global.AppDataPathRPC.Value);
+            DirectoryInfo rpcDirectoryInfo = new DirectoryInfo(Global.AppDataPathRPC.Value);
             foreach (var file in rpcDirectoryInfo.GetFiles("*.rpc"))
             {
                 try
@@ -78,8 +104,8 @@ namespace WeeXnes
                     MessageBox.Show(file.Name + ": " + ex.Message);
                 }
             }
-            Functions.CheckFolderAndCreate(Global.AppDataPathKEY);
-            DirectoryInfo keyDirectoryInfo = new DirectoryInfo(Global.AppDataPathKEY);
+            Functions.CheckFolderAndCreate(Global.AppDataPathKEY.Value);
+            DirectoryInfo keyDirectoryInfo = new DirectoryInfo(Global.AppDataPathKEY.Value);
             foreach (var file in keyDirectoryInfo.GetFiles("*.wx"))
             {
                 try

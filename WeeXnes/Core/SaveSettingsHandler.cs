@@ -1,4 +1,8 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
+using System.Net.Mime;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using WeeXnes.Views.KeyManager;
 using WeeXnes.Views.Settings;
 
@@ -12,6 +16,8 @@ namespace WeeXnes.Core
             public static class General
             {
                 public const string Section = "GENERAL";
+                public const string RpcFilesPath = "RpcFilesPath";
+                public const string KeyFilesPath = "KeyFilesPath";
             }
             public static class KeyManager
             {
@@ -41,6 +47,22 @@ namespace WeeXnes.Core
                     Data.KeyManager.CensorKeys, 
                     KeyManagerView.Data.censorKeys.Value.ToString()
                     );
+            };
+            Global.AppDataPathRPC.ValueChanged += () =>
+            {
+                SettingsView.Data.settingsFile.SetValue(
+                    Data.General.Section,
+                    Data.General.RpcFilesPath,
+                    Global.AppDataPathRPC.Value
+                );
+            };
+            Global.AppDataPathKEY.ValueChanged += () =>
+            {
+                SettingsView.Data.settingsFile.SetValue(
+                    Data.General.Section,
+                    Data.General.KeyFilesPath,
+                    Global.AppDataPathKEY.Value
+                );
             };
         }
     }

@@ -40,7 +40,7 @@ namespace WeeXnes.Views.KeyManager
                     tb_keyvalue.Text
                 );
                 WXFile wxFile = new WXFile(
-                    Global.AppDataPathKEY + "\\" + newKey.Filename);
+                    Global.AppDataPathKEY.Value + "\\" + newKey.Filename);
                 WXFile.Methods.WriteFile(newKey, wxFile);
                 Data.KeyItemsList.Add(newKey);
             }
@@ -65,7 +65,7 @@ namespace WeeXnes.Views.KeyManager
             Data.KeyItemsList.Remove(removeItem);
             try
             {
-                File.Delete(Global.AppDataPathKEY + "\\" + removeItem.Filename);
+                File.Delete(Global.AppDataPathKEY.Value + "\\" + removeItem.Filename);
             }
             catch (Exception ex)
             {

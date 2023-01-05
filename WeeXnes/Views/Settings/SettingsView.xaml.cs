@@ -105,5 +105,9 @@ namespace WeeXnes.Views.Settings
             }
         }
 
+        private void ChangePathsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/Settings/ChangePathsView.xaml",UriKind.Relative));
+        }
     }
 }

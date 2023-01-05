@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>4.2.0</Version>
+        <Version>4.2.1</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -91,6 +91,9 @@
           <DependentUpon>KeyManagerView.xaml</DependentUpon>
         </Compile>
         <Compile Include="Views\Settings\ApiResponse.cs" />
+        <Compile Include="Views\Settings\ChangePathsView.xaml.cs">
+          <DependentUpon>ChangePathsView.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Views\Settings\SettingsView.xaml.cs">
           <DependentUpon>SettingsView.xaml</DependentUpon>
         </Compile>
@@ -119,6 +122,7 @@
         <Page Include="Views\DiscordRPC\RunRPCView.xaml" />
         <Page Include="Views\Home\HomeView.xaml" />
         <Page Include="Views\KeyManager\KeyManagerView.xaml" />
+        <Page Include="Views\Settings\ChangePathsView.xaml" />
         <Page Include="Views\Settings\SettingsView.xaml" />
         <Page Include="Views\Settings\UpdateFoundView.xaml" />
     </ItemGroup>

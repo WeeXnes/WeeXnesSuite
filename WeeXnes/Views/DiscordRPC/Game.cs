@@ -158,7 +158,7 @@ namespace WeeXnes.Views.DiscordRPC
 
         public void Save()
         {
-            INIFile rpcFile = new INIFile(Global.AppDataPathRPC + "\\" + this.UUID + ".rpc", true);
+            INIFile rpcFile = new INIFile(Global.AppDataPathRPC.Value + "\\" + this.UUID + ".rpc", true);
             rpcFile.SetValue(
                 SaveSettingsHandler.Data.DiscordRpcFiles.Section,
                 SaveSettingsHandler.Data.DiscordRpcFiles.ProcessName,

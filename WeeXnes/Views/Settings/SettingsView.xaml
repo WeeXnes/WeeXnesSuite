@@ -29,12 +29,24 @@
                 <ui:CardAction Icon="LinkSquare20"
                                Name="ButtonCreateStartMenuShortcut"
                                Click="ButtonCreateStartMenuShortcut_OnClick"
-                               Margin="0,10">
+                               Margin="0,10,0,0">
                     <StackPanel>
                         <TextBlock
                             Margin="0,0,0,4"
                             FontWeight="Medium"
                             Text="Create Start-Menu Shortcut"
+                        />
+                    </StackPanel>
+                </ui:CardAction>
+                <ui:CardAction Icon="Folder32"
+                               Name="ChangePathsButton"
+                               Click="ChangePathsButton_OnClick"
+                               Margin="0,10">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,4"
+                            FontWeight="Medium"
+                            Text="Change paths for Key and RPC files"
                         />
                     </StackPanel>
                 </ui:CardAction>

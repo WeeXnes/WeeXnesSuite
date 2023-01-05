@@ -1,0 +1,49 @@
+﻿<Page x:Class="WeeXnes.Views.Settings.ChangePathsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.Settings"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="ChangePathsView" Height="Auto" Width="Auto"
+      Loaded="ChangePathsView_OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Requires Restart after changing!!!" Foreground="White"
+                           HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="(will auto close after saving)" FontSize="10" Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <ui:TextBox Name="TextboxKeyPath" PlaceholderText="Key Files Path" Margin="0,4"/>
+                <ui:TextBox Name="TextboxRPCPath" PlaceholderText="Client ID" Margin="0,4"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ui:Button
+                Padding="24,6"
+                HorizontalAlignment="Center"
+                Content="Cancel"
+                Icon="CaretLeft24"
+                Name="ButtonCancelDialog"
+                Click="ButtonCancelDialog_OnClick"/>
+            <ui:Button Grid.Column="1"
+                       Padding="24,6"
+                       HorizontalAlignment="Center"
+                       Content="Save"
+                       Icon="SaveMultiple24"
+                       Name="ButtonSaveDialog"
+                       Click="ButtonSaveDialog_OnClick"/>
+        </Grid>
+    </Grid>
+</Page>
