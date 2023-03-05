@@ -15,7 +15,8 @@
         <ListView Name="ListviewKeys"
                   Background="Transparent"
                   Foreground="White"
-                  BorderThickness="0">
+                  BorderThickness="0"
+                  SelectionChanged="ListviewKeys_OnSelectionChanged">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Remove"

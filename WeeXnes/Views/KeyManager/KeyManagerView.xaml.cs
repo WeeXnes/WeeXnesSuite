@@ -91,5 +91,13 @@ namespace WeeXnes.Views.KeyManager
             
             
         }
+
+        private void ListviewKeys_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            KeyItem selectedItem = (KeyItem)ListviewKeys.SelectedItem;
+            if(selectedItem == null)
+                return;
+            Clipboard.SetText(selectedItem.Value);
+        }
     }
 }
