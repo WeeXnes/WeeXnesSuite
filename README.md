@@ -3,9 +3,7 @@
     <br>
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/WeeXnes/WeeXnesSuite?color=%23702e94">
     
-</div>
 <h1 align="center">WeeXnes Suite</h1>
-<div align="center">
 
 Built with:
 
@@ -16,7 +14,6 @@ Built with:
 Uses:
 <a href="https://github.com/lepoco/wpfui">C# WPF-UI Library</a>
 
-</div>
 
 <h2></h2>
 
@@ -27,3 +24,9 @@ Uses:
   <h3>Discord Rich Presence</h3>
   Configurable DiscordRPC for every process you want. It detects if a process is started and starts the Rich Presence you configured for the Process
 <image src="https://cdn.discordapp.com/attachments/741123537582162020/1045710949811761293/preview3.png" height="320">
+
+
+<h2>Supported by: <a href="https://www.jetbrains.com">JetBrains</a></h2>
+<image src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" width="200"><br>
+Special thanks to JetBrains supporting this Project with their <a href="https://jb.gg/OpenSourceSupport">Open Source License Program</a>
+</div>
