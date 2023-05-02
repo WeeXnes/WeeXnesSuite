@@ -14,6 +14,7 @@ namespace WeeXnes.Views.KeyManager
         {
             public static BindingList<KeyItem> KeyItemsList = new BindingList<KeyItem>();
             public static UpdateVar<bool> censorKeys = new UpdateVar<bool>();
+            public static UpdateVar<bool> copyOnSelect = new UpdateVar<bool>();
         }
         public KeyManagerView()
         {
@@ -96,6 +97,9 @@ namespace WeeXnes.Views.KeyManager
         {
             KeyItem selectedItem = (KeyItem)ListviewKeys.SelectedItem;
             if(selectedItem == null)
+                return;
+            
+            if(!Data.copyOnSelect.Value)
                 return;
             Clipboard.SetText(selectedItem.Value);
         }

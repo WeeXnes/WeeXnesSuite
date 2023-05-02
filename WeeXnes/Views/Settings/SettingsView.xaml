@@ -57,6 +57,10 @@
                           Name="CheckboxCensorKeys"
                           Checked="CheckboxCensorKeys_OnChecked"
                           Unchecked="CheckboxCensorKeys_OnUnchecked"/>
+                <CheckBox Content="Copy Key to Clipboard when selected"
+                          Name="CheckboxCopyOnSelect"
+                          Checked="CheckboxCopyOnSelect_OnChecked"
+                          Unchecked="CheckboxCopyOnSelect_OnUnchecked"/>
                 <TextBlock Text="Discord RPC" 
                            HorizontalAlignment="Center"
                            Foreground="White"/>

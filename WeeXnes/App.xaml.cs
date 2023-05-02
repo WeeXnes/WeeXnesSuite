@@ -57,6 +57,11 @@ namespace WeeXnes
                 Convert.ToBoolean(SettingsView.Data.settingsFile.GetValue(
                     SaveSettingsHandler.Data.KeyManager.Section,
                     SaveSettingsHandler.Data.KeyManager.CensorKeys));
+
+            KeyManagerView.Data.copyOnSelect.Value =
+                Convert.ToBoolean(SettingsView.Data.settingsFile.GetValue(
+                    SaveSettingsHandler.Data.KeyManager.Section,
+                    SaveSettingsHandler.Data.KeyManager.CopyOnSelect));
             
             //Load paths
 

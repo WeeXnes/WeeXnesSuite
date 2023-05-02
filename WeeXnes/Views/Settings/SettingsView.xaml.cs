@@ -28,6 +28,7 @@ namespace WeeXnes.Views.Settings
         private void LoadSettingsToGui()
         {
             CheckboxCensorKeys.IsChecked = KeyManagerView.Data.censorKeys.Value;
+            CheckboxCopyOnSelect.IsChecked = KeyManagerView.Data.copyOnSelect.Value;
         }
         private void CheckboxCensorKeys_OnChecked(object sender, RoutedEventArgs e)
         {
@@ -108,6 +109,16 @@ namespace WeeXnes.Views.Settings
         private void ChangePathsButton_OnClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Settings/ChangePathsView.xaml",UriKind.Relative));
+        }
+
+        private void CheckboxCopyOnSelect_OnChecked(object sender, RoutedEventArgs e)
+        {
+            KeyManagerView.Data.copyOnSelect.Value = true;
+        }
+
+        private void CheckboxCopyOnSelect_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            KeyManagerView.Data.copyOnSelect.Value = false;
         }
     }
 }
