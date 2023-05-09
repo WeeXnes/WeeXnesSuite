@@ -12,7 +12,7 @@ namespace WeeXnes.Views.DiscordRPC
     {
         public static class Data
         {
-            public static UpdateVar<string> LogCache = new UpdateVar<string>();
+            public static UpdateVar<customEvent> LogCache = new UpdateVar<customEvent>();
         }
         BackgroundWorker backgroundWorker = new BackgroundWorker();
         public RunRPCView()
@@ -36,8 +36,8 @@ namespace WeeXnes.Views.DiscordRPC
             Console.WriteLine("Log Write Data: " + Data.LogCache.Value);
             this.Dispatcher.Invoke(() =>
             {
-                RichTextBoxRPCLog.AppendText(Data.LogCache.Value + "\n");
-                RichTextBoxRPCLog.ScrollToEnd();
+                RpcLogView.Items.Add(Data.LogCache.Value);
+                LogViewer.ScrollToEnd();
             });
         }
         
@@ -78,7 +78,7 @@ namespace WeeXnes.Views.DiscordRPC
 
         private void BackgroundWorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
-            Data.LogCache.Value = "RPC Thread is running";
+            Data.LogCache.Value = new customEvent("[INFO] RPC Thread is running", EventType.ProcessStartedEvent);
             bool runWorker = true;
             while (runWorker)
             {
@@ -99,7 +99,7 @@ namespace WeeXnes.Views.DiscordRPC
             foreach (Game game in DiscordRPCView.Data.Games)
                 game.Stop();
             Console.WriteLine("Thread Stopped");
-            Data.LogCache.Value = "RPC Thread has stopped";
+            Data.LogCache.Value = new customEvent("[INFO] RPC Thread has stopped", EventType.ProcessStoppedEvent);
         }
 
         private void RunRPCView_OnUnloaded(object sender, RoutedEventArgs e)
@@ -111,6 +111,12 @@ namespace WeeXnes.Views.DiscordRPC
         private void ButtonRPCStop_OnClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/DiscordRPC/DiscordRPCView.xaml",UriKind.Relative));
+        }
+
+
+        private void RpcLogView_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
