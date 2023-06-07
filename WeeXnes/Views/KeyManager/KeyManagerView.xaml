@@ -21,7 +21,13 @@
                 <ContextMenu>
                     <MenuItem Header="Remove"
                               Name="btn_context_remove"
-                              Click="MenuItem_OnClick"/>
+                              Click="ContextMenu_Remove"/>
+                    <MenuItem Header="Export"
+                              Name="btn_context_export"
+                              Click="ContextMenu_Export"/>
+                    <MenuItem Header="Import"
+                              Name="btn_context_import"
+                              Click="ContextMenu_Import"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             

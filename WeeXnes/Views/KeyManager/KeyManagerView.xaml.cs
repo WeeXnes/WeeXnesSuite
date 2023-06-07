@@ -34,6 +34,7 @@ namespace WeeXnes.Views.KeyManager
             if(String.IsNullOrEmpty(tb_keyvalue.Text))
                 return;
 
+            
             try
             {
                 KeyItem newKey = new KeyItem(
@@ -43,12 +44,13 @@ namespace WeeXnes.Views.KeyManager
                 WXFile wxFile = new WXFile(
                     Global.AppDataPathKEY.Value + "\\" + newKey.Filename);
                 WXFile.Methods.WriteFile(newKey, wxFile);
-                Data.KeyItemsList.Add(newKey);
+                KeyManagerView.Data.KeyItemsList.Add(newKey);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            
             ClearInputs();
         }
 
@@ -74,9 +76,18 @@ namespace WeeXnes.Views.KeyManager
             }
             
         }
-        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        private void ContextMenu_Remove(object sender, RoutedEventArgs e)
         {
             DeleteItem((KeyItem)ListviewKeys.SelectedItem);
+        }
+        private void ContextMenu_Import(object sender, RoutedEventArgs e)
+        {
+            KeyItem.Import();
+        }
+        private void ContextMenu_Export(object sender, RoutedEventArgs e)
+        {
+            var item = (KeyItem)ListviewKeys.SelectedItem;
+            item.Export();
         }
 
         private void KeyValue_OnLoaded(object sender, RoutedEventArgs e)
