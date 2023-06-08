@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.IO;
+using System.Windows.Media;
 using Newtonsoft.Json.Linq;
 using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
@@ -17,6 +18,7 @@ namespace WeeXnes
     /// </summary>
     public partial class App
     {
+        public static bool DebugMode = false;
         private void SetExceptionHandler()
         {
             AppDomain currentDomain = default(AppDomain);
@@ -30,6 +32,7 @@ namespace WeeXnes
             {
                 writer.WriteLine(ex.ToString());
             }
+            new FluentMessageBox(ex.Message).ShowDialog();
         }
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
@@ -142,7 +145,7 @@ namespace WeeXnes
                     );
                     newItem.Filename = file.Name;
                     KeyManagerView.Data.KeyItemsList.Add(newItem);
-                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded");
+                    WeeXnes.Core.CustomConsole.WriteLineVerbose(file.Name + " loaded");
                     
                 }
                 catch (Exception ex)
@@ -173,9 +176,10 @@ namespace WeeXnes
         
         private void CheckForDebugMode()
         {
-            #if DEBUG
+#if DEBUG
+                DebugMode = true;
                 HandleLaunchArguments.arg_enableConsole();
-            #endif
+#endif
         }
     }
 }

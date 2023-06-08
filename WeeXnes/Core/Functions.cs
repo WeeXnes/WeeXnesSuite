@@ -39,5 +39,10 @@ namespace WeeXnes.Core
             }
             File.WriteAllLines(filepath, stringArray, Encoding.UTF8);
         }
+
+        public static void ThrowTestException()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

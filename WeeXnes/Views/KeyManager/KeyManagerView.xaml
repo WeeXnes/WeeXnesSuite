@@ -19,16 +19,16 @@
                   SelectionChanged="ListviewKeys_OnSelectionChanged">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Remove"
-                              Name="btn_context_remove"
-                              Click="ContextMenu_Remove"/>
-                    <Separator />
                     <MenuItem Header="Export"
                               Name="btn_context_export"
                               Click="ContextMenu_Export"/>
                     <MenuItem Header="Import"
                               Name="btn_context_import"
                               Click="ContextMenu_Import"/>
+                    <Separator />
+                    <MenuItem Header="Remove"
+                              Name="btn_context_remove"
+                              Click="ContextMenu_Remove"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             

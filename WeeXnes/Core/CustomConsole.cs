@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using VanillaConsole = System.Console;
@@ -33,14 +34,11 @@ namespace WeeXnes.Core
             ConsoleColor color,
             ConsoleColor foregroundColor = ConsoleColor.White)
         {
-            try
-            {
-                VanillaConsole.OutputEncoding = Encoding.UTF8;
-            }
-            catch (Exception ex)
-            {
-                VanillaConsole.WriteLine("error setting OutputEncoding to UTF8");
-            }
+            if(!App.DebugMode)
+                return;
+            
+            VanillaConsole.OutputEncoding = Encoding.UTF8;
+           
             ConsoleColor prevColor = VanillaConsole.BackgroundColor;
             ConsoleColor prevForeColor = VanillaConsole.ForegroundColor;
             if (Data.Colors.colored_output)
@@ -63,6 +61,13 @@ namespace WeeXnes.Core
             [CallerMemberName] string caller = null)
         {
             ConfiguredWriteline(" " + Data.Formatting.writeline_char + " (" + lineNumber + "|" + caller + ") " + text,VanillaConsole.BackgroundColor, ConsoleColor.White);
+        }
+        public static void WriteLineVerbose(string text,
+            [CallerLineNumber] int lineNumber = 0,
+            [CallerMemberName] string caller = null,
+            [CallerFilePath] string filePath = null)
+        {
+            ConfiguredWriteline(" " + Data.Formatting.writeline_char + " (" + Path.GetFileName(filePath) + "|" + caller + "|" + lineNumber + ") " + text,VanillaConsole.BackgroundColor, ConsoleColor.White);
         }
         public static void WriteLine(float text,
             [CallerLineNumber] int lineNumber = 0,

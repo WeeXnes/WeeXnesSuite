@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using WeeXnes.Core;
+using MessageBox = System.Windows.MessageBox;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace WeeXnes.Views.Settings
 {
@@ -28,6 +32,30 @@ namespace WeeXnes.Views.Settings
             Global.AppDataPathRPC.Value = TextboxRPCPath.Text;
             Global.AppDataPathKEY.Value = TextboxKeyPath.Text;
             Global.ForceClose();
+        }
+
+        private void ContextMenu_SelectKfFolder(object sender, RoutedEventArgs e)
+        {
+            CallOpenFolderDialog(TextboxKeyPath);
+        }
+        private void ContextMenu_SelectRpcFolder(object sender, RoutedEventArgs e)
+        {
+            CallOpenFolderDialog(TextboxRPCPath);
+        }
+
+        private void CallOpenFolderDialog(TextBox textBoxToChange)
+        {
+
+
+            using(var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    textBoxToChange.Text = fbd.SelectedPath;
+                }
+            }
         }
     }
 }

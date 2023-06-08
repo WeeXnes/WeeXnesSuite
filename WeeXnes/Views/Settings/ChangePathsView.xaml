@@ -20,8 +20,25 @@
                 
                 <TextBlock Text="(will auto close after saving)" FontSize="10" Foreground="White"
                            HorizontalAlignment="Center"/>
-                <ui:TextBox Name="TextboxKeyPath" PlaceholderText="Key Files Path" Margin="0,4"/>
-                <ui:TextBox Name="TextboxRPCPath" PlaceholderText="Client ID" Margin="0,4"/>
+                <ui:TextBox Name="TextboxKeyPath" PlaceholderText="Key Files Path" Margin="0,4">
+                    <ui:TextBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Select Folder for Key Files"
+                                      Name="btn_context_selFolderKF"
+                                      Click="ContextMenu_SelectKfFolder"/>
+                        </ContextMenu>
+                    </ui:TextBox.ContextMenu>
+                </ui:TextBox>
+                <ui:TextBox Name="TextboxRPCPath" PlaceholderText="Client ID" Margin="0,4">
+                    <ui:TextBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Select Folder for RPC Files"
+                                      Name="btn_context_selFolderRPC"
+                                      Click="ContextMenu_SelectRpcFolder"
+                            />
+                        </ContextMenu>
+                    </ui:TextBox.ContextMenu>
+                </ui:TextBox>
             </StackPanel>
         </ScrollViewer>
         
