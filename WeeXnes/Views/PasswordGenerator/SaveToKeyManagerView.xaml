@@ -1,0 +1,17 @@
+﻿<Page x:Class="WeeXnes.Views.PasswordGenerator.SaveToKeyManagerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.PasswordGenerator"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="SaveToKeyManagerView" Height="Auto" Width="Auto">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Save password to KeyManager: " Foreground="White" FontSize="20"/>
+            <ui:TextBox PlaceholderText="Name for Password" Name="tb_keyname"/>
+            <ui:Button Content="Save" HorizontalAlignment="Stretch" Click="SavePassword" Margin="0,3"/>
+        </StackPanel>
+    </Grid>
+</Page>

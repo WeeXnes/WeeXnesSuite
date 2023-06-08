@@ -148,7 +148,7 @@ namespace WeeXnes
                     );
                     newItem.Filename = file.Name;
                     KeyManagerView.Data.KeyItemsList.Add(newItem);
-                    WeeXnes.Core.CustomConsole.WriteLineVerbose(file.Name + " loaded");
+                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded");
                     
                 }
                 catch (Exception ex)

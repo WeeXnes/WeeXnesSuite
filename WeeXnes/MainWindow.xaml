@@ -8,6 +8,7 @@
              xmlns:keymanager="clr-namespace:WeeXnes.Views.KeyManager"
              xmlns:settings="clr-namespace:WeeXnes.Views.Settings"
              xmlns:discordrpc="clr-namespace:WeeXnes.Views.DiscordRPC"
+             xmlns:passwordGenerator="clr-namespace:WeeXnes.Views.PasswordGenerator"
              mc:Ignorable="d"
              Height="400" 
              Width="500"
@@ -69,17 +70,23 @@
                         Name="ButtonHome"
                         PageType="{x:Type home:HomeView}"/>
                     <ui:NavigationItem 
-                        Content="Keys" 
-                        Icon="Key24"
-                        PageTag="Keys"
-                        PageType="{x:Type keymanager:KeyManagerView}"/>
-                    <ui:NavigationItem 
                         Content="RPC" 
                         Icon="XboxController24"
                         Name="ButtonRpc"
                         PageTag="RPC"
                         PageType="{x:Type discordrpc:DiscordRPCView}"
                         Loaded="RPCBtn_OnLoaded"/>
+                    <ui:NavigationItem 
+                        Content="Keys" 
+                        Icon="Key24"
+                        PageTag="Keys"
+                        PageType="{x:Type keymanager:KeyManagerView}"/>
+                    <ui:NavigationItem 
+                        Content="Gen." 
+                        Icon="Password24"
+                        Name="ButtonPwGen"
+                        PageTag="Gen"
+                        PageType="{x:Type passwordGenerator:PasswordGenView}"/>
                 </ui:NavigationStore.Items>
                 <ui:NavigationStore.Footer>
                     <ui:NavigationItem 
