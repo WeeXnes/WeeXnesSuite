@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WeeXnes.Views.KeyManager"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d"
       Title="KeyManagerView" Height="Auto" Width="Auto"
       Loaded="KeyManagerView_OnLoaded">
@@ -57,14 +58,14 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="100px"/>
             </Grid.ColumnDefinitions>
-            <TextBox 
+            <ui:TextBox
                 Grid.Column="0"
                 Margin="0,0,5,0"
-                Name="tb_keyname"/>
-            <TextBox 
+                Name="tb_keyname" PlaceholderText="Name"/>
+            <ui:TextBox
                 Grid.Column="1"
                 Margin="5,0,0,0"
-                Name="tb_keyvalue"/>
+                Name="tb_keyvalue" PlaceholderText="Key"/>
             <Button Grid.Column="2" 
                     Content="Add" 
                     Height="35px" 

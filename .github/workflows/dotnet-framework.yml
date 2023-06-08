@@ -30,17 +30,6 @@ jobs:
       run: |
         msbuild.exe WeeXnes.sln /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release"
         
-    - name: List Folder 1
-      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\    
-    - name: List Folder 2
-      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\    
-    - name: List Folder 3
-      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\    
-    - name: List Folder 4
-      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Update\bin\Release\ 
-    - name: List Folder 5
-      run: dir D:\a\WeeXnesSuite\WeeXnesSuite\Release_Tool\bin\Release\
-        
       
     - name: Format Xaml to XML
       run: (gc Weexnes\WeeXnes.csproj) -replace ' ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"', '' | Out-File -encoding ASCII formatted.csproj 
@@ -68,12 +57,8 @@ jobs:
       shell: pwsh
       
       
-    - name: Check for Zip
-      run: dir
-    
-    
      
-    - name: release
+    - name: Create Release
       uses: actions/create-release@v1
       id: create_release
       with:
@@ -83,7 +68,7 @@ jobs:
         tag_name: ${{ steps.get_version.outputs.version }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    - name: upload windows artifact
+    - name: Upload windows artifact
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ github.token }}

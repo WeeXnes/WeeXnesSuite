@@ -28,8 +28,11 @@ namespace WeeXnes
         private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = (Exception)e.ExceptionObject;
+            DateTime currentDateTime = DateTime.Now;
+            string formattedDateTime = currentDateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss");
             using (StreamWriter writer = new StreamWriter("error_log.txt"))
             {
+                writer.WriteLine(formattedDateTime);
                 writer.WriteLine(ex.ToString());
             }
             new FluentMessageBox(ex.Message).ShowDialog();
