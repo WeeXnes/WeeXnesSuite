@@ -8,6 +8,7 @@ namespace WeeXnes.Views.PasswordGenerator
 {
     public partial class SaveToKeyManagerView : Page
     {
+        
         public SaveToKeyManagerView()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace WeeXnes.Views.PasswordGenerator
             {
                 Console.WriteLine(ex.Message);
             }
-            NavigationService.Navigate(new Uri("/Views/PasswordGenerator/PasswordGenView.xaml",UriKind.Relative));
+            NavigationService.Navigate(SavePasswordView._prevPage);
         }
     }
 }

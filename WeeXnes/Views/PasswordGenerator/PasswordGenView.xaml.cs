@@ -56,6 +56,7 @@ namespace WeeXnes.Views.PasswordGenerator
             }
 
             SavePasswordView.GeneratedPassword = generatedPassword;
+            SavePasswordView._prevPage = this;
             NavigationService.Navigate(new Uri("/Views/PasswordGenerator/SavePasswordView.xaml",UriKind.Relative));
         }
 

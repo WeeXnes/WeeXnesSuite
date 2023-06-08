@@ -7,6 +7,7 @@ namespace WeeXnes.Views.PasswordGenerator
     public partial class SavePasswordView : Page
     {
         public static string GeneratedPassword = "";
+        public static PasswordGenView _prevPage = null;
         public SavePasswordView()
         {
             InitializeComponent();
@@ -19,7 +20,8 @@ namespace WeeXnes.Views.PasswordGenerator
 
         private void CloseDialog(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/PasswordGenerator/PasswordGenView.xaml",UriKind.Relative));
+            if(_prevPage != null)
+                NavigationService.Navigate(_prevPage);
         }
         private void CopyToClipboard(object sender, RoutedEventArgs e)
         {
