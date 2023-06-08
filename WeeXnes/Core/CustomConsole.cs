@@ -33,7 +33,14 @@ namespace WeeXnes.Core
             ConsoleColor color,
             ConsoleColor foregroundColor = ConsoleColor.White)
         {
-            VanillaConsole.OutputEncoding = Encoding.UTF8;
+            try
+            {
+                VanillaConsole.OutputEncoding = Encoding.UTF8;
+            }
+            catch (Exception ex)
+            {
+                VanillaConsole.WriteLine("error setting OutputEncoding to UTF8");
+            }
             ConsoleColor prevColor = VanillaConsole.BackgroundColor;
             ConsoleColor prevForeColor = VanillaConsole.ForegroundColor;
             if (Data.Colors.colored_output)
