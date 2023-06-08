@@ -4,7 +4,10 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
+using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
+using CConsole = WeeXnes.Core.CustomConsole;
 
 namespace WeeXnes.Views.DiscordRPC
 {
@@ -42,14 +45,66 @@ namespace WeeXnes.Views.DiscordRPC
             Data.SelectedItem = (Game)listBox.SelectedItem;
         }
 
-        private void ContextEdit_OnClick(object sender, RoutedEventArgs e)
+        private void ContextMenu_Edit(object sender, RoutedEventArgs e)
         {
             if(Data.SelectedItem == null)
                 return;
             NavigationService.Navigate(new Uri("/Views/DiscordRPC/EditRPCView.xaml",UriKind.Relative));
         }
+        private void ContextMenu_Export(object sender, RoutedEventArgs e)
+        {
+            Game selectedCache = Data.SelectedItem;
+            if(selectedCache == null)
+                return;
+            string filepath = Global.AppDataPathRPC.Value + "\\" + selectedCache.UUID + ".rpc";
+            
+            SaveFileDialog dialog = new SaveFileDialog()
+            {
+                FileName = selectedCache.UUID, 
+                Filter = "RPC File (*.rpc)|*.rpc",
+                Title = "Export RPC File"
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                File.Copy(filepath, dialog.FileName, true);
+                CustomConsole.WriteLine("Exported to: " + dialog.FileName);
+            }
+            
+        }
+        private void ContextMenu_Import(object sender, RoutedEventArgs e)
+        {
+            Game selectedCache = Data.SelectedItem;
+            if(selectedCache == null)
+                return;
+            
+            
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "RPC File (*.rpc)|*.rpc",
+                Title = "Import RPC File"
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                
+                Game newGame = Game.Methods.GameFromIni(new INIFile(dialog.FileName));
+                
+                if (!File.Exists(Global.AppDataPathRPC.Value + "\\" + newGame.UUID + ".rpc"))
+                {
+                    File.Copy(dialog.FileName, Global.AppDataPathRPC.Value + "\\" + newGame.UUID + ".rpc", true);
+                    DiscordRPCView.Data.Games.Add(newGame);
+                    CustomConsole.WriteLine("Imported: " + dialog.FileName);
+                }
+                else
+                {
+                    CustomConsole.Error("not imported: " + dialog.FileName);
+                }
+                
+                
+            }
+            
+        }
 
-        private void ContextRemove_OnClick(object sender, RoutedEventArgs e)
+        private void ContextMenu_Remove(object sender, RoutedEventArgs e)
         {
             Game selectedCache = Data.SelectedItem;
             if(selectedCache == null)

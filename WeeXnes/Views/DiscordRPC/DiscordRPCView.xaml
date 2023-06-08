@@ -24,11 +24,17 @@
                     <ContextMenu>
                         <MenuItem Header="Edit"
                                   Name="ButtonContextEdit"
-                                  Click="ContextEdit_OnClick"/>
+                                  Click="ContextMenu_Edit"/>
+                        <MenuItem Header="Export"
+                                  Name="ButtonContextExport"
+                                  Click="ContextMenu_Export"/>
+                        <MenuItem Header="Import"
+                                  Name="ButtonContextImport"
+                                  Click="ContextMenu_Import"/>
                         <Separator />
                         <MenuItem Header="Remove"
                                   Name="ButtonContextRemove"
-                                  Click="ContextRemove_OnClick"/>
+                                  Click="ContextMenu_Remove"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>

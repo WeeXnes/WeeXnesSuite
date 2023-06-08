@@ -6,6 +6,7 @@ using System.Net;
 using Wpf.Ui.Controls;
 using Microsoft.Win32;
 using Path = System.Windows.Shapes.Path;
+using Console = WeeXnes.Core.CustomConsole;
 
 namespace WeeXnes.Views.KeyManager
 {
@@ -34,6 +35,7 @@ namespace WeeXnes.Views.KeyManager
 
             SaveFileDialog dialog = new SaveFileDialog()
             {
+                FileName = this.Filename,
                 Filter = "WXFiles (*.wx)|*.wx",
                 Title = "Export KeyFile"
             };
@@ -48,10 +50,12 @@ namespace WeeXnes.Views.KeyManager
         {
             OpenFileDialog dialog = new OpenFileDialog()
             {
-                Filter = "WXFiles (*.wx)|*.wx"
+                Filter = "WXFiles (*.wx)|*.wx",
+                Title = "Import KeyFile"
             };
             if (dialog.ShowDialog() == true)
             {
+                string filename = System.IO.Path.GetFileName(dialog.FileName);
                 WXFile wxFile = new WXFile(dialog.FileName);
                 KeyItem newItem = new KeyItem(
                     wxFile.GetName(), 
@@ -60,11 +64,17 @@ namespace WeeXnes.Views.KeyManager
                         wxFile.GetValue()
                     )
                 );
-                newItem.Filename = System.IO.Path.GetFileName(dialog.FileName);
-                WXFile newWxFile = new WXFile(Global.AppDataPathKEY.Value + "\\" + newItem.Filename);
-                WXFile.Methods.WriteFile(newItem, newWxFile);
-                KeyManagerView.Data.KeyItemsList.Add(newItem);
-                Console.WriteLine("Imported: " + dialog.FileName);
+                newItem.Filename = filename;
+                if (!File.Exists(Global.AppDataPathKEY.Value + "\\" + filename))
+                {
+                    File.Copy(dialog.FileName, Global.AppDataPathKEY.Value + "\\" + filename, true);
+                    KeyManagerView.Data.KeyItemsList.Add(newItem);
+                    Console.WriteLine("Imported: " + dialog.FileName);
+                }
+                else
+                {
+                    Console.Error("Not Imported, already exists: " + dialog.FileName);
+                }
             }
         }
     }
