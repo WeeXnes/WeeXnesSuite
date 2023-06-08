@@ -17,9 +17,24 @@ namespace WeeXnes
     /// </summary>
     public partial class App
     {
+        private void SetExceptionHandler()
+        {
+            AppDomain currentDomain = default(AppDomain);
+            currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
+        }
+        private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = (Exception)e.ExceptionObject;
+            using (StreamWriter writer = new StreamWriter("error_log.txt"))
+            {
+                writer.WriteLine(ex.ToString());
+            }
+        }
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             Environment.CurrentDirectory = Application.StartupPath;
+            SetExceptionHandler();
             CheckForDebugMode();
             CheckUpdatedFiles();
             CheckForFolder();
