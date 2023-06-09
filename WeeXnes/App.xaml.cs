@@ -84,6 +84,11 @@ namespace WeeXnes
                     SaveSettingsHandler.Data.KeyManager.Section,
                     SaveSettingsHandler.Data.KeyManager.CopyOnSelect));
             
+            KeyManagerView.Data.sortList.Value =
+                Convert.ToBoolean(SettingsView.Data.settingsFile.GetValue(
+                    SaveSettingsHandler.Data.KeyManager.Section,
+                    SaveSettingsHandler.Data.KeyManager.SortList));
+            
             //Load paths
 
             string customRpcPath = SettingsView.Data.settingsFile.GetValue(

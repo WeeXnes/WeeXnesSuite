@@ -61,6 +61,10 @@
                           Name="CheckboxCopyOnSelect"
                           Checked="CheckboxCopyOnSelect_OnChecked"
                           Unchecked="CheckboxCopyOnSelect_OnUnchecked"/>
+                <CheckBox Content="Sort Keys alphabetically"
+                          Name="CheckboxSortKeys"
+                          Checked="CheckboxSortKeys_OnChecked"
+                          Unchecked="CheckboxSortKeys_OnUnchecked"/>
                 <TextBlock Text="Discord RPC" 
                            HorizontalAlignment="Center"
                            Foreground="White"/>

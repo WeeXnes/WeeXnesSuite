@@ -17,7 +17,9 @@
                   Background="Transparent"
                   Foreground="White"
                   BorderThickness="0"
-                  SelectionChanged="ListviewKeys_OnSelectionChanged">
+                  SelectionChanged="ListviewKeys_OnSelectionChanged"
+                  IsTextSearchEnabled="True"
+                  >
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Export"

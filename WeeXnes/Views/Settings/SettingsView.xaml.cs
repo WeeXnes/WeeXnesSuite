@@ -29,6 +29,7 @@ namespace WeeXnes.Views.Settings
         {
             CheckboxCensorKeys.IsChecked = KeyManagerView.Data.censorKeys.Value;
             CheckboxCopyOnSelect.IsChecked = KeyManagerView.Data.copyOnSelect.Value;
+            CheckboxSortKeys.IsChecked = KeyManagerView.Data.sortList.Value;
         }
         private void CheckboxCensorKeys_OnChecked(object sender, RoutedEventArgs e)
         {
@@ -119,6 +120,16 @@ namespace WeeXnes.Views.Settings
         private void CheckboxCopyOnSelect_OnUnchecked(object sender, RoutedEventArgs e)
         {
             KeyManagerView.Data.copyOnSelect.Value = false;
+        }
+
+        private void CheckboxSortKeys_OnChecked(object sender, RoutedEventArgs e)
+        {
+            KeyManagerView.Data.sortList.Value = true;
+        }
+
+        private void CheckboxSortKeys_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            KeyManagerView.Data.sortList.Value = false;
         }
     }
 }

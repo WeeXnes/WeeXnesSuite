@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WeeXnes.Core;
@@ -15,6 +16,7 @@ namespace WeeXnes.Views.KeyManager
             public static BindingList<KeyItem> KeyItemsList = new BindingList<KeyItem>();
             public static UpdateVar<bool> censorKeys = new UpdateVar<bool>();
             public static UpdateVar<bool> copyOnSelect = new UpdateVar<bool>();
+            public static UpdateVar<bool> sortList = new UpdateVar<bool>();
         }
         public KeyManagerView()
         {
@@ -24,6 +26,9 @@ namespace WeeXnes.Views.KeyManager
         }
         private void KeyManagerView_OnLoaded(object sender, RoutedEventArgs e)
         {
+            if(Data.sortList.Value)
+                resortList();
+            
             ListviewKeys.Items.Refresh();
         }
 
@@ -52,6 +57,16 @@ namespace WeeXnes.Views.KeyManager
             }
             
             ClearInputs();
+            
+            if(Data.sortList.Value)
+                resortList();
+        }
+
+        private void resortList()
+        {
+            BindingList<KeyItem> newList = new BindingList<KeyItem>(Data.KeyItemsList.OrderBy(x => x.Name).ToList());
+            Data.KeyItemsList = newList;
+            ListviewKeys.ItemsSource = Data.KeyItemsList;
         }
 
         private void ClearInputs()

@@ -24,6 +24,7 @@ namespace WeeXnes.Core
                 public const string Section = "KEY_MANAGER";
                 public const string CensorKeys = "CensorKeys";
                 public const string CopyOnSelect = "CopyOnSelect";
+                public const string SortList = "SortList";
             }
             public static class DiscordRpcFiles
             {
@@ -58,6 +59,18 @@ namespace WeeXnes.Core
                     KeyManagerView.Data.copyOnSelect.Value.ToString()
                 );
             };
+            
+            
+            KeyManagerView.Data.sortList.ValueChanged += () =>
+            {
+                SettingsView.Data.settingsFile.SetValue(
+                    Data.KeyManager.Section,
+                    Data.KeyManager.SortList, 
+                    KeyManagerView.Data.sortList.Value.ToString()
+                );
+            };
+            
+            
             Global.AppDataPathRPC.ValueChanged += () =>
             {
                 SettingsView.Data.settingsFile.SetValue(
