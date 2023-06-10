@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
 using Application = System.Windows.Forms.Application;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using Newtonsoft.Json;
 using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
@@ -23,8 +25,16 @@ namespace WeeXnes.Views.Settings
         {
             InitializeComponent();
             LoadSettingsToGui();
+            EnableDebugOptions();
         }
 
+        private void EnableDebugOptions()
+        {
+            if(!App.DebugMode)
+                return;
+            
+            DebugOptions.Visibility = Visibility.Visible;
+        }
         private void LoadSettingsToGui()
         {
             CheckboxCensorKeys.IsChecked = KeyManagerView.Data.censorKeys.Value;
@@ -130,6 +140,11 @@ namespace WeeXnes.Views.Settings
         private void CheckboxSortKeys_OnUnchecked(object sender, RoutedEventArgs e)
         {
             KeyManagerView.Data.sortList.Value = false;
+        }
+
+        private void dbg_throwException(object sender, RoutedEventArgs e)
+        {
+            Functions.ThrowTestException(new ArithmeticException());
         }
     }
 }

@@ -40,9 +40,11 @@ namespace WeeXnes.Core
             File.WriteAllLines(filepath, stringArray, Encoding.UTF8);
         }
 
-        public static void ThrowTestException()
+        public static void ThrowTestException(Exception ex = null)
         {
-            throw new NotImplementedException();
+            if (ex == null)
+                ex = new NotImplementedException();
+            throw ex;
         }
     }
 }

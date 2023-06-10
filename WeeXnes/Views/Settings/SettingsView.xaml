@@ -103,6 +103,19 @@
                     
                     
                 </Grid>
+                <StackPanel Orientation="Vertical" Visibility="Collapsed" Name="DebugOptions">
+                    <Label Content="Debug" HorizontalAlignment="Center"/>
+                    <ui:CardAction Icon="ErrorCircle24"
+                                   Click="dbg_throwException">
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,0,4"
+                                FontWeight="Medium"
+                                Text="Throw Exception"
+                            />
+                        </StackPanel>
+                    </ui:CardAction>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>
