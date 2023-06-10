@@ -23,6 +23,7 @@ Uses:
 <image src="https://cdn.discordapp.com/attachments/741123537582162020/1045710949442658314/preview2.png" height="400">
   <h3>Discord Rich Presence</h3>
   Configurable DiscordRPC for every process you want. It detects if a process is started and starts the Rich Presence you configured for the Process
+  <br>
 <image src="https://cdn.discordapp.com/attachments/741123537582162020/1045710949811761293/preview3.png" height="320">
 
 
