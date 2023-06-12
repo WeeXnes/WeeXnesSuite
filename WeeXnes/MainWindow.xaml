@@ -46,6 +46,9 @@
                             <MenuItem 
                                 Header="Stop RPC"
                                 Click="ContextStopRpc_OnClick"/>
+                            <MenuItem 
+                                Header="Exit"
+                                Click="ContextExit_OnClick"/>
                         </ContextMenu>
                     </ui:NotifyIcon.Menu>
                 </ui:NotifyIcon>

@@ -25,7 +25,8 @@ namespace WeeXnes
             {
                 ButtonRpc.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 MainFrame.Source = new Uri("/Views/DiscordRPC/RunRPCView.xaml",UriKind.Relative);
-                WindowState = WindowState.Minimized;
+                this.Visibility = Visibility.Collapsed;
+                this.ShowInTaskbar = false;
             }
         }
 
@@ -42,8 +43,15 @@ namespace WeeXnes
 
         private void NotifyIcon_OnLeftClick(NotifyIcon sender, RoutedEventArgs e)
         {
+            
+            this.ShowInTaskbar = true;
             this.Show();
         }
+        private void ContextExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        
     }
 }
 
