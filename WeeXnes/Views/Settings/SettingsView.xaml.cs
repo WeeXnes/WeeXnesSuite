@@ -146,5 +146,27 @@ namespace WeeXnes.Views.Settings
         {
             Functions.ThrowTestException(new ArithmeticException());
         }
+
+        private void TimedShutdown_OnClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C shutdown -s -t " + (Convert.ToInt32(ShutdownTimer.Value)*60).ToString();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void ResetShutdown_OnClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C shutdown -a";
+            process.StartInfo = startInfo;
+            process.Start();
+        }
     }
 }

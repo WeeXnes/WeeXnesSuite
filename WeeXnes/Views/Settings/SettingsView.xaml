@@ -103,6 +103,15 @@
                     
                     
                 </Grid>
+                
+                
+                <StackPanel Orientation="Vertical" Name="MiscOptions" Margin="0,0,0,5">
+                    <Label Content="set automatic shutdown" HorizontalAlignment="Center"/>
+                    <ui:NumberBox Name="ShutdownTimer"/>
+                    <ui:Button Content="Set" HorizontalAlignment="Stretch" Margin="0,5,0,5" Click="TimedShutdown_OnClick"/>
+                    <ui:Button Content="Reset" HorizontalAlignment="Stretch" Click="ResetShutdown_OnClick"/>
+                </StackPanel>
+                
                 <StackPanel Orientation="Vertical" Visibility="Collapsed" Name="DebugOptions">
                     <Label Content="Debug" HorizontalAlignment="Center"/>
                     <ui:CardAction Icon="ErrorCircle24"
