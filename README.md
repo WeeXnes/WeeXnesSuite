@@ -53,6 +53,10 @@ Uses:
 <image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161498771468439/settings.png" height="400">
 
 
+coming soon:
+- Modular Plugin Loader so anyone can extend the functionality of the programm easily
+
+
 <h2>Supported by: <a href="https://www.jetbrains.com">JetBrains</a></h2>
 <image src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" width="200"><br>
 Special thanks to JetBrains supporting this Project with their <a href="https://jb.gg/OpenSourceSupport">Open Source License Program</a>
