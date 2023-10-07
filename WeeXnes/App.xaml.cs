@@ -127,12 +127,12 @@ namespace WeeXnes
                 {
                     Game newGame = Game.Methods.GameFromIni(new INIFile(file.FullName));
                     DiscordRPCView.Data.Games.Add(newGame);
-                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded");
+                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded -> " + newGame.ProcessName);
                 }
                 catch (Exception ex)
                 {
                     WeeXnes.Core.CustomConsole.Error(file.Name + ": " + ex.Message);
-                    MessageBox.Show(file.Name + ": " + ex.Message);
+                    new FluentMessageBox(file.Name + ": " + ex.Message).ShowDialog();
                 }
             }
             Functions.CheckFolderAndCreate(Global.AppDataPathKEY.Value);
@@ -153,12 +153,13 @@ namespace WeeXnes
                     );
                     newItem.Filename = file.Name;
                     KeyManagerView.Data.KeyItemsList.Add(newItem);
-                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded");
+                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded -> " + newItem.Name);
                     
                 }
                 catch (Exception ex)
                 {
                     WeeXnes.Core.CustomConsole.Error(file.Name + ": " + ex.Message);
+                    new FluentMessageBox(file.Name + ": " + ex.Message).ShowDialog();
                 }
             }
         }

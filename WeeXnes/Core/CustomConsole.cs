@@ -21,11 +21,11 @@ namespace WeeXnes.Core
 
             public static class Formatting
             {
-                public static string success_char = "";
-                public static string warning_char = "";
-                public static string info_char = "";
-                public static string error_char = "";
-                public static string writeline_char = "";
+                public static string success_char = "✓";
+                public static string warning_char = "⌬";
+                public static string info_char = "◈";
+                public static string error_char = "☓";
+                public static string writeline_char = "•";
             }
         }
         
@@ -37,7 +37,7 @@ namespace WeeXnes.Core
             if(!App.DebugMode)
                 return;
             
-            VanillaConsole.OutputEncoding = Encoding.UTF8;
+            //VanillaConsole.OutputEncoding = Encoding.UTF8;
            
             ConsoleColor prevColor = VanillaConsole.BackgroundColor;
             ConsoleColor prevForeColor = VanillaConsole.ForegroundColor;
