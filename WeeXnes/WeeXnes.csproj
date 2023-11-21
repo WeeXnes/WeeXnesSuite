@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>4.4.7</Version>
+        <Version>4.4.8</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -106,6 +106,9 @@
         <Compile Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml.cs">
           <DependentUpon>SaveToKeyManagerView.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Views\ProfileView\LoginError.xaml.cs">
+          <DependentUpon>LoginError.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Views\ProfileView\LoginView.xaml.cs">
           <DependentUpon>LoginView.xaml</DependentUpon>
         </Compile>
@@ -150,6 +153,7 @@
         <Page Include="Views\PasswordGenerator\PasswordGenView.xaml" />
         <Page Include="Views\PasswordGenerator\SavePasswordView.xaml" />
         <Page Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml" />
+        <Page Include="Views\ProfileView\LoginError.xaml" />
         <Page Include="Views\ProfileView\LoginView.xaml" />
         <Page Include="Views\ProfileView\ProfileView.xaml" />
         <Page Include="Views\Settings\ChangePathsView.xaml" />

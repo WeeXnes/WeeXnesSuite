@@ -19,7 +19,7 @@ namespace WeeXnes.Core
         }
         public static void arg_debugMode()
         {
-            
+            MessageBox.Show("user debug mode enabled");
         }
         public static void arg_enableConsole()
         {

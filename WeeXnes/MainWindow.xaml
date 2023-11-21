@@ -91,13 +91,13 @@
                         Name="ButtonPwGen"
                         PageTag="Gen"
                         PageType="{x:Type passwordGenerator:PasswordGenView}"/>
-                    <ui:NavigationItem 
+                    <ui:NavigationItem
                         Visibility="Collapsed"
                         Content="Profile" 
                         Icon="InprivateAccount24"
                         Name="ButtonProfile"
                         PageTag="Profile"
-                        PageType="{x:Type profile:ProfileView}"/>
+                        PageType="{x:Type profile:LoginView}"/>
                 </ui:NavigationStore.Items>
                 <ui:NavigationStore.Footer>
                     <ui:NavigationItem 

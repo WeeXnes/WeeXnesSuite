@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http;
 using Newtonsoft.Json;
+using WeeXnes.Views.ProfileView;
 using WeeXnes.Views.Settings;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -73,10 +74,12 @@ namespace WeeXnes.Core
                     _token = token;
                     return token;
                     //Console.WriteLine($"Token: {token}");
+                    
                 }
                 else
                 {
                     WeeXnes.Core.CustomConsole.WriteLine("Error: " + response.StatusCode);
+                    LoginView.errorStringCache.Value = response.StatusCode.ToString();
                     return null;
                 }
             }
@@ -116,6 +119,7 @@ namespace WeeXnes.Core
                     //Console.WriteLine($"Email: {user.email}");
                     // Access other properties as needed
                     _currentUserCache.Value = user;
+                    LoginView.alreadyLoggedIn = true;
                     return user;
                 }
                 else
@@ -124,6 +128,8 @@ namespace WeeXnes.Core
                     _currentUserCache.Value = null;
                     
                     WeeXnes.Core.CustomConsole.WriteLine("Error: " + response.StatusCode);
+                    
+                    LoginView.errorStringCache.Value = response.StatusCode.ToString();
                     return null;
                 }
             }

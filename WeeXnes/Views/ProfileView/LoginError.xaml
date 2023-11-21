@@ -1,0 +1,15 @@
+﻿<Page x:Class="WeeXnes.Views.ProfileView.LoginError"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.ProfileView"
+      mc:Ignorable="d"
+      Title="LoginError" Height="Auto" Width="Auto">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <Label Content="wrong credentials" HorizontalAlignment="Center" Padding="0,0,0,10"/>
+            <Button Content="Back to login" HorizontalAlignment="Center" Click="ButtonBase_OnClick"/>
+        </StackPanel>
+    </Grid>
+</Page>

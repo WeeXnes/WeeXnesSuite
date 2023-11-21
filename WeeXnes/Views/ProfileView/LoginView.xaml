@@ -5,8 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WeeXnes.Views.ProfileView"
       mc:Ignorable="d"
-      Title="LoginView" Height="450" Width="800">
+      Title="LoginView" Height="Auto" Width="Auto"
+      Loaded="LoginView_OnLoaded">
     <Grid>
-        
+        <StackPanel>
+            <Label Content="Email:"/>
+            <TextBox Name="tb_email" Margin="0,0,0,10" KeyDown="InputKeydown"/>
+            <Label Content="Password:"/>
+            <TextBox Name="tb_password" Margin="0,0,0,10" KeyDown="InputKeydown"/>
+            <Button Content="Login" HorizontalAlignment="Center" Name="LoginButton" Click="LoginButton_OnClick"/>
+        </StackPanel>
     </Grid>
 </Page>

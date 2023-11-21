@@ -16,13 +16,13 @@ namespace WeeXnes.Views.ProfileView
         public ProfileView()
         {
             InitializeComponent();
-            auth._email = "";
-            auth._password = "";
         }
         private void ProfileView_OnLoaded(object sender, RoutedEventArgs e)
         {
             auth.ExceptionCache.ValueChanged += LoginWorkerException;
             auth._currentUserCache.ValueChanged += userCacheChanged;
+            LoginView.errorStringCache.ValueChanged += errorStringChanged;
+            WeeXnes.Core.CustomConsole.WriteLine("Error Hooks loaded");
             
             WeeXnes.Core.CustomConsole.WriteLine("Event hooks loaded");
             if (auth._currentUserCache.Value == null)
@@ -32,6 +32,7 @@ namespace WeeXnes.Views.ProfileView
             }
             else
             {
+                LoadProfileToGui();
                 ProfileContentPanel.Visibility = Visibility.Visible;
             }
         }
@@ -49,8 +50,11 @@ namespace WeeXnes.Views.ProfileView
             }
             else
             {
-                ProfileContentPanel.Visibility = Visibility.Collapsed;
-                LoadingScreen.Visibility = Visibility.Visible;
+                this.Dispatcher.Invoke(() =>
+                {
+                    ProfileContentPanel.Visibility = Visibility.Collapsed;
+                    LoadingScreen.Visibility = Visibility.Visible;
+                });
             }
         }
 
@@ -76,8 +80,16 @@ namespace WeeXnes.Views.ProfileView
             
             auth.ExceptionCache.ValueChanged -= LoginWorkerException;
             auth._currentUserCache.ValueChanged -= userCacheChanged;
+            LoginView.errorStringCache.ValueChanged -= errorStringChanged;
             
             WeeXnes.Core.CustomConsole.WriteLine("Event hooks unloaded");
+        }
+        private void errorStringChanged()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                NavigationService.Navigate(new Uri("/Views/ProfileView/LoginError.xaml",UriKind.Relative));
+            });
         }
     }
 }
