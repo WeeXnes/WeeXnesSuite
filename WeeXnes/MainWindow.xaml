@@ -9,6 +9,7 @@
              xmlns:settings="clr-namespace:WeeXnes.Views.Settings"
              xmlns:discordrpc="clr-namespace:WeeXnes.Views.DiscordRPC"
              xmlns:passwordGenerator="clr-namespace:WeeXnes.Views.PasswordGenerator"
+             xmlns:profile="clr-namespace:WeeXnes.Views.ProfileView"
              mc:Ignorable="d"
              Height="400" 
              Width="500"
@@ -90,6 +91,13 @@
                         Name="ButtonPwGen"
                         PageTag="Gen"
                         PageType="{x:Type passwordGenerator:PasswordGenView}"/>
+                    <ui:NavigationItem 
+                        Visibility="Collapsed"
+                        Content="Profile" 
+                        Icon="InprivateAccount24"
+                        Name="ButtonProfile"
+                        PageTag="Profile"
+                        PageType="{x:Type profile:ProfileView}"/>
                 </ui:NavigationStore.Items>
                 <ui:NavigationStore.Footer>
                     <ui:NavigationItem 

@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>4.4.6</Version>
+        <Version>4.4.7</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -41,6 +41,7 @@
         <Reference Include="DiscordRPC, Version=1.0.175.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DiscordRichPresence.1.0.175\lib\net35\DiscordRPC.dll</HintPath>
         </Reference>
+        <Reference Include="Microsoft.CSharp" />
         <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
           <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
@@ -51,6 +52,7 @@
         <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
         </Reference>
+        <Reference Include="System.Net.Http" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
@@ -71,6 +73,7 @@
         <Compile Include="Core\CustomConsole.cs" />
         <Compile Include="Core\EncryptorLibrary.cs" />
         <Compile Include="Core\HandleLaunchArguments.cs" />
+        <Compile Include="Core\LoginLib.cs" />
         <Compile Include="Core\RpcLogEvents.cs" />
         <Compile Include="Core\SaveSettingsHandler.cs" />
         <Compile Include="Core\WXFile.cs" />
@@ -102,6 +105,12 @@
         </Compile>
         <Compile Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml.cs">
           <DependentUpon>SaveToKeyManagerView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\ProfileView\LoginView.xaml.cs">
+          <DependentUpon>LoginView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\ProfileView\ProfileView.xaml.cs">
+          <DependentUpon>ProfileView.xaml</DependentUpon>
         </Compile>
         <Compile Include="Views\Settings\ApiResponse.cs" />
         <Compile Include="Views\Settings\ChangePathsView.xaml.cs">
@@ -141,6 +150,8 @@
         <Page Include="Views\PasswordGenerator\PasswordGenView.xaml" />
         <Page Include="Views\PasswordGenerator\SavePasswordView.xaml" />
         <Page Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml" />
+        <Page Include="Views\ProfileView\LoginView.xaml" />
+        <Page Include="Views\ProfileView\ProfileView.xaml" />
         <Page Include="Views\Settings\ChangePathsView.xaml" />
         <Page Include="Views\Settings\FluentMessageBox.xaml" />
         <Page Include="Views\Settings\SettingsView.xaml" />
