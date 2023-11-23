@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>4.4.8</Version>
+        <Version>4.5.0</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -106,11 +106,20 @@
         <Compile Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml.cs">
           <DependentUpon>SaveToKeyManagerView.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Views\ProfileView\InboxView.xaml.cs">
+          <DependentUpon>InboxView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\ProfileView\LicenseView.xaml.cs">
+          <DependentUpon>LicenseView.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Views\ProfileView\LoginError.xaml.cs">
           <DependentUpon>LoginError.xaml</DependentUpon>
         </Compile>
         <Compile Include="Views\ProfileView\LoginView.xaml.cs">
           <DependentUpon>LoginView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\ProfileView\MessageFullView.xaml.cs">
+          <DependentUpon>MessageFullView.xaml</DependentUpon>
         </Compile>
         <Compile Include="Views\ProfileView\ProfileView.xaml.cs">
           <DependentUpon>ProfileView.xaml</DependentUpon>
@@ -153,8 +162,11 @@
         <Page Include="Views\PasswordGenerator\PasswordGenView.xaml" />
         <Page Include="Views\PasswordGenerator\SavePasswordView.xaml" />
         <Page Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml" />
+        <Page Include="Views\ProfileView\InboxView.xaml" />
+        <Page Include="Views\ProfileView\LicenseView.xaml" />
         <Page Include="Views\ProfileView\LoginError.xaml" />
         <Page Include="Views\ProfileView\LoginView.xaml" />
+        <Page Include="Views\ProfileView\MessageFullView.xaml" />
         <Page Include="Views\ProfileView\ProfileView.xaml" />
         <Page Include="Views\Settings\ChangePathsView.xaml" />
         <Page Include="Views\Settings\FluentMessageBox.xaml" />

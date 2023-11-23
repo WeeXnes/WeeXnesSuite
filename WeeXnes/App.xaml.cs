@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.IO;
+using System.Net;
 using System.Windows.Media;
 using Newtonsoft.Json.Linq;
 using Nocksoft.IO.ConfigFiles;
@@ -188,6 +189,9 @@ namespace WeeXnes
 #if DEBUG
                 DebugMode = true;
                 HandleLaunchArguments.arg_enableConsole();
+                //Allow untrusted certs in Debug mode
+                ServicePointManager.ServerCertificateValidationCallback +=
+                    (sender, cert, chain, sslPolicyErrors) => true;
 #endif
         }
     }

@@ -37,6 +37,7 @@ namespace WeeXnes.Core
                 }
                 catch (Exception ex)
                 {
+                    WeeXnes.Core.CustomConsole.WriteLine(ex.ToString());
                     this.ExceptionCache.Value = ex;
                 }
             };
@@ -114,6 +115,7 @@ namespace WeeXnes.Core
                     // Parse the JSON data into a dynamic object
                     dynamic user = JsonConvert.DeserializeObject(responseData);
                     user = user.user;
+                    
                     // Now you can access the user object properties dynamically
                     WeeXnes.Core.CustomConsole.WriteLine("authenticated user: " + user.name);
                     //Console.WriteLine($"Email: {user.email}");

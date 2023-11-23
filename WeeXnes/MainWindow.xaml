@@ -92,7 +92,6 @@
                         PageTag="Gen"
                         PageType="{x:Type passwordGenerator:PasswordGenView}"/>
                     <ui:NavigationItem
-                        Visibility="Collapsed"
                         Content="Profile" 
                         Icon="InprivateAccount24"
                         Name="ButtonProfile"

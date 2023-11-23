@@ -62,7 +62,8 @@ namespace WeeXnes.Views.ProfileView
         {
             this.Dispatcher.Invoke(() =>
             {
-                new FluentMessageBox(auth.ExceptionCache.Value.Message).ShowDialog();
+                new FluentMessageBox(auth.ExceptionCache.Value.ToString()).ShowDialog();
+                errorStringChanged();
             });
         }
 
@@ -90,6 +91,16 @@ namespace WeeXnes.Views.ProfileView
             {
                 NavigationService.Navigate(new Uri("/Views/ProfileView/LoginError.xaml",UriKind.Relative));
             });
+        }
+
+        private void InboxButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/ProfileView/InboxView.xaml",UriKind.Relative));
+        }
+
+        private void LicenseButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/ProfileView/LicenseView.xaml",UriKind.Relative));
         }
     }
 }
