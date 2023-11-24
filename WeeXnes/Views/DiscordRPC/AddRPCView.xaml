@@ -17,8 +17,8 @@
             <StackPanel Orientation="Vertical">
                 <ui:TextBox Name="TextboxProcessname" PlaceholderText="Process name" Margin="0,4"/>
                 <ui:TextBox Name="TextboxClientid" PlaceholderText="Client ID" Margin="0,4"/>
-                <ui:TextBox Name="TextboxState" PlaceholderText="State" Margin="0,4"/>
                 <ui:TextBox Name="TextboxDetails" PlaceholderText="Details" Margin="0,4"/>
+                <ui:TextBox Name="TextboxState" PlaceholderText="State" Margin="0,4"/>
                 <ui:TextBox Name="TextboxBigimgkey" PlaceholderText="Big image key" Margin="0,4"/>
                 <ui:TextBox Name="TextboxBigimgtxt" PlaceholderText="Big image text" Margin="0,4"/>
                 <ui:TextBox Name="TextboxSmallimgkey" PlaceholderText="Small image key" Margin="0,4"/>
