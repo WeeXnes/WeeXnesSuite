@@ -6,7 +6,6 @@ using System.Net;
 using Wpf.Ui.Controls;
 using Microsoft.Win32;
 using Path = System.Windows.Shapes.Path;
-using Console = WeeXnes.Core.CustomConsole;
 
 namespace WeeXnes.Views.KeyManager
 {

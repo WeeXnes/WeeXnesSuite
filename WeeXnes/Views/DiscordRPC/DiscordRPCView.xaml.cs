@@ -7,7 +7,6 @@ using System.Windows.Controls;
 using Microsoft.Win32;
 using Nocksoft.IO.ConfigFiles;
 using WeeXnes.Core;
-using CConsole = WeeXnes.Core.CustomConsole;
 
 namespace WeeXnes.Views.DiscordRPC
 {
@@ -67,7 +66,7 @@ namespace WeeXnes.Views.DiscordRPC
             if (dialog.ShowDialog() == true)
             {
                 File.Copy(filepath, dialog.FileName, true);
-                CustomConsole.WriteLine("Exported to: " + dialog.FileName);
+                Console.WriteLine("Exported to: " + dialog.FileName);
             }
             
         }
@@ -92,11 +91,11 @@ namespace WeeXnes.Views.DiscordRPC
                 {
                     File.Copy(dialog.FileName, Global.AppDataPathRPC.Value + "\\" + newGame.UUID + ".rpc", true);
                     DiscordRPCView.Data.Games.Add(newGame);
-                    CustomConsole.WriteLine("Imported: " + dialog.FileName);
+                    Console.WriteLine("Imported: " + dialog.FileName);
                 }
                 else
                 {
-                    CustomConsole.Error("not imported: " + dialog.FileName);
+                    Console.Error("not imported: " + dialog.FileName);
                 }
                 
                 

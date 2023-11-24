@@ -41,6 +41,7 @@ namespace WeeXnes
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             Environment.CurrentDirectory = Application.StartupPath;
+            Console.Data.Colors.colored_output = false;
             SetExceptionHandler();
             CheckForDebugMode();
             CheckUpdatedFiles();
@@ -66,7 +67,7 @@ namespace WeeXnes
                 }
                 catch (Exception ex)
                 {
-                    WeeXnes.Core.CustomConsole.Error(ex.ToString());
+                    Console.Error(ex.ToString());
                 }
             }
         }
@@ -128,11 +129,11 @@ namespace WeeXnes
                 {
                     Game newGame = Game.Methods.GameFromIni(new INIFile(file.FullName));
                     DiscordRPCView.Data.Games.Add(newGame);
-                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded -> " + newGame.ProcessName);
+                    Console.WriteLine(file.Name + " loaded -> " + newGame.ProcessName);
                 }
                 catch (Exception ex)
                 {
-                    WeeXnes.Core.CustomConsole.Error(file.Name + ": " + ex.Message);
+                    Console.Error(file.Name + ": " + ex.Message);
                     new FluentMessageBox(file.Name + ": " + ex.Message).ShowDialog();
                 }
             }
@@ -154,12 +155,12 @@ namespace WeeXnes
                     );
                     newItem.Filename = file.Name;
                     KeyManagerView.Data.KeyItemsList.Add(newItem);
-                    WeeXnes.Core.CustomConsole.WriteLine(file.Name + " loaded -> " + newItem.Name);
+                    Console.WriteLine(file.Name + " loaded -> " + newItem.Name);
                     
                 }
                 catch (Exception ex)
                 {
-                    WeeXnes.Core.CustomConsole.Error(file.Name + ": " + ex.Message);
+                    Console.Error(file.Name + ": " + ex.Message);
                     new FluentMessageBox(file.Name + ": " + ex.Message).ShowDialog();
                 }
             }
@@ -187,11 +188,7 @@ namespace WeeXnes
         private void CheckForDebugMode()
         {
 #if DEBUG
-                DebugMode = true;
-                HandleLaunchArguments.arg_enableConsole();
-                //Allow untrusted certs in Debug mode
-                ServicePointManager.ServerCertificateValidationCallback +=
-                    (sender, cert, chain, sslPolicyErrors) => true;
+                HandleLaunchArguments.arg_debugMode();
 #endif
         }
     }

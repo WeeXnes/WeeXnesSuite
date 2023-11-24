@@ -43,7 +43,7 @@ namespace WeeXnes.Views.PasswordGenerator
                 CustomPasswordBuilderString += PasswordBuilderStrings.special;
             
 
-            CustomConsole.WriteLine("Generating Password from: " + CustomPasswordBuilderString);
+            Console.WriteLine("Generating Password from: " + CustomPasswordBuilderString);
             //MessageBox.Show(CustomPasswordBuilderString);
 
             string generatedPassword = "";

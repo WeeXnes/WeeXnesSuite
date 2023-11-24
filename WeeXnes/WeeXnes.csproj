@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <Version>4.5.0</Version>
+        <Version>4.5.1</Version>
         <ProjectGuid>{4B33CEE7-C74D-43B9-B99A-8B273D5195BC}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WeeXnes</RootNamespace>
@@ -15,6 +15,7 @@
         <WarningLevel>4</WarningLevel>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <ApplicationIcon>wicns.ico</ApplicationIcon>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,7 +71,7 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
-        <Compile Include="Core\CustomConsole.cs" />
+        <Compile Include="Core\Console.cs" />
         <Compile Include="Core\EncryptorLibrary.cs" />
         <Compile Include="Core\HandleLaunchArguments.cs" />
         <Compile Include="Core\LoginLib.cs" />

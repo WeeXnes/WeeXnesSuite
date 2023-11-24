@@ -33,7 +33,7 @@ namespace WeeXnes.Views.DiscordRPC
 
         private void LogChanged()
         {
-            Console.WriteLine("Log Write Data: " + Data.LogCache.Value);
+            VanillaConsole.WriteLine("Log Write Data: " + Data.LogCache.Value);
             this.Dispatcher.Invoke(() =>
             {
                 RpcLogView.Items.Add(Data.LogCache.Value);
@@ -58,7 +58,7 @@ namespace WeeXnes.Views.DiscordRPC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                VanillaConsole.WriteLine(ex.ToString());
             }
         }
         public void StopBackgroundWorker()
@@ -71,7 +71,7 @@ namespace WeeXnes.Views.DiscordRPC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                VanillaConsole.WriteLine(ex.ToString());
             }
             //Stop RPC
         }
@@ -98,7 +98,7 @@ namespace WeeXnes.Views.DiscordRPC
         {
             foreach (Game game in DiscordRPCView.Data.Games)
                 game.Stop();
-            Console.WriteLine("Thread Stopped");
+            VanillaConsole.WriteLine("Thread Stopped");
             Data.LogCache.Value = new customEvent("[INFO] RPC Thread has stopped", EventType.ProcessStoppedEvent);
         }
 

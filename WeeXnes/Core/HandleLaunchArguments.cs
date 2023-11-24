@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -19,7 +20,11 @@ namespace WeeXnes.Core
         }
         public static void arg_debugMode()
         {
-            MessageBox.Show("user debug mode enabled");
+            App.DebugMode = true;
+            HandleLaunchArguments.arg_enableConsole();
+            //Allow untrusted certs in Debug mode
+            ServicePointManager.ServerCertificateValidationCallback +=
+                (sender, cert, chain, sslPolicyErrors) => true;
         }
         public static void arg_enableConsole()
         {

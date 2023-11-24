@@ -38,6 +38,7 @@ namespace WeeXnes.Views.ProfileView
         {
             CardAction button = (CardAction)sender;
             dynamic messageObj = button.Tag;
+            Console.WriteLine(messageObj.ToString());
             MessageFullView.MessageToShow = messageObj;
             NavigationService.Navigate(new Uri("/Views/ProfileView/MessageFullView.xaml",UriKind.Relative));
         }

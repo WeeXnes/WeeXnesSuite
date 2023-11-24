@@ -42,7 +42,7 @@ namespace WeeXnes.Views.DiscordRPC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.ToString());
             }
             CloseDialog();
             

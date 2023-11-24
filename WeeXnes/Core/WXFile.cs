@@ -29,7 +29,7 @@ namespace WeeXnes.Core
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(e.ToString());
                     returnval = null;
                 }
             }
@@ -48,7 +48,7 @@ namespace WeeXnes.Core
                     returnval = rawcontent[2];
                 }catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(e.ToString());
                     returnval = null;
                 }
             }

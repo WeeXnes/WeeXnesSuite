@@ -37,13 +37,13 @@ namespace WeeXnes.Core
                 }
                 catch (Exception ex)
                 {
-                    WeeXnes.Core.CustomConsole.WriteLine(ex.ToString());
+                    Console.Error(ex.ToString());
                     this.ExceptionCache.Value = ex;
                 }
             };
             this._loginWorker.RunWorkerCompleted += (sender, args) =>
             {
-                WeeXnes.Core.CustomConsole.WriteLine("LoginWorker complete");
+                Console.WriteLine("LoginWorker complete");
             };
             this._loginUrl = loginUrl;
             this._userDataUrl = userDataUrl;
@@ -79,7 +79,7 @@ namespace WeeXnes.Core
                 }
                 else
                 {
-                    WeeXnes.Core.CustomConsole.WriteLine("Error: " + response.StatusCode);
+                    Console.Error("Error: " + response.StatusCode);
                     LoginView.errorStringCache.Value = response.StatusCode.ToString();
                     return null;
                 }
@@ -117,7 +117,7 @@ namespace WeeXnes.Core
                     user = user.user;
                     
                     // Now you can access the user object properties dynamically
-                    WeeXnes.Core.CustomConsole.WriteLine("authenticated user: " + user.name);
+                    Console.WriteLine("authenticated user: " + user.name);
                     //Console.WriteLine($"Email: {user.email}");
                     // Access other properties as needed
                     _currentUserCache.Value = user;
@@ -129,7 +129,7 @@ namespace WeeXnes.Core
                     // Handle the error, e.g., print the status code
                     _currentUserCache.Value = null;
                     
-                    WeeXnes.Core.CustomConsole.WriteLine("Error: " + response.StatusCode);
+                    Console.Error("Error: " + response.StatusCode);
                     
                     LoginView.errorStringCache.Value = response.StatusCode.ToString();
                     return null;

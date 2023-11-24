@@ -48,7 +48,7 @@ namespace WeeXnes.Views.Settings
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.ToString());
 
             }
         }
