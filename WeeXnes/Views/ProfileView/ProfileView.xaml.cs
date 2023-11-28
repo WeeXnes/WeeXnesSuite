@@ -22,9 +22,9 @@ namespace WeeXnes.Views.ProfileView
             auth.ExceptionCache.ValueChanged += LoginWorkerException;
             auth._currentUserCache.ValueChanged += userCacheChanged;
             LoginView.errorStringCache.ValueChanged += errorStringChanged;
+            Console.WriteLine("Event hooks loaded");
             Console.WriteLine("Error Hooks loaded");
             
-            Console.WriteLine("Event hooks loaded");
             if (auth._currentUserCache.Value == null)
             {
                 LoadingScreen.Visibility = Visibility.Visible;
@@ -84,6 +84,7 @@ namespace WeeXnes.Views.ProfileView
             LoginView.errorStringCache.ValueChanged -= errorStringChanged;
             
             Console.WriteLine("Event hooks unloaded");
+            Console.WriteLine("Error hooks unloaded");
         }
         private void errorStringChanged()
         {

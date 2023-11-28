@@ -25,6 +25,7 @@ namespace WeeXnes.Core
 
             public static class Formatting
             {
+                public static bool timestamp_prefix = false;
                 public static string success_char = "✓";
                 public static string warning_char = "⌬";
                 public static string info_char = "◈";
@@ -47,7 +48,9 @@ namespace WeeXnes.Core
                 VanillaConsole.BackgroundColor = color;
                 VanillaConsole.ForegroundColor = foregroundColor;
             }
-
+            DateTime currentTime = DateTime.Now;
+            if (Data.Formatting.timestamp_prefix)
+                text = currentTime.ToString("[HH:mm:ss]") + text;
             VanillaConsole.WriteLine(text + " ");
             if (Data.Colors.colored_output)
             {

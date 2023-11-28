@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Windows;
 using WeeXnes.Core;
 using ButtonBase = System.Windows.Controls.Primitives.ButtonBase;

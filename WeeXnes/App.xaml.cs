@@ -42,6 +42,7 @@ namespace WeeXnes
         {
             Environment.CurrentDirectory = Application.StartupPath;
             Console.Data.Colors.colored_output = false;
+            Console.Data.Formatting.timestamp_prefix = true;
             SetExceptionHandler();
             CheckForDebugMode();
             CheckUpdatedFiles();

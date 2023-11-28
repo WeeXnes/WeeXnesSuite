@@ -41,13 +41,16 @@ namespace WeeXnes.Core
                     this.ExceptionCache.Value = ex;
                 }
             };
-            this._loginWorker.RunWorkerCompleted += (sender, args) =>
-            {
-                Console.WriteLine("LoginWorker complete");
-            };
+            this._loginWorker.RunWorkerCompleted += LoginWorkerOnRunWorkerCompleted;
             this._loginUrl = loginUrl;
             this._userDataUrl = userDataUrl;
         }
+
+        private void LoginWorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Console.WriteLine("LoginWorker complete");
+        }
+
         public string Login(string email, string password)
         {
             if (String.IsNullOrEmpty(email))

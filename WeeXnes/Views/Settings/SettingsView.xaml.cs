@@ -55,7 +55,7 @@ namespace WeeXnes.Views.Settings
 
         private void ButtonCheckForUpdates_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            Console.WriteLine("Checking for Updates...");
             try
             {
                 using(WebClient webClient = new WebClient())
@@ -66,8 +66,13 @@ namespace WeeXnes.Views.Settings
                     GithubApiResponse apiResponseData = JsonConvert.DeserializeObject<GithubApiResponse>(downloadString);
                     if (apiResponseData.tag_name !=  Information.Version)
                     {
+                        Console.WriteLine("Update found");
                         UpdateFoundView.Data.updateResponse = apiResponseData;
                         NavigationService.Navigate(new Uri("/Views/Settings/UpdateFoundView.xaml",UriKind.Relative));
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Update found");
                     }
                 }  
             }
@@ -87,7 +92,7 @@ namespace WeeXnes.Views.Settings
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.Error(ex.Message);
             }
         }
 
@@ -100,7 +105,7 @@ namespace WeeXnes.Views.Settings
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.Error(ex.Message);
             }
         }
 
@@ -113,7 +118,7 @@ namespace WeeXnes.Views.Settings
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.Error(ex.Message);
             }
         }
 
@@ -144,11 +149,13 @@ namespace WeeXnes.Views.Settings
 
         private void dbg_throwException(object sender, RoutedEventArgs e)
         {
+            Console.Warning("Creating ArithmeticException for Debugging");
             Functions.ThrowTestException(new ArithmeticException());
         }
 
         private void TimedShutdown_OnClick(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("Setting timed shutdown in " + (Convert.ToInt32(ShutdownTimer.Value)) + "mins");
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -160,6 +167,7 @@ namespace WeeXnes.Views.Settings
 
         private void ResetShutdown_OnClick(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("Canceling timed shutdown");
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
