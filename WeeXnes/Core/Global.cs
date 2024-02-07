@@ -18,6 +18,7 @@ namespace WeeXnes.Core
         public static string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WeeXnes");
         public static UpdateVar<string> AppDataPathRPC = new UpdateVar<string>();
         public static UpdateVar<string> AppDataPathKEY = new UpdateVar<string>();
+        public static UpdateVar<bool> checkUpdateOnStartup = new UpdateVar<bool>();
         public static string SettingsFile = "settings.ini";
         public class Defaults
         {

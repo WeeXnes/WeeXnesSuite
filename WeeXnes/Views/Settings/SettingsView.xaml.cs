@@ -50,7 +50,18 @@ namespace WeeXnes.Views.Settings
         {
             KeyManagerView.Data.censorKeys.Value = false;
         }
+        
+        private void CheckboxAutoUpdate_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Global.checkUpdateOnStartup.Value = true;
+        }
+        private void CheckboxAutoUpdate_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            Global.checkUpdateOnStartup.Value = false;
+        }
 
+        
+        
 
 
         private void ButtonCheckForUpdates_OnClick(object sender, RoutedEventArgs e)

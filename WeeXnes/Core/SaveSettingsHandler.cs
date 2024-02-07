@@ -18,6 +18,7 @@ namespace WeeXnes.Core
                 public const string Section = "GENERAL";
                 public const string RpcFilesPath = "RpcFilesPath";
                 public const string KeyFilesPath = "KeyFilesPath";
+                public const string StartupUpdateCheck = "StartupUpdateCheck";
             }
             public static class KeyManager
             {
@@ -85,6 +86,14 @@ namespace WeeXnes.Core
                     Data.General.Section,
                     Data.General.KeyFilesPath,
                     Global.AppDataPathKEY.Value
+                );
+            };
+            Global.checkUpdateOnStartup.ValueChanged += () =>
+            {
+                SettingsView.Data.settingsFile.SetValue(
+                    Data.General.Section,
+                    Data.General.StartupUpdateCheck,
+                    Global.checkUpdateOnStartup.Value.ToString()
                 );
             };
         }

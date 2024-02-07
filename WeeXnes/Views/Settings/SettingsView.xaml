@@ -114,6 +114,11 @@
                 
                 <StackPanel Orientation="Vertical" Visibility="Collapsed" Name="DebugOptions">
                     <Label Content="Debug" HorizontalAlignment="Center"/>
+                    
+                    <CheckBox Content="Check for updates on Startup"
+                              Name="CheckboxAutoUpdate"
+                              Checked="CheckboxAutoUpdate_OnChecked"
+                              Unchecked="CheckboxAutoUpdate_OnUnchecked"/>
                     <ui:CardAction Icon="ErrorCircle24"
                                    Click="dbg_throwException">
                         <StackPanel>
