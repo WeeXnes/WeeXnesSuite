@@ -40,7 +40,15 @@ namespace WeeXnes.Core
         {
             if(!App.DebugMode)
                 return;
-            //VanillaConsole.OutputEncoding = Encoding.UTF8;
+
+            try
+            {
+                VanillaConsole.OutputEncoding = Encoding.UTF8;
+            }
+            catch (Exception ex)
+            {
+                
+            }
             ConsoleColor prevColor = VanillaConsole.BackgroundColor;
             ConsoleColor prevForeColor = VanillaConsole.ForegroundColor;
             if (Data.Colors.colored_output)
