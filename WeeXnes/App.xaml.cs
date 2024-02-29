@@ -45,12 +45,12 @@ namespace WeeXnes
             Console.Data.Formatting.timestamp_prefix = true;
             SetExceptionHandler();
             CheckForDebugMode();
+            CheckStartupArgs(e.Args);
             CheckUpdatedFiles();
             CheckForFolder();
             LoadSettings();
             SaveSettingsHandler.SetupSaveEvents();
             LoadFiles();
-            CheckStartupArgs(e.Args);
         }
 
         private void CheckUpdatedFiles()
