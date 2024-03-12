@@ -8,6 +8,11 @@ namespace WeeXnes.Core
 {
     public class HandleLaunchArguments
     {
+        public static class ArgumentStrings
+        {
+            public const string autostart = "-autostart";
+            public const string debugMode = "-debugMode";
+        }
         public static class Data
         {
             public static bool Autostart = false;

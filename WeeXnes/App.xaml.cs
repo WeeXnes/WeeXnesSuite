@@ -176,10 +176,10 @@ namespace WeeXnes
             {
                 switch (argument)
                 {
-                    case "-autostart":
+                    case HandleLaunchArguments.ArgumentStrings.autostart:
                         HandleLaunchArguments.arg_autostart();
                         break;
-                    case "-debugMode":
+                    case HandleLaunchArguments.ArgumentStrings.debugMode:
                         HandleLaunchArguments.arg_debugMode();
                         break;
                 }
