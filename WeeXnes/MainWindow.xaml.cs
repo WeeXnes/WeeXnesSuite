@@ -16,6 +16,14 @@ namespace WeeXnes
         {
             InitializeComponent();
             Wpf.Ui.Appearance.Accent.ApplySystemAccent();
+            EnableDebugOptions();
+        }
+
+        private void EnableDebugOptions()
+        {
+            if(!App.DebugMode)
+                return;
+            ButtonEncryptedFileEditor.Visibility = Visibility.Visible;
         }
 
 

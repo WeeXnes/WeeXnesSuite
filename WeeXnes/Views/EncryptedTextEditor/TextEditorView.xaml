@@ -1,0 +1,12 @@
+﻿<Page x:Class="WeeXnes.Views.EncryptedTextEditor.TextEditorView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WeeXnes.Views.EncryptedTextEditor"
+      mc:Ignorable="d"
+      Title="TextEditorView" Height="450" Width="800">
+    <Grid>
+        <TextBlock>Under construction</TextBlock>
+    </Grid>
+</Page>

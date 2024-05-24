@@ -10,6 +10,7 @@
              xmlns:discordrpc="clr-namespace:WeeXnes.Views.DiscordRPC"
              xmlns:passwordGenerator="clr-namespace:WeeXnes.Views.PasswordGenerator"
              xmlns:profile="clr-namespace:WeeXnes.Views.ProfileView"
+             xmlns:EncryptedTextEditor="clr-namespace:WeeXnes.Views.EncryptedTextEditor"
              mc:Ignorable="d"
              Height="400" 
              Width="500"
@@ -91,6 +92,13 @@
                         Name="ButtonPwGen"
                         PageTag="Gen"
                         PageType="{x:Type passwordGenerator:PasswordGenView}"/>
+                    <ui:NavigationItem 
+                        Visibility="Collapsed"
+                        Content="Editor" 
+                        Icon="DocumentOnePage24"
+                        Name="ButtonEncryptedFileEditor"
+                        PageTag="Editor"
+                        PageType="{x:Type EncryptedTextEditor:TextEditorView}"/>
                     <ui:NavigationItem
                         Content="Profile" 
                         Icon="InprivateAccount24"
