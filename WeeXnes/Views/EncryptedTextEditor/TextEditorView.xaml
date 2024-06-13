@@ -5,8 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WeeXnes.Views.EncryptedTextEditor"
       mc:Ignorable="d"
-      Title="TextEditorView" Height="450" Width="800">
+      Title="TextEditorView" Height="Auto" Width="Auto">
     <Grid>
-        <TextBlock>Under construction</TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40px"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+        
+                <Button Grid.Column="0" Content="Open File" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+                <Button Grid.Column="1" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+                <Button Grid.Column="2" Content="Save As" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+            </Grid>
+            <RichTextBox Grid.Row="1">
+                
+            </RichTextBox>
+        </Grid>
     </Grid>
 </Page>
