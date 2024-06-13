@@ -17,6 +17,11 @@ public partial class TextEditorView : Page
     {
         InitializeComponent();
     }
+    private void RaiseClickEvent(System.Windows.Controls.Button button)
+    {
+        var clickEventArgs = new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent);
+        button.RaiseEvent(clickEventArgs);
+    }
 
     private void Btn_openFile_OnClick(object sender, RoutedEventArgs e)
     {
@@ -44,19 +49,27 @@ public partial class TextEditorView : Page
             }
         }
     }
+    
 
     private void Btn_saveFile_OnClick(object sender, RoutedEventArgs e)
     {
-        if(this.currentFilePath == null)
-            return;
+        if (this.currentFilePath == null)
+        {
+            RaiseClickEvent(btn_saveFileAs);
+        }
+        else
+        {
+            Console.WriteLine("Saving file " + currentFilePath);
+            TextRange textRange = new TextRange(rtb_FileEditor.Document.ContentStart, rtb_FileEditor.Document.ContentEnd);
+            string plainText = textRange.Text;
+            string[] lines = plainText.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            string[] encryptedContent =
+                EncryptionLib.EncryptorLibary.encryptArray(Information.EncryptionHash, lines);
+            File.WriteAllLines(this.currentFilePath, encryptedContent);
+        }
+            
         
-        Console.WriteLine("Saving file " + currentFilePath);
-        TextRange textRange = new TextRange(rtb_FileEditor.Document.ContentStart, rtb_FileEditor.Document.ContentEnd);
-        string plainText = textRange.Text;
-        string[] lines = plainText.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-        string[] encryptedContent =
-            EncryptionLib.EncryptorLibary.encryptArray(Information.EncryptionHash, lines);
-        File.WriteAllLines(this.currentFilePath, encryptedContent);
+        
     }
 
     private void Btn_saveFileAs_OnClick(object sender, RoutedEventArgs e)
