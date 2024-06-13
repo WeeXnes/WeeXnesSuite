@@ -21,9 +21,9 @@
         
                 <Button Name="btn_openFile" Click="Btn_openFile_OnClick" Grid.Column="0" Content="Open File" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
                 <Button Name="btn_saveFile" Click="Btn_saveFile_OnClick" Grid.Column="1" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
-                <Button Name="btn_saveFileAs" Click="flkpw" Grid.Column="2" Content="Save As" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+                <Button Name="btn_saveFileAs" Click="Btn_saveFileAs_OnClick" Grid.Column="2" Content="Save As" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
             </Grid>
-            <RichTextBox Grid.Row="1">
+            <RichTextBox Name="rtb_FileEditor" Grid.Row="1">
                 <RichTextBox.Resources>
                     <Style TargetType="{x:Type Paragraph}">
                         <Setter Property="Margin" Value="0"/>
