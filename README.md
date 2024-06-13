@@ -21,14 +21,14 @@ Uses:
 
 <h3 align="center">Encrypted Key Manager and Custom Discord Rich Presence that you can configure for every Process you want</h3>
 <h2>Overview:</h2>
-<image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161497269907486/home.png" height="400">
+<image src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/Images/home.png" height="400">
     <h2></h2>
     
         
    <h3>Discord Rich Presence</h3>
   Configurable DiscordRPC for every process you want. It detects if a process is started and starts the Rich Presence you configured for the Process (also has import/export functionality)
   <br>
-<image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161498477871225/rpc.png" height="400">
+<image src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/Images/rpc.png" height="400">
     <h2></h2>
     
     
@@ -36,25 +36,23 @@ Uses:
   <h3>Key Manager</h3>
     encrypted key manager with import/export functionality
     <br>
-<image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161497475432650/keys.png" height="400">
+<image src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/Images/password_manager.png" height="400">
     <h2></h2>
     
        
   <h3>Password Generator</h3>
     Password Generator. Generated passwords can be quickly saved to the Key Manager
     <br>
-<image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161497714491503/passwordgen.png" height="400">
+<image src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/Images/password_gen.png" height="400">
     <h2></h2>
     
         
   <h3>Settings</h3>
   Settings Showcase
   <br>
-<image src="https://cdn.discordapp.com/attachments/741123537582162020/1117161498771468439/settings.png" height="400">
+<image src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/Images/settings.png" height="600">
 
 
-coming soon:
-- Modular Plugin Loader so anyone can extend the functionality of the programm easily
 
 
 <h2>Supported by: <a href="https://www.jetbrains.com">JetBrains</a></h2>
