@@ -12,7 +12,7 @@
              xmlns:profile="clr-namespace:WeeXnes.Views.ProfileView"
              xmlns:EncryptedTextEditor="clr-namespace:WeeXnes.Views.EncryptedTextEditor"
              mc:Ignorable="d"
-             Height="400" 
+             Height="540" 
              Width="500"
              Title="WeeXnes"
              Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -92,8 +92,7 @@
                         Name="ButtonPwGen"
                         PageTag="Gen"
                         PageType="{x:Type passwordGenerator:PasswordGenView}"/>
-                    <ui:NavigationItem 
-                        Visibility="Collapsed"
+                    <ui:NavigationItem
                         Content="Editor" 
                         Icon="DocumentOnePage24"
                         Name="ButtonEncryptedFileEditor"

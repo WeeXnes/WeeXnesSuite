@@ -23,7 +23,7 @@ namespace WeeXnes
         {
             if(!App.DebugMode)
                 return;
-            ButtonEncryptedFileEditor.Visibility = Visibility.Visible;
+            //Code to be enabled in Debug mode
         }
 
 

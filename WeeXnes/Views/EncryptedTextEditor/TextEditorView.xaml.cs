@@ -23,14 +23,16 @@ public partial class TextEditorView : Page
         var fileContent = string.Empty;
         var filePath = string.Empty;
 
+        Console.WriteLine("Calling OpenFileDialog");
         using (OpenFileDialog openFileDialog = new OpenFileDialog())
         {
-            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
             openFileDialog.Filter = "WXN Text Files (*.wtf)|*.wtf";
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                Console.WriteLine("Opening file " + openFileDialog.FileName);
                 this.currentFilePath = openFileDialog.FileName;
                 string[] FileContent = File.ReadAllLines(openFileDialog.FileName);
                 string[] decryptedContent = EncryptorLibary.decryptArray(Information.EncryptionHash, FileContent);
@@ -47,19 +49,29 @@ public partial class TextEditorView : Page
     {
         if(this.currentFilePath == null)
             return;
+        
+        Console.WriteLine("Saving file " + currentFilePath);
+        TextRange textRange = new TextRange(rtb_FileEditor.Document.ContentStart, rtb_FileEditor.Document.ContentEnd);
+        string plainText = textRange.Text;
+        string[] lines = plainText.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+        string[] encryptedContent =
+            EncryptionLib.EncryptorLibary.encryptArray(Information.EncryptionHash, lines);
+        File.WriteAllLines(this.currentFilePath, encryptedContent);
     }
 
     private void Btn_saveFileAs_OnClick(object sender, RoutedEventArgs e)
     {
+        Console.WriteLine("Calling SaveFileDialog");
         using (SaveFileDialog saveFileDialog = new SaveFileDialog())
         {
-            this.currentFilePath = saveFileDialog.FileName;
-            saveFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //saveFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
             saveFileDialog.Filter = "WXN Text Files (*.wtf)|*.wtf";
-            saveFileDialog.RestoreDirectory = true ;
+            saveFileDialog.RestoreDirectory = true;
 
             if(saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                Console.WriteLine("Saving file " + saveFileDialog.FileName);
+                this.currentFilePath = saveFileDialog.FileName;
                 TextRange textRange = new TextRange(rtb_FileEditor.Document.ContentStart, rtb_FileEditor.Document.ContentEnd);
                 string plainText = textRange.Text;
                 string[] lines = plainText.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
