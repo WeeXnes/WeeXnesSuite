@@ -1,5 +1,5 @@
 <div align="center">
-    <img width="100" height="100" src="https://cdn.discordapp.com/attachments/741123537582162020/965619554426437732/wicon.png">
+    <img width="100" height="100" src="https://raw.githubusercontent.com/WeeXnes/WeeXnesSuite/master/WeeXnes/Images/wicon.png">
     <br>
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/WeeXnes/WeeXnesSuite?color=%23702e94">
     
