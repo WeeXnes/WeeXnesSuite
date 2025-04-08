@@ -15,7 +15,7 @@
         <WarningLevel>4</WarningLevel>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <ApplicationIcon>wicns.ico</ApplicationIcon>
-        <LangVersion>10</LangVersion>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +75,7 @@
         <Compile Include="Core\EncryptorLibrary.cs" />
         <Compile Include="Core\HandleLaunchArguments.cs" />
         <Compile Include="Core\LoginLib.cs" />
+        <Compile Include="Core\PluginManager.cs" />
         <Compile Include="Core\RpcLogEvents.cs" />
         <Compile Include="Core\SaveSettingsHandler.cs" />
         <Compile Include="Core\WXFile.cs" />
@@ -199,6 +200,12 @@
     <ItemGroup>
       <Content Include="wicns.ico" />
       <Resource Include="Images\wicon.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\WXPlugin\WXPlugin.csproj">
+        <Project>{56bfe4e0-0d30-474a-b57b-cf08515ff66e}</Project>
+        <Name>WXPlugin</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

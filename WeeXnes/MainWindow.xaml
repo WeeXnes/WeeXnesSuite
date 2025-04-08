@@ -103,7 +103,8 @@
                         Icon="InprivateAccount24"
                         Name="ButtonProfile"
                         PageTag="Profile"
-                        PageType="{x:Type profile:LoginView}"/>
+                        PageType="{x:Type profile:LoginView}"
+                        Visibility="Collapsed"/>
                 </ui:NavigationStore.Items>
                 <ui:NavigationStore.Footer>
                     <ui:NavigationItem 
