@@ -111,6 +111,9 @@
         <Compile Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml.cs">
           <DependentUpon>SaveToKeyManagerView.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Views\PluginManager\PluginManagerView.xaml.cs">
+          <DependentUpon>PluginManagerView.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Views\ProfileView\InboxView.xaml.cs">
           <DependentUpon>InboxView.xaml</DependentUpon>
         </Compile>
@@ -168,6 +171,7 @@
         <Page Include="Views\PasswordGenerator\PasswordGenView.xaml" />
         <Page Include="Views\PasswordGenerator\SavePasswordView.xaml" />
         <Page Include="Views\PasswordGenerator\SaveToKeyManagerView.xaml" />
+        <Page Include="Views\PluginManager\PluginManagerView.xaml" />
         <Page Include="Views\ProfileView\InboxView.xaml" />
         <Page Include="Views\ProfileView\LicenseView.xaml" />
         <Page Include="Views\ProfileView\LoginError.xaml" />

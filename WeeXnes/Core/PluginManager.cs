@@ -13,11 +13,15 @@ public class PluginManager
     public HashSet<IPluginBase> CurrentPlugins { get; set; } = new HashSet<IPluginBase>();
     public PluginManager(String pluginPath)
     {
+        
+        Console.WriteLine("Plugin Manager Initialized");
         Directories.Add(pluginPath);
     }
 
     public void LoadPlugins()
     {
+        
+        Console.WriteLine("Plugin Manager Loading Plugins");
         CurrentPlugins = new HashSet<IPluginBase>();
         foreach (var dir in Directories)
         {
@@ -36,6 +40,7 @@ public class PluginManager
                                 null,
                                 null)
                             as IPluginBase;
+                        Console.WriteLine("Loaded: " + newPlugin.Name);
                         CurrentPlugins.Add(newPlugin);
                     }
                 }

@@ -51,6 +51,18 @@ namespace WeeXnes
             LoadSettings();
             SaveSettingsHandler.SetupSaveEvents();
             LoadFiles();
+            LoadPluginManager();
+
+        }
+
+        private void LoadPluginManager()
+        {
+            string pluginsPath = Path.Combine(Environment.CurrentDirectory, "plugins");
+            if (!Directory.Exists(pluginsPath))
+                Directory.CreateDirectory(pluginsPath);
+            PluginManager manager = new PluginManager(pluginsPath);
+            manager.LoadPlugins();
+
         }
 
         private void CheckUpdatedFiles()
