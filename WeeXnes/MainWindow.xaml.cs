@@ -60,7 +60,14 @@ namespace WeeXnes
         {
             Environment.Exit(0);
         }
-        
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            foreach (var plugin in Global.pluginManager.CurrentPlugins)
+            {
+                NavBar.Items.Add(plugin.NavIcon);
+            }
+        }
     }
 }
 

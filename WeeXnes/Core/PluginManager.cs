@@ -41,6 +41,7 @@ public class PluginManager
                                 null)
                             as IPluginBase;
                         Console.WriteLine("Loaded: " + newPlugin.Name);
+                        Console.WriteLine(newPlugin.UiPage.Content.ToString());
                         CurrentPlugins.Add(newPlugin);
                     }
                 }

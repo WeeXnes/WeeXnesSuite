@@ -18,7 +18,8 @@
              Background="{DynamicResource ApplicationBackgroundBrush}"
              ExtendsContentIntoTitleBar="True"
              WindowBackdropType="Mica"
-             WindowStartupLocation="CenterScreen">
+             WindowStartupLocation="CenterScreen"
+             Loaded="MainWindow_OnLoaded">
     <Grid>
        
         <Grid.RowDefinitions>
@@ -64,6 +65,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ui:NavigationStore
+                Name="NavBar"
                 Grid.Column="0"
                 Frame="{Binding ElementName=MainFrame}"
                 SelectedPageIndex="0">

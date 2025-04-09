@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using Newtonsoft.Json.Linq;
 using Nocksoft.IO.ConfigFiles;
@@ -57,12 +58,14 @@ namespace WeeXnes
 
         private void LoadPluginManager()
         {
-            string pluginsPath = Path.Combine(Environment.CurrentDirectory, "plugins");
-            if (!Directory.Exists(pluginsPath))
-                Directory.CreateDirectory(pluginsPath);
-            PluginManager manager = new PluginManager(pluginsPath);
-            manager.LoadPlugins();
-
+            if (!Directory.Exists(Global.Defaults.DefaultPathPlugins))
+                Directory.CreateDirectory(Global.Defaults.DefaultPathPlugins);
+                    
+            Global.pluginManager.LoadPlugins();
+            foreach (var plugin in Global.pluginManager.CurrentPlugins)
+            {
+                plugin.Initialize();
+            }
         }
 
         private void CheckUpdatedFiles()
