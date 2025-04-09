@@ -1,13 +1,18 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
-namespace ExamplePlugin
+public partial class ExampleUi : Page
 {
-    public partial class ExampleUi : Page
+    private int counter = 0;
+    public ExampleUi()
     {
-        public ExampleUi()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    private void ExampleUi_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        counter++;
+        TestLabel.Text = counter.ToString();
     }
 }
