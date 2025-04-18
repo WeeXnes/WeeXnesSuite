@@ -51,7 +51,8 @@ jobs:
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes_UAC\bin\Release\WeeXnes_UAC.exe, 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\DiscordRPC.dll, 
         D:\a\WeeXnesSuite\WeeXnesSuite\WeeXnes\bin\Release\Newtonsoft.Json.dll, 
-        D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\Autostart.exe, 
+        D:\a\WeeXnesSuite\WeeXnesSuite\Autostart\bin\Release\Autostart.exe,  
+        D:\a\WeeXnesSuite\WeeXnesSuite\WXPlugin\bin\Release\WXPlugin.dll, 
         Update\bin\Release\Update.exe
         -CompressionLevel Optimal -DestinationPath packed.zip
       shell: pwsh
